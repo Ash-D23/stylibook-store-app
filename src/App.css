@@ -1,0 +1,86 @@
+.card__image{
+    cursor: pointer;
+}
+
+.products{
+    overflow: hidden;
+    padding: var(--margin-medium);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.product--cards .card{
+    width: 25rem;
+    margin: var(--margin-medium);
+}
+
+.product--cards .card__actions,  .product--cards .card__actions--buttons{
+    width: 100%;
+}
+
+.product--cards .btn {
+    width: 100%;
+    margin-right: 0;
+}
+
+@media only screen and (max-width: 800px){
+    .product--cards .card{
+        width: 20rem;
+        margin: var(--margin-medium);
+    }
+}
+
+
+@media only screen and (max-width: 600px){
+
+    .card__actions .view{
+        display: none;
+    }
+
+    .card__actions .remove{
+        font-size: 1.25rem;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .card__actions--buttons {
+        width: 100%;
+    }
+
+    .card__actions .cart{
+       width: 100%;
+       margin-right: 0;
+       font-size: 1.25rem;
+    }
+
+    .product--cards .card{
+        width: min(calc(50% - 1rem), 20rem);
+        margin: var(--margin-small);
+    }
+
+    .products{
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .container--90{
+        max-width: 100%;
+    }
+
+    .card__actions--icons .remove{
+        display: none;
+    }
+
+    .products .badge--large{
+        min-width: 1.5rem;
+        height: auto;
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 900px){
+    .container--80{
+        max-width: 100%;
+    }
+}
