@@ -6,27 +6,83 @@ import { v4 as uuid } from "uuid";
  * */
 
 export const products = [
-  {
-    _id: uuid(),
-    title: "You Can WIN",
-    author: "Shiv Khera",
-    price: "5000",
-    categoryName: "non-fiction",
-    bestSeller: true
+  { 
+    _id: uuid(), 
+    productName: 'Do Epic SHit', 
+    img:"/Images/book1.jpg", 
+    description: 'lorem',
+    category:'non__fiction', 
+    bestSeller: true, 
+    price: '500',
+    originalprice: '700', 
+    ratings: 5
+  },,
+  { 
+    _id: uuid(), 
+    productName: 'Think Like a Monk', 
+    img:"/Images/book1.jpg", 
+    description: 'lorem',
+    category:'non__fiction', 
+    bestSeller: true, 
+    price: '600',
+    originalprice: '700', 
+    ratings: 5
+  },,
+  { 
+    _id: uuid(), 
+    productName: 'Alchemist', 
+    img:"/Images/book1.jpg", 
+    description: 'lorem',
+    category:'fiction', 
+    bestSeller: true, 
+    price: '800',
+    originalprice: '900', 
+    ratings: 5
+  },,
+  { 
+    _id: uuid(), 
+    productName: 'Rich Dad', 
+    img:"/Images/book1.jpg", 
+    description: 'lorem',
+    category:'fiction', 
+    bestSeller: false, 
+    price: '100',
+    originalprice: '300', 
+    ratings: 3
   },
-  {
-    _id: uuid(),
-    title: "You are Winner",
-    author: "Junaid Qureshi",
-    price: "3000",
-    categoryName: "horror",
-    bestSeller: true
+  { 
+    _id: uuid(), 
+    productName: 'Mathematics', 
+    img:"/Images/book1.jpg", 
+    description: 'lorem',
+    category:'academics', 
+    bestSeller: false, 
+    price: '500',
+    originalprice: '700', 
+    ratings: 2
   },
-  {
-    _id: uuid(),
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
+  { 
+    _id: uuid(), 
+    productName: 'Sherlock Holmes', 
+    img:"/Images/book1.jpg", 
+    description: 'lorem',
+    category:'non__fiction', 
+    bestSeller: false, 
+    price: '300',
+    originalprice: '500', 
+    ratings: 4
+  },
+  { 
+    _id: uuid(), 
+    productName: 'Narnia', 
+    img:"/Images/book1.jpg", 
+    description: 'lorem',
+    category:'fantasy', 
+    bestSeller: false, 
+    price: '900',
+    originalprice: '1000', 
+    ratings: 5
   },
 ];
+
+
