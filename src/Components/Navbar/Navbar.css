@@ -75,6 +75,10 @@
     display: none;
 }
 
+.navbar__title--mobile a, .navbar__title a{
+    color: var(--clr-secondary)
+}
+
 @media only screen and (max-width: 900px){
     .search__container{
         display: none;
@@ -126,12 +130,16 @@
     .icon__menu{
         color: var(--clr-secondary);
         font-size: 2.4rem;
+        cursor: pointer;
     }
 
     .navbar__item--cart{
         display: block;
-        color: var(--clr-dark-grey);
         font-size: 2.4rem;
+    }
+
+    .navbar__item--cart a{
+        color: var(--clr-dark-grey);
     }
 
     .navbar__container--plain .navbar__menu{

@@ -8,12 +8,15 @@ import UserProfile from './Pages/UserProfile/UserProfile';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import Logout from './Pages/Logout/Logout';
+import Navigation from './Components/Navigation/Navigation';
+import Footer from './Components/Footer/Footer';
 import "./App.css";
 import Mockman from "mockman-js";
 
 function App() {
   return (
     <div>
+      <Navigation />
       <Routes>
         <Route path='/' element={<HomePage />} />
         
@@ -35,6 +38,7 @@ function App() {
 
         <Route path="/testApi" element={<Mockman />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

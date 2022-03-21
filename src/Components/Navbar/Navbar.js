@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import { Link, useNavigate} from 'react-router-dom';
-import { useCart } from '../../Context/CartContext/CartContext';
 import './Navbar.css';
 
 function Navbar({ onMenuClick }) {
 
   const [search, setsearch] = useState('')
-
-  const { totalitemsincart } = useCart()
 
   let navigate = useNavigate()
 
@@ -54,7 +51,7 @@ function Navbar({ onMenuClick }) {
             <div className="navbar__item--cart padding--small">
                 <div className="badge-content">
                     <Link to="/cart"><i className="fas fa-shopping-cart"></i></Link>
-                    <div class="badge badge--round badge-topright badge--medium">{totalitemsincart()}</div>
+                    <div class="badge badge--round badge-topright badge--medium">{2}</div>
                 </div>
             </div>
             <ul className="navbar__list-container text--medium margin-top--small">
@@ -88,7 +85,7 @@ function Navbar({ onMenuClick }) {
                 <li className="navbar__item ">
                     <div className="badge-content">
                         <i className="fas fa-shopping-cart"></i>
-                        <div class="badge badge--round badge-topright badge--small">{totalitemsincart()}</div>
+                        <div class="badge badge--round badge-topright badge--small">{2}</div>
                     </div>
                     
                     <Link className="icon__text" to="/cart">Cart</Link>

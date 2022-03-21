@@ -1,0 +1,34 @@
+.drawer__container{
+    background-color: #ffffff;
+    height: 100vh;
+    top:0;
+    left: -25rem;
+    max-width: 25rem;
+    border-right: 1px solid var(--clr-dark-grey);
+    position: fixed;
+    z-index: 2;
+}
+
+.drawer__heading{
+    font-family: var(--font-family-secondary);
+    color: var(--clr-secondary);
+}
+
+.drawer__container .navbar__title{
+    margin-left: var(--margin-medium);
+    margin-right: var(--margin-large);
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.drawer__container .drawer__clear{
+    margin-left: var(--margin-medium);
+}
+
+@media only screen and (max-width: 600px){
+    .drawer__position-right{
+        left: 0;
+    }
+}

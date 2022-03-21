@@ -2,6 +2,8 @@ import React from 'react';
 import './Footer.css';
 
 function Footer() {
+
+  const year = new Date().getFullYear()
   return (
     <footer className="footer__container padding--medium">
       <div className="margin-tb--large">
@@ -13,7 +15,7 @@ function Footer() {
           <a href="https://www.linkedin.com/in/ashutosh18k23/"><i className="fab fa-linkedin"></i></a>
       </div>
       <div className="margin-tb--large">
-          <p className="text--medium">Copyrights © 2022 StyliBook Store</p>
+          <p className="text--medium">Copyrights © {year} StyliBook Store</p>
       </div>
     </footer>
   )
