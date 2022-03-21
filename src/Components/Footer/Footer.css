@@ -1,0 +1,21 @@
+.footer__container{
+    background-color: var(--clr-dark-grey);
+    color: var(--text-clr-secondary);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__icons i{
+    font-size: var(--text-large);
+    margin: 0 var(--margin-medium);
+    color: #ffffff;
+}
+
+.footer__icons i:hover{
+    cursor: pointer;
+    font-size: 2.6rem;
+    
+}

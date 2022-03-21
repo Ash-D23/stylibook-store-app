@@ -1,0 +1,148 @@
+.navbar__container--plain {
+    background-color: var(--clr-primary);
+    color: var(--text-clr-primary);
+    border-bottom: 1px solid black;
+}
+.navbar__heading-container{
+    color: var(--clr-secondary);
+}
+
+.navbar__item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar__item .icon__text{
+    font-size: 1.25rem;
+    color: var(--clr-dark-grey)
+}
+
+.navbar__item a{
+    color: var(--clr-dark-grey)
+}
+
+.navbar__item i{
+    cursor: pointer;
+    color: var(--clr-dark-grey)
+}
+
+.navbar__item:hover a, .navbar__item:hover i{
+    color: var(--clr-secondary);
+}
+
+.navbar__item:hover{
+    border: none
+}
+
+.search__container{
+    display: flex;
+    min-width: 10rem;
+    border: 1px solid var(--clr-grey);
+    padding: var(--padding-small);
+    border-radius: 5px;
+}
+
+.search__input{
+    border: none;
+    padding: var(--padding-small);
+    font-size: 1.6rem;
+    
+}
+
+.search__input:focus{
+    outline: none;
+}
+
+.navbar__item--cart{
+    display: none;
+}
+
+.mobile__search__container{
+    display: none;
+}
+
+.badge--small{
+    padding: 0
+}
+
+.search__items{
+    width: 100%;
+    height: 200px;
+    background-color: grey;
+    position: absolute;
+    display: none;
+}
+
+@media only screen and (max-width: 900px){
+    .search__container{
+        display: none;
+    }
+
+    .container--80{
+        max-width: 100%;
+    }
+
+    .mobile__search__container{
+        display: flex;
+        align-items: center;
+        padding: var(--padding-small)
+    }
+
+    .mobile__search__container{
+        flex-grow: 1;
+        border-bottom: 1px solid var(--clr-dark-grey);
+    }
+}
+
+@media only screen and (max-width: 600px){
+
+    .search__container{
+        display: none;
+    }
+
+    .navbar__container--plain{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .navbar__container--plain .navbar__list-container{
+        display: none;
+    }
+
+    .navbar__item a{
+        display: none;
+    }
+
+    .navbar__item:hover{
+        background-color: transparent;
+    }
+    
+    .navbar__heading-container{
+        display: none;
+    }
+
+    .icon__menu{
+        color: var(--clr-secondary);
+        font-size: 2.4rem;
+    }
+
+    .navbar__item--cart{
+        display: block;
+        color: var(--clr-dark-grey);
+        font-size: 2.4rem;
+    }
+
+    .navbar__container--plain .navbar__menu{
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar__title--mobile{
+        margin-left: var(--margin-large);
+        color: var(--clr-secondary);
+        font-family: var(--font-family-secondary);
+    }
+
+}
