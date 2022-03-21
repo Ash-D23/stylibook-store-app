@@ -42,6 +42,10 @@
     justify-content: space-between;
 }
 
+.filter--clear:hover{
+    text-decoration: underline;
+}
+
 @media only screen and (max-width: 600px){
 
     .filters{
