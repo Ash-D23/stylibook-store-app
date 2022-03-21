@@ -2,7 +2,12 @@ import React from 'react'
 
 function ProductListingPage() {
   return (
-    <div>ProductListingPage</div>
+    <FilterProductsProvider>
+      <div className="product-main position--relative">
+        <Filters />
+        <ProductList />
+      </div>
+    </FilterProductsProvider>  
   )
 }
 
