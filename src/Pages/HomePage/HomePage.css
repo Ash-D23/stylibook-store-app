@@ -1,0 +1,106 @@
+#shop{
+    background: #8e9eab;
+    background: -webkit-linear-gradient(to bottom, #eef2f3, #8e9eab);
+    background: linear-gradient(to bottom, #eef2f3, #8e9eab); 
+    height: 30vh;
+}
+
+.category--container{
+    max-width: 80%;
+    padding: var(--padding-large);
+    margin: auto;
+}
+
+.category--card{
+    position: relative;
+    height: 30rem;
+    width: 25rem;
+    overflow: hidden;
+    cursor: pointer;
+    margin: var(--margin-medium);
+}
+
+.category--card img{
+    object-fit: cover;
+}
+
+.category--title{
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.category--card:hover{
+    transform: scale(1.1);
+}
+
+.category--card img{
+    opacity: 0.9;
+} 
+
+.shadow--bottom{
+    -moz-box-shadow: inset 0 -60px 60px -60px #000000;
+    -webkit-box-shadow: inset 0 -60px 60px -60px #000000;
+    box-shadow: inset 0 -60px 60px -60px #000000;
+    z-index: 12;
+}
+
+.category--overlay{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.category--image{
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+}
+
+.featured--products{
+    padding: var(--padding-large);
+}
+
+.category--card:hover .category--overlay{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 900px){
+    .category--container{
+        max-width: 100%;
+        padding: var(--padding-small);
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .featured--products{
+        padding: var(--padding-small);
+    }
+
+    .category--card{
+        position: relative;
+        height: 20rem;
+        width: calc(50% - 1rem);
+        overflow: hidden;
+        cursor: pointer;
+        margin: var(--margin-small);
+    }
+
+    .shop__description{
+        display: none;
+    }
+
+    #shop .container--50{
+        max-width: 75%;
+    }
+
+    .category--card:hover{
+        transform: none
+    }
+}
