@@ -33,31 +33,31 @@ function HomePage() {
   
   return (
     <>
-      <div id="shop" class="container__flex--center">
-            <div class="container--50">
-                <h2 class="text--center shop__title margin-tb--medium">Summer Sale 50% OFF</h2>
-                <p class="text--center shop__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, cumque saepe. </p>
-                <div class="container__flex--center margin-tb--medium">
-                    <button class="btn btn--secondary"><Link to="/products">Shop Now</Link></button>
+      <div id="shop" className="container__flex--center">
+            <div className="container--50">
+                <h2 className="text--center shop__title margin-tb--medium">Summer Sale 50% OFF</h2>
+                <p className="text--center shop__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, cumque saepe. </p>
+                <div className="container__flex--center margin-tb--medium">
+                    <button className="btn btn--secondary"><Link to="/products">Shop Now</Link></button>
                 </div>
             </div>
       </div>
 
-      <div class="category--container">
-            <div class="container__flex--center margin-bottom--large padding--large">
+      <div className="category--container">
+            <div className="container__flex--center margin-bottom--large padding--large">
                 <h2>Categories</h2>
             </div>
-            { isloading ? <Loader /> : <div class="container__flex--center container__flex--wrap">
+            { isloading ? <Loader /> : <div className="container__flex--center container__flex--wrap">
                 {categories?.map((item)=>{
                     return <CategoryCard category={item} />
                 })}
             </div>}
       </div>
-      <div class="container--80 featured--products">
-            <div class="container__flex--center margin-bottom--large">
+      <div className="container--80 featured--products">
+            <div className="container__flex--center margin-bottom--large">
                 <h2>Top Products</h2>
             </div>
-            { isloading ? <Loader /> : <div class="product--cards container__flex--center container__flex--wrap margin-bottom--medium">
+            { isloading ? <Loader /> : <div className="product--cards container__flex--center container__flex--wrap margin-bottom--medium">
                 {featuredproducts?.map((item)=>{
                     return <SingleProduct product={item} />
                 })}

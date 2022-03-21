@@ -5,12 +5,12 @@ function CategoryCard({ category : {_id, img, categoryName}}) {
 
   let navigate = useNavigate();
   return (
-    <div onClick={()=> navigate('/products?category='+categoryName)} class="category--card container--relative">
-        <div className="category--image">
+    <div onClick={()=> navigate('/products?category='+categoryName)} className="category--card container--relative">
+        <div classNameName="category--image">
           <img src={img} />
         </div>
-        <h3 class="category--title">{categoryName}</h3>
-        <div class="category--overlay shadow--bottom">
+        <h3 className="category--title">{categoryName}</h3>
+        <div className="category--overlay shadow--bottom">
         </div>
     </div>
   )

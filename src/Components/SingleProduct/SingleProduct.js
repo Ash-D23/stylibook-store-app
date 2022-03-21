@@ -7,24 +7,24 @@ function SingleProduct({ product: {_id, img, productName, bestSeller, price, ori
   let navigate = useNavigate()
   
   return (
-    <div class="card">
-        <div className="card__image--container badge-content">
-            <img onClick={()=> navigate('/product/'+ _id)} class="card__image" src={img} />
-            {bestSeller ? <p class="badge badge--large badge-card-tr">Best Seller</p> : null}
+    <div className="card">
+        <div classNameName="card__image--container badge-content">
+            <img onClick={()=> navigate('/product/'+ _id)} className="card__image" src={img} />
+            {bestSeller ? <p className="badge badge--large badge-card-tr">Best Seller</p> : null}
         </div>
-        <div class="card__body padding--medium">
-            <div class="card__heading">
-                <div class="container__flex--spacebetween">
-                    <h2 class="card__title text--large">{productName}</h2>
-                    <i class="far fa-heart text--large"></i>
+        <div className="card__body padding--medium">
+            <div className="card__heading">
+                <div className="container__flex--spacebetween">
+                    <h2 className="card__title text--large">{productName}</h2>
+                    <i className="far fa-heart text--large"></i>
                 </div>
             </div> 
-            <div class="card__description margin-bottom--small">
-                <p class="clr--secondary text--bold">Rs. {price} <span class="text--line-through"> {originalprice}</span></p>
+            <div className="card__description margin-bottom--small">
+                <p className="clr--secondary text--bold">Rs. {price} <span className="text--line-through"> {originalprice}</span></p>
             </div>
-            <div class="card__actions">
-                <div class="card__actions--buttons">
-                   <button class="btn btn--secondary btn--icon cart"><i class="fas fa-shopping-cart"></i>Add to Cart</button>              
+            <div className="card__actions">
+                <div className="card__actions--buttons">
+                   <button className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button>              
                 </div>
             </div>
         </div> 
