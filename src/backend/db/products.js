@@ -12,6 +12,7 @@ export const products = [
     author: "Shiv Khera",
     price: "5000",
     categoryName: "non-fiction",
+    bestSeller: true
   },
   {
     _id: uuid(),
@@ -19,6 +20,7 @@ export const products = [
     author: "Junaid Qureshi",
     price: "3000",
     categoryName: "horror",
+    bestSeller: true
   },
   {
     _id: uuid(),

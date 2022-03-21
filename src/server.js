@@ -22,6 +22,7 @@ import {
 import {
   getAllProductsHandler,
   getProductHandler,
+  getFeaturedProductshandler,
 } from "./backend/controllers/ProductController";
 import {
   getReviews,
@@ -79,6 +80,7 @@ export function makeServer({ environment = "development" } = {}) {
       // products routes (public)
       this.get("/products", getAllProductsHandler.bind(this));
       this.get("/products/:productId", getProductHandler.bind(this));
+      this.get("/featuredproducts", getFeaturedProductshandler.bind(this));
 
       // categories routes (public)
       this.get("/categories", getAllCategoriesHandler.bind(this));
