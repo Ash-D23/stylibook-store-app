@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { useFilterProducts } from '../../Context/FilterProductContext';
-import Singleproduct from '../SingleProduct/Singleproduct';
+import { useFilterProducts } from '../../Context/FilterProducts/FilterProductContext';
+import SingleProduct from '../SingleProduct/SingleProduct';
 import './ProductList.css';
 
 
@@ -12,7 +12,7 @@ function ProductList() {
     <>
       <div className="products product--cards container__flex--wrap">
           {products.map((item)=>{
-            return <Singleproduct product={item} />
+            return <SingleProduct product={item} />
           })}
       </div>
     </>

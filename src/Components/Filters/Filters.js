@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useFilterProducts } from '../../Context/FilterProductContext';
+import { useFilterProducts } from '../../Context/FilterProducts/FilterProductContext';
 import './Filters.css';
 
 function Filters() {
@@ -22,6 +22,7 @@ function Filters() {
   let initialcategory = searchParams.get('category')
 
   let search = searchParams.get('search')
+  console.log(search)
 
   useEffect(()=>{
     if(initialcategory){
@@ -60,7 +61,7 @@ function Filters() {
                     <p>1000</p>
                 </div>
                 <input
-                    classNameName="slider--price"
+                    className="slider--price"
                     type="range"
                     step="100"
                     min="0"
