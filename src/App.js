@@ -12,6 +12,8 @@ import Navigation from './Components/Navigation/Navigation';
 import Footer from './Components/Footer/Footer';
 import "./App.css";
 import Mockman from "mockman-js";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
         <Route path="/testApi" element={<Mockman />} />
       </Routes>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }
