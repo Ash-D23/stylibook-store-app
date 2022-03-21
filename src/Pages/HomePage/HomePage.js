@@ -2,22 +2,27 @@ import axios from 'axios';
 import React, {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import CategoryCard from '../../Components/CategoryCard/CategoryCard';
-import SingleProduct from '../../Components/SingleProduct/SingleProduct'
+import SingleProduct from '../../Components/SingleProduct/SingleProduct';
+import Loader from '../../Components/Loader/Loader'
+import { toast } from 'react-toastify';
 import './HomePage.css'
 
 function HomePage() {
 
   const [categories, setcategories] = useState([])
   const [featuredproducts, setfeaturedproducts] = useState([])
+  const [isloading, setisloading] = useState(false)
 
   const getCategoriesandProducts = async () => {
     let categoryresult = await axios.get('/api/categories')
     let featuredproductsresult = await axios.get('/api/featuredproducts')
     setcategories(categoryresult.data.categories)
     setfeaturedproducts(featuredproductsresult.data.Featuredproducts )
+    setisloading(false)
   }
 
   useEffect(() => {
+    setisloading(true)
     getCategoriesandProducts()
   }, [])
   
@@ -32,6 +37,8 @@ function HomePage() {
                 </div>
             </div>
       </div>
+      { isloading ? <Loader /> : (
+      <>
       <div class="category--container">
             <div class="container__flex--center margin-bottom--large padding--large">
                 <h2>Categories</h2>
@@ -51,7 +58,9 @@ function HomePage() {
                     return <SingleProduct product={item} />
                 })}
             </div>
-        </div>
+      </div>
+      </>
+      ) }
     </>
   )
 }
