@@ -23,10 +23,10 @@ export const initialfilters = {
   sort: 'asc',
   category: {
     'all': true,
-    'fiction': false,
-    'non__fiction': false,
-    'fantasy': false,
-    'academics': false
+    'Fiction': false,
+    'Non_Fiction': false,
+    'Fantasy': false,
+    'Academics': false
   },
   ratings: 'all',
   priceRange: '1000',

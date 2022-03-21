@@ -73,19 +73,19 @@ function Filters() {
             <div className="filter__section">
                 <h3 className="text--medium">Select Category</h3>
                 <div className="form-element">
-                    <input type="checkbox" onChange={changeCategory} className="form-checkbox" value="fiction" checked={filterstate.category.fiction} /> 
+                    <input type="checkbox" onChange={changeCategory} className="form-checkbox" value="Fiction" checked={filterstate.category.Fiction} /> 
                     <span>Fiction </span>
                 </div>
                 <div className="form-element">
-                    <input type="checkbox" onChange={changeCategory} className="form-checkbox" value="non__fiction" checked={filterstate.category.non__fiction} /> 
+                    <input type="checkbox" onChange={changeCategory} className="form-checkbox" value="Non_Fiction" checked={filterstate.category.Non__Fiction} /> 
                     <span>Non Fiction </span>
                 </div>
                 <div className="form-element">
-                    <input type="checkbox" onChange={changeCategory} className="form-checkbox" value="academics" checked={filterstate.category.academics} /> 
+                    <input type="checkbox" onChange={changeCategory} className="form-checkbox" value="Academics" checked={filterstate.category.Academics} /> 
                     <span>Academics </span>
                 </div>
                 <div className="form-element">
-                    <input type="checkbox" onChange={changeCategory} className="form-checkbox" value="fantasy" checked={filterstate.category.fantasy} /> 
+                    <input type="checkbox" onChange={changeCategory} className="form-checkbox" value="Fantasy" checked={filterstate.category.Fantasy} /> 
                     <span>Fantasy </span>
                 </div>
                 <div className="form-element">
