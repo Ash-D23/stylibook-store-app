@@ -14,11 +14,16 @@ function HomePage() {
   const [isloading, setisloading] = useState(false)
 
   const getCategoriesandProducts = async () => {
-    let categoryresult = await axios.get('/api/categories')
-    let featuredproductsresult = await axios.get('/api/featuredproducts')
-    setcategories(categoryresult.data.categories)
-    setfeaturedproducts(featuredproductsresult.data.Featuredproducts )
-    setisloading(false)
+    try{
+      let categoryresult = await axios.get('/api/categories')
+      let featuredproductsresult = await axios.get('/api/featuredproducts')
+      setcategories(categoryresult.data.categories)
+      setfeaturedproducts(featuredproductsresult.data.Featuredproducts )
+      setisloading(false)
+    }catch(err){
+      console.log(err)
+      setisloading(false)
+    }
   }
 
   useEffect(() => {
@@ -37,30 +42,28 @@ function HomePage() {
                 </div>
             </div>
       </div>
-      { isloading ? <Loader /> : (
-      <>
+
       <div class="category--container">
             <div class="container__flex--center margin-bottom--large padding--large">
                 <h2>Categories</h2>
             </div>
-            <div class="container__flex--center container__flex--wrap">
+            { isloading ? <Loader /> : <div class="container__flex--center container__flex--wrap">
                 {categories?.map((item)=>{
                     return <CategoryCard category={item} />
                 })}
-            </div>
+            </div>}
       </div>
       <div class="container--80 featured--products">
             <div class="container__flex--center margin-bottom--large">
                 <h2>Top Products</h2>
             </div>
-            <div class="product--cards container__flex--center container__flex--wrap margin-bottom--medium">
+            { isloading ? <Loader /> : <div class="product--cards container__flex--center container__flex--wrap margin-bottom--medium">
                 {featuredproducts?.map((item)=>{
                     return <SingleProduct product={item} />
                 })}
-            </div>
+            </div> }
       </div>
-      </>
-      ) }
+
     </>
   )
 }
