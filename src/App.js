@@ -14,8 +14,12 @@ import "./App.css";
 import Mockman from "mockman-js";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuthContext } from "./Context/AuthContext/AuthContext";
 
 function App() {
+
+  const { user } = useAuthContext()
+  console.log(user)
   return (
     <div>
       <Navigation />
