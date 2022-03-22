@@ -1,9 +1,20 @@
-import React from 'react'
+import React from 'react';
+import SingleProduct from '../../Components/SingleProduct/SingleProduct';
+import { useWishlist } from '../../Context/WishlistContext/WishlistContext';
 
-function WishListPage() {
+function WishlistPage() {
+
+  const { wishlistitems } = useWishlist()
   return (
-    <div>WishListPage</div>
+    <div className="container--90">
+            <h2 className="text--center padding--large">Wishlist</h2>
+            <div className="product--cards container__flex--center container__flex--wrap">
+                {wishlistitems?.map((item)=> {
+                  return <SingleProduct product={item} wishlistproduct={true} />
+                })}
+            </div>  
+    </div>
   )
 }
 
-export default WishListPage
+export default WishlistPage

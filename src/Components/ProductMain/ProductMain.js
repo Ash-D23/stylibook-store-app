@@ -1,9 +1,31 @@
 import React from 'react';
 import './ProductMain.css';
 import Ratings from '../Ratings/Ratings';
+import { useCart } from '../../Context/CartContext/CartContext';
+import { useWishlist } from '../../Context/WishlistContext/WishlistContext';
+import { useNavigate } from 'react-router-dom';
 
-function ProductMain({ product : {id, img, productName, seller, price, description, category ,originalprice, ratings} }) {
+function ProductMain({ product }) {
+  
+  const { _id, img, productName, seller, price, description, category ,originalprice, ratings} = product
 
+  const { addtocart, checkitemincart } = useCart()
+
+  const { checkproductinwishlist, addtoWishlist, removefromwishlist } = useWishlist()
+
+  const isProductInCart = checkitemincart(_id)
+
+  const isProductInWishlist = checkproductinwishlist(_id)
+
+  const toggleWhishlist = () => {
+        if(isProductInWishlist){
+            removefromwishlist(_id)
+        }else{
+            addtoWishlist(product)
+        }
+   }
+
+  let navigate = useNavigate()
 
   return (
     <div className="single-product--container">
@@ -12,8 +34,9 @@ function ProductMain({ product : {id, img, productName, seller, price, descripti
                 <img className="product__image" src={img} />
             </div>
             <div className="product__btn--container margin-tb--large">
-                <button className="btn btn--primary btn--icon border--grey view margin-right--medium"><i className="far fa-heart text--medium"></i> Wishlist</button>
-                <button className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button>                      
+            { isProductInWishlist ? <button onClick={toggleWhishlist} className="btn btn--primary btn--icon border--grey view margin-right--medium"><i className="fas fa-heart text--medium "></i>Wishlisted</button> : <button onClick={toggleWhishlist} className="btn btn--primary btn--icon border--grey view margin-right--medium"><i className="far fa-heart text--medium"></i> Wishlist</button> }
+            { isProductInCart ? <button onClick={()=> navigate('/cart')}className="btn btn--secondary btn--icon cart">Go to Cart</button> :
+            <button onClick={()=> addtocart(product)} className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button> }                            
             </div>
         </div>
 

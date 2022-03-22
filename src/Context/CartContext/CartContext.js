@@ -15,11 +15,11 @@ const CartProvider = ({children}) => {
         console.log(user)
     }, [user])
 
-    const checkitemincart = id => {
+    const checkitemincart = _id => {
         let result = false
   
         cartitems.forEach((item)=>{
-            if(item.id === id){
+            if(item._id === _id){
                 result = true
                 return
             }
@@ -34,11 +34,11 @@ const CartProvider = ({children}) => {
   
     const addtocart = item => {
         // check if item in cart and return true or false
-        let itemincart = checkitemincart(item.id)
+        let itemincart = checkitemincart(item._id)
   
         if(itemincart){
           // if item in cart filter items and add 1 quantity and append
-          let newcartitems = cartitems.map((cartitem)=> cartitem.id === item.id ? {...cartitem, quantity: cartitem.quantity+1} : cartitem)
+          let newcartitems = cartitems.map((cartitem)=> cartitem._id === item._id ? {...cartitem, quantity: cartitem.quantity+1} : cartitem)
           setcartitems(newcartitems)
         }else{
           // if item not in cart set cart with item and quantity 1
@@ -47,19 +47,19 @@ const CartProvider = ({children}) => {
         
     }
 
-    const removeproductfromcart = (id) => {
-        setcartitems(cartitems.filter((item)=> item.id !== id))
+    const removeproductfromcart = (_id) => {
+        setcartitems(cartitems.filter((item)=> item._id !== _id))
     }
   
     const totalitemsincart = () => cartitems.reduce((acc, curr)=> acc+curr.quantity, 0)
 
-    const increasequantity = (id) => {
-        setcartitems(cartitems.map((item) => item.id === id ? {...item, quantity: item.quantity + 1} : item))
+    const increasequantity = (_id) => {
+        setcartitems(cartitems.map((item) => item._id === _id ? {...item, quantity: item.quantity + 1} : item))
     }
 
-    const decreasequantity = (id) => {
+    const decreasequantity = (_id) => {
         setcartitems(cartitems.reduce((acc, curr) => {
-            if(curr.id === id){
+            if(curr._id === _id){
                 return curr.quantity === 1 ? acc : [...acc, {...curr, quantity: curr.quantity - 1}]
             }
             return [...acc, curr]

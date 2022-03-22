@@ -19,11 +19,11 @@ const WishlistProvider = ({children}) => {
         setwishlistitems([...wishlistitems, item])
     }
 
-    const checkproductinwishlist = (id) => {
+    const checkproductinwishlist = (_id) => {
         let result = false
   
         wishlistitems.forEach((item) => {
-            if(item.id === id){
+            if(item._id === _id){
                 result = true
                 return
             }
@@ -32,8 +32,8 @@ const WishlistProvider = ({children}) => {
         return result
     }
 
-    const removefromwishlist = (id) => {
-        setwishlistitems(wishlistitems.filter((item)=> item.id != id))
+    const removefromwishlist = (_id) => {
+        setwishlistitems(wishlistitems.filter((item)=> item._id != _id))
     }
 
 

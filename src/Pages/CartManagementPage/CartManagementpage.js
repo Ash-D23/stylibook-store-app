@@ -1,9 +1,16 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import CartProducts from '../../Components/CartProducts/CartProducts';
+import CartCheckout from '../../Components/CartCheckout/CartCheckout';
+import './CartManagementPage.css';
 
-function CartManagementpage() {
+function CartManagementPage() {
+
   return (
-    <div>CartManagementpage</div>
+    <div className="checkout">
+      <CartProducts />
+      <CartCheckout label={"Checkout"} nextpath={"/checkout"} />
+    </div>
   )
 }
 
-export default CartManagementpage
+export default CartManagementPage

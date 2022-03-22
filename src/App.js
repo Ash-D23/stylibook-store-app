@@ -2,7 +2,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import HomePage from './Pages/HomePage/HomePage';
 import ProductListingPage from './Pages/ProductListingPage/ProductListingPage';
 import SingleProductPage from './Pages/SingleProductPage/SingleProductPage';
-import CartManagementPage from './Pages/CartManagementPage/CartManagementpage';
+import CartManagementPage from './Pages/CartManagementPage/CartManagementPage';
 import WishlistPage from './Pages/WishlistPage/WishListPage';
 import UserProfile from './Pages/UserProfile/UserProfile';
 import Login from './Pages/Login/Login';
