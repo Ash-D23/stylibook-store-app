@@ -2,7 +2,7 @@ import React from 'react';
 import './ProductMain.css';
 import Ratings from '../Ratings/Ratings';
 
-function ProductMain({ product : {id, img, productName, Seller, price, description, CategoryName ,originalprice, ratings} }) {
+function ProductMain({ product : {id, img, productName, seller, price, description, category ,originalprice, ratings} }) {
 
 
   return (
@@ -19,7 +19,7 @@ function ProductMain({ product : {id, img, productName, Seller, price, descripti
 
         <div className="product__description">
             <h2 className="product__title margin-bottom--large">{productName}</h2>
-            <p className="margin-tb--small">{CategoryName}</p>
+            <p className="margin-tb--small">{category}</p>
 
             <p className="clr--secondary text--bold margin-tb--medium">Rs. {price} <span className="text--line-through"> {originalprice} </span></p>
 
@@ -27,7 +27,7 @@ function ProductMain({ product : {id, img, productName, Seller, price, descripti
 
             <div className="container__flex container__flex--wrap margin-tb--medium">
                 <p className="text--bold margin-right--medium">Seller: </p>
-                <p>{Seller}</p>
+                <p>{seller}</p>
             </div>
 
             <div className="product__rating--container container__flex--wrap margin-tb--medium">
