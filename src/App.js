@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import HomePage from './Pages/HomePage/HomePage';
 import ProductListingPage from './Pages/ProductListingPage/ProductListingPage';
 import SingleProductPage from './Pages/SingleProductPage/SingleProductPage';
@@ -14,8 +14,13 @@ import "./App.css";
 import Mockman from "mockman-js";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuthContext } from "./Context/AuthContext/AuthContext";
+import RequireAuth from "./hooks/RequireAuth";
 
 function App() {
+
+  const { user } = useAuthContext()
+  console.log(user)
   return (
     <div>
       <Navigation />
@@ -26,19 +31,23 @@ function App() {
       
         <Route path='/product/:id' element={<SingleProductPage />} />
       
-        <Route path='/cart' element={<CartManagementPage />} />
+        <Route path='/cart' element={<RequireAuth><CartManagementPage /></RequireAuth>} />
       
-        <Route path='/wishlist' element={<WishlistPage />} />
+        <Route path='/wishlist' element={<RequireAuth><WishlistPage /></RequireAuth>} />
       
-        <Route path='/profile' element={<UserProfile />} />
+        <Route path='/profile' element={
+          <RequireAuth>
+            <UserProfile />
+          </RequireAuth>} />
       
-        <Route path='/login' element={<Login />} />
+        { user ? <Route path='/login' element={<Navigate to="/" />} /> : <Route path='/login' element={<Login />} /> }
     
-        <Route path='/signup' element={<SignUp />} />
+        { user ? <Route path='/signup' element={<Navigate to="/" />} /> : <Route path='/signup' element={<SignUp />} /> }
       
         <Route path='/logout' element={<Logout />} />
 
         <Route path="/testApi" element={<Mockman />} />
+
       </Routes>
       <Footer />
       <ToastContainer />
