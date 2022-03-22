@@ -25,7 +25,7 @@ function SingleCartProduct({ cartItem }) {
             <div className="card__heading">
                 <div className="container__flex--spacebetween margin-bottom--small">
                     <h2 className="card__title text--large">{productName}</h2>
-                    <p><i onClick={() => decreasequantity(_id)} className="fas fa-minus"></i> <span className="text--large border--grey product-quantity">{quantity}</span> <i onClick={()=>increasequantity(_id)} className="fas fa-plus"></i></p>
+                    <p><i onClick={() => decreasequantity(cartItem)} className="fas fa-minus"></i> <span className="text--large border--grey product-quantity">{quantity}</span> <i onClick={()=>increasequantity(cartItem)} className="fas fa-plus"></i></p>
                 </div>
             </div> 
             <div className="card__description margin-bottom--small">

@@ -24,9 +24,8 @@ const useAuth = () => {
         console.log(data)
         try{
             let authresult = await axios.post('/api/auth/login', data)
-            let userObj = { }
+            let userObj = { ...authresult.data?.foundUser  }
             userObj.token = authresult.data?.encodedToken
-            userObj.user = authresult.data?.foundUser 
             setuser(userObj)
         }catch(err){
             console.log(err)
@@ -36,9 +35,8 @@ const useAuth = () => {
     const signup = async (data) => {
         try{
             let authresult = await axios.post('/api/auth/signup', data)
-            let userObj = { }
+            let userObj = { ...authresult.data?.createdUser }
             userObj.token = authresult.data?.encodedToken
-            userObj.user = authresult.data?.createdUser 
             setuser(userObj)
         }catch(err){
             console.log(err)

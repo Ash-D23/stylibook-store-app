@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthContext } from "../AuthContext/AuthContext";
 
@@ -8,11 +9,32 @@ const useCart = () => useContext(CartContext)
 const CartProvider = ({children}) => {
 
     const [cartitems, setcartitems] = useState([])
+    const [cartloading, setcartloading] = useState(false)
+
     const {user} = useAuthContext()
+
+    let config = {
+        headers: {
+          authorization: user?.token,
+        }
+    }
+
+    const getcartItems = async () => {
+        try{
+            let result = await axios.get('/api/user/cart', config)
+            setcartitems(result.data?.cart)
+          }catch(err){
+            console.log(err)
+          }
+    }
 
     useEffect(()=>{
         // set cart from user id
-        console.log(user)
+        if(user){
+            getcartItems()
+        }else{
+            setcartitems([])
+        }
     }, [user])
 
     const checkitemincart = _id => {
@@ -32,38 +54,62 @@ const CartProvider = ({children}) => {
         return cartitems.reduce((acc, curr)=> acc + (parseInt(curr.price)*curr.quantity), 0)
       }  
   
-    const addtocart = item => {
+    const addtocart = async (item) => {
         // check if item in cart and return true or false
         let itemincart = checkitemincart(item._id)
   
         if(itemincart){
           // if item in cart filter items and add 1 quantity and append
-          let newcartitems = cartitems.map((cartitem)=> cartitem._id === item._id ? {...cartitem, quantity: cartitem.quantity+1} : cartitem)
-          setcartitems(newcartitems)
+          increasequantity(item)
         }else{
           // if item not in cart set cart with item and quantity 1
-          setcartitems([...cartitems, {...item, quantity: 1}])
+          try{
+            let result = await axios.post('/api/user/cart', { product: { ...item } } , config)
+            console.log(result)
+            setcartitems(result.data?.cart)
+          }catch(err){
+            console.log(err)
+          }
+          
         }
         
     }
 
-    const removeproductfromcart = (_id) => {
-        setcartitems(cartitems.filter((item)=> item._id !== _id))
+    const removeproductfromcart = async (_id) => {
+        try{
+            let result = await axios.delete('/api/user/cart/'+_id, config)
+            setcartitems(cartitems.filter((item)=> item._id !== _id))
+
+        }catch(err){
+            console.log(err)
+        }
     }
   
     const totalitemsincart = () => cartitems.reduce((acc, curr)=> acc+curr.quantity, 0)
 
-    const increasequantity = (_id) => {
-        setcartitems(cartitems.map((item) => item._id === _id ? {...item, quantity: item.quantity + 1} : item))
+    const increasequantity = async ({ _id }) => {
+
+        try{
+            let result = await axios.post('/api/user/cart/'+_id, { action: { type: 'increment'}}, config)
+            setcartitems(cartitems.map((item) => item._id === _id ? {...item, quantity: item.quantity + 1} : item))
+        }catch(err){
+            console.log(err)
+        }
+        
     }
 
-    const decreasequantity = (_id) => {
-        setcartitems(cartitems.reduce((acc, curr) => {
-            if(curr._id === _id){
-                return curr.quantity === 1 ? acc : [...acc, {...curr, quantity: curr.quantity - 1}]
+    const decreasequantity = async (item) => {
+        if(item.quantity <= 1 ){
+            removeproductfromcart(item._id)
+        }else{
+            try{
+                let result = await axios.post('/api/user/cart/'+item._id, { action: { type: 'decrement'}}, config)
+                setcartitems(cartitems.map((cartProduct) => cartProduct._id === item._id ? {...cartProduct, quantity: cartProduct.quantity - 1} : cartProduct))
+            }catch(err){
+                console.log(err)
             }
-            return [...acc, curr]
-        }, []))
+        }
+
     }
 
     return <CartContext.Provider value={{ calculateTotal, cartitems, addtocart, totalitemsincart, checkitemincart, removeproductfromcart, increasequantity, decreasequantity}}>
