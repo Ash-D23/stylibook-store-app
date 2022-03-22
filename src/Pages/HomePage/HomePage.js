@@ -30,8 +30,6 @@ function HomePage() {
     setisloading(true)
     getCategoriesandProducts()
   }, [])
-
-  console.log(featuredproducts)
   
   return (
     <>

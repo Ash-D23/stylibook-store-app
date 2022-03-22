@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function SingleProduct({ product: {_id, img, productName, bestSeller, price, originalprice} }){
+function SingleProduct({ product: {_id, img, productName, bestseller, price, originalprice} }){
 
 
   let navigate = useNavigate()
@@ -10,7 +10,7 @@ function SingleProduct({ product: {_id, img, productName, bestSeller, price, ori
     <div className="card">
         <div className="card__image--container badge-content">
             <img onClick={()=> navigate('/product/'+ _id)} className="card__image" src={img} />
-            {bestSeller ? <p className="badge badge--large badge-card-tr">Best Seller</p> : null}
+            {bestseller ? <p className="badge badge--large badge-card-tr">Best Seller</p> : null}
         </div>
         <div className="card__body padding--medium">
             <div className="card__heading">
