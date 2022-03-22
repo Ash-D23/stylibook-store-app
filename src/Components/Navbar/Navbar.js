@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Link, useNavigate} from 'react-router-dom';
+import { useAuthContext } from '../../Context/AuthContext/AuthContext';
 import './Navbar.css';
 
 function Navbar({ onMenuClick }) {
@@ -20,6 +21,8 @@ function Navbar({ onMenuClick }) {
     setsearch('')
     navigate(path)
   }
+
+  const { user } = useAuthContext()
 
   return (
     <header>
@@ -74,10 +77,10 @@ function Navbar({ onMenuClick }) {
                     </div>
 
                 </li>
-                <li className="navbar__item">
+                { user ? <li className="navbar__item">
                     <i className="fas fa-user"></i>
                     <Link className="icon__text" to="/profile">Profile</Link>
-                </li>
+                </li> : null }
                 <li className="navbar__item">
                     <i className="fas fa-heart"></i>
                     <Link className="icon__text" to="/wishlist">Wishlist</Link>
@@ -90,10 +93,13 @@ function Navbar({ onMenuClick }) {
                     
                     <Link className="icon__text" to="/cart">Cart</Link>
                 </li>
-                <li className="navbar__item">
+                { user ? <li className="navbar__item">
                     <i className="fas fa-sign-out-alt"></i>
                     <Link className="icon__text" to="/logout">Logout</Link>
-                </li>
+                </li> : null }
+                { !user ? <li className="navbar__item">
+                    <Link className="icon__text" to="/login"><button className='btn btn--secondary btn--meduium'> Login </button></Link>
+                </li> : null }
             </ul>
         </div>
         <div className='container--relative'>

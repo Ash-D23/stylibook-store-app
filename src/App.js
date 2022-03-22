@@ -31,9 +31,9 @@ function App() {
       
         <Route path='/product/:id' element={<SingleProductPage />} />
       
-        <Route path='/cart' element={<CartManagementPage />} />
+        <Route path='/cart' element={<RequireAuth><CartManagementPage /></RequireAuth>} />
       
-        <Route path='/wishlist' element={<WishlistPage />} />
+        <Route path='/wishlist' element={<RequireAuth><WishlistPage /></RequireAuth>} />
       
         <Route path='/profile' element={
           <RequireAuth>
