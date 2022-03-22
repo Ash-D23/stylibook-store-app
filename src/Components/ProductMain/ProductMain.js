@@ -1,8 +1,8 @@
 import React from 'react';
-import './Productmain.css';
+import './ProductMain.css';
 import Ratings from '../Ratings/Ratings';
 
-function ProductMain({ product : {id, img, productName, Seller, price, description, originalprice, ratings} }) {
+function ProductMain({ product : {id, img, productName, Seller, price, description, CategoryName ,originalprice, ratings} }) {
 
 
   return (
