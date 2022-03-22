@@ -1,8 +1,37 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import ProductMain from '../../Components/ProductMain/ProductMain';
+import Loader from '../../Components/Loader/Loader'
 
 function SingleProductPage() {
+
+  const [singleproduct, setsingleproduct] = useState({})
+  const [isLoading, setisLoading] = useState(true)
+
+  const getSingleProduct = async () => {
+    try{
+      let result = await axios.get('/api/products/'+params.id)
+      if(result.data?.product){
+        setsingleproduct(result.data?.product)
+      }
+      setisLoading(false)
+    }catch(err){
+      console.log(err)
+      setisLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    getSingleProduct()
+  }, [])
+
+  const params = useParams()
+  
   return (
-    <div>SingleProductPage</div>
+    <>
+      { isLoading ? <Loader /> : <ProductMain product={singleproduct} /> }
+    </>
   )
 }
 
