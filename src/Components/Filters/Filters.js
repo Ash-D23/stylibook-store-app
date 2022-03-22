@@ -31,7 +31,7 @@ function Filters() {
         filterdispatch({ type: 'setsearch', payload: search})
     }
   }, [search, initialcategory])
-
+  
   return (
     <>
         <div className="filter__view filters__heading">
@@ -76,8 +76,8 @@ function Filters() {
                     <label for="Fiction">Fiction </label>
                 </div>
                 <div className="form-element">
-                    <input id="Non Fiction" type="checkbox" onChange={changeCategory} className="form-checkbox" value="Non_Fiction" checked={filterstate.category.Non_Fiction} /> 
-                    <label for="Non fiction">Non Fiction </label>
+                    <input id="Non_Fiction" type="checkbox" onChange={changeCategory} className="form-checkbox" value="Non_Fiction" checked={filterstate.category.Non_Fiction} /> 
+                    <label for="Non_Fiction">Non Fiction </label>
                 </div>
                 <div className="form-element">
                     <input id="Academics" type="checkbox" onChange={changeCategory} className="form-checkbox" value="Academics" checked={filterstate.category.Academics} /> 
