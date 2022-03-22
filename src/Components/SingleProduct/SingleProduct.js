@@ -8,7 +8,7 @@ function SingleProduct({ product: {_id, img, productName, bestSeller, price, ori
   
   return (
     <div className="card">
-        <div classNameName="card__image--container badge-content">
+        <div className="card__image--container badge-content">
             <img onClick={()=> navigate('/product/'+ _id)} className="card__image" src={img} />
             {bestSeller ? <p className="badge badge--large badge-card-tr">Best Seller</p> : null}
         </div>
