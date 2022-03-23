@@ -7,7 +7,7 @@ function SingleProduct({ product, wishlistproduct }){
 
   const {_id, img, productName, bestseller, price, originalprice} = product
 
-  const { addtocart, checkitemincart } = useCart()
+  const { addtocart, checkitemincart, cartloading } = useCart()
 
   const { checkproductinwishlist, addtoWishlist, removefromwishlist } = useWishlist()
 

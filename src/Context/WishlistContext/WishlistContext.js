@@ -9,7 +9,6 @@ const useWishlist= () => useContext(WishlistContext)
 const WishlistProvider = ({children}) => {
 
     const [wishlistitems, setwishlistitems] = useState([])
-    const [wishlistloading, setwishlistloading] = useState(false)
 
     const {user} = useAuthContext()
 
@@ -38,6 +37,7 @@ const WishlistProvider = ({children}) => {
     }, [user])
 
     const addtoWishlist = async (item) => {
+        
         try{
             let result = await axios.post('/api/user/wishlist', { product: { ...item } } , config)
             setwishlistitems(result.data?.wishlist)
@@ -60,11 +60,9 @@ const WishlistProvider = ({children}) => {
     }
 
     const removefromwishlist = async (_id) => {
-
         try{
             let result = await axios.delete('/api/user/wishlist/'+_id, config)
             setwishlistitems(wishlistitems.filter((item)=> item._id != _id))
-
         }catch(err){
             console.log(err)
         }

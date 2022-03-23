@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthContext } from "../AuthContext/AuthContext";
+import { toastsuccess,toasterror } from "../../Utilities/ToastMessage";
 
 const CartContext = createContext()
 
@@ -67,8 +68,10 @@ const CartProvider = ({children}) => {
             let result = await axios.post('/api/user/cart', { product: { ...item } } , config)
             console.log(result)
             setcartitems(result.data?.cart)
+            toastsuccess("Added Item to cart")
           }catch(err){
             console.log(err)
+            toasterror("There was an error")
           }
           
         }
@@ -76,22 +79,27 @@ const CartProvider = ({children}) => {
     }
 
     const removeproductfromcart = async (_id) => {
+        setcartloading(true)
         try{
             let result = await axios.delete('/api/user/cart/'+_id, config)
             setcartitems(cartitems.filter((item)=> item._id !== _id))
-
+            setcartloading(false)
+            toastsuccess('Removed Item from Cart')
         }catch(err){
             console.log(err)
+            setcartloading(false)
+            toasterror('There was an error')
         }
     }
   
     const totalitemsincart = () => cartitems.reduce((acc, curr)=> acc+curr.quantity, 0)
 
     const increasequantity = async ({ _id }) => {
-
+        setcartloading(true)
         try{
             let result = await axios.post('/api/user/cart/'+_id, { action: { type: 'increment'}}, config)
             setcartitems(cartitems.map((item) => item._id === _id ? {...item, quantity: item.quantity + 1} : item))
+            setcartloading(false)
         }catch(err){
             console.log(err)
         }
@@ -99,20 +107,24 @@ const CartProvider = ({children}) => {
     }
 
     const decreasequantity = async (item) => {
+        
         if(item.quantity <= 1 ){
             removeproductfromcart(item._id)
         }else{
+            setcartloading(true)
             try{
                 let result = await axios.post('/api/user/cart/'+item._id, { action: { type: 'decrement'}}, config)
                 setcartitems(cartitems.map((cartProduct) => cartProduct._id === item._id ? {...cartProduct, quantity: cartProduct.quantity - 1} : cartProduct))
+                setcartloading(false)
             }catch(err){
                 console.log(err)
+                setcartloading(false)
             }
         }
 
     }
 
-    return <CartContext.Provider value={{ calculateTotal, cartitems, addtocart, totalitemsincart, checkitemincart, removeproductfromcart, increasequantity, decreasequantity}}>
+    return <CartContext.Provider value={{ calculateTotal, cartloading, cartitems, addtocart, totalitemsincart, checkitemincart, removeproductfromcart, increasequantity, decreasequantity}}>
         {children}
     </CartContext.Provider>
 }
