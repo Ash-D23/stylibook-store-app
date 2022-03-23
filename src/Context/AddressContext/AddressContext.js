@@ -1,8 +1,12 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { useAuthContext } from "../AuthContext/AuthContext";
+import { toasterror, toastsuccess } from "../../Utilities/ToastMessage";
 
 const AddressContext = createContext();
+
+
 
 const useAddress = () => {
     const context = useContext(AddressContext)
@@ -16,99 +20,78 @@ const AddressProvider = ({ children }) => {
 
     const [addressList, setaddressList] = useState()
     const [isloading, setisloading] = useState(false)  
-    
-      const getalladdress = async ()=>{
-        try{
-          const res = await axios.get('https://6219df4381d4074e85b37570.mockapi.io/address/addresses');
-          setaddressList(res.data)
-          setisloading(false)
-        }catch(err){
-          console.log(err)
-          setisloading(false)
-        }
+
+    const {user} = useAuthContext()
+
+    let config = {
+      headers: {
+        authorization: user?.token,
       }
+    }
     
-      useEffect(() => {
+    const getalladdress = async ()=>{
+      setisloading(true)
+      try{
+        const res = await axios.get('api/user/address', config);
+        setaddressList(res.data?.Address)
+        setisloading(false)
+      }catch(err){
+        console.log(err)
+        setisloading(false)
+      }
+    }
+    
+    useEffect(() => {
+      getalladdress()
+    }, [])
+  
+    const onaddaddress = async (address) => {
+      try{
         setisloading(true)
-        getalladdress()
-      }, [])
+        const res = await axios.post('api/user/address', { address }, config);
+        setaddressList(res.data?.address)
+        setisloading(false)
+        toastsuccess("Added Address Sucessfully")
+      }catch(err){
+        console.log(err)
+        setisloading(false)
+        toasterror()
+      }
+    }
+  
+    const ondeleteaddress = async (_id) => {
+      setisloading(true)
+      try{
+        const res = await axios.delete('api/user/address/'+_id, config);
+        setaddressList(addressList.filter((item)=> item._id !== _id))
+        setisloading(false)
+        toastsuccess("Deleted Address Sucessfully")
+      }catch(err){
+        console.log(err)
+        setisloading(false)
+        toasterror()
+      }
+    }
+  
+    const oneditaddress = async (address) => {
+      setisloading(true)
+      try{
+        const res = await axios.post('api/user/address/'+address._id, { updatedAddress: address }, config);
+        setaddressList(res.data?.address)
+        setisloading(false)
+        toastsuccess("Edited Address Sucessfully")
+      }catch(err){
+        console.log(err)
+        setisloading(false)
+        toasterror()
+      }
+    }
 
-      const toastsuccess = (msg) => {
-        toast.success(msg, {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-
-      const toasterror = (msg) => {
-        toast.error('Error Occured', {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    
-      const onaddaddress = async (address) => {
-        try{
-          setisloading(true)
-          const res = await axios.post('https://6219df4381d4074e85b37570.mockapi.io/address/addresses', address);
-          setaddressList([...addressList, res.data])
-    
-          toastsuccess("Added Address Sucessfully")
-          
-          setisloading(false)
-        }catch(err){
-          console.log(err)
-          setisloading(false)
-          toasterror()
-        }
-        
-      }
-    
-      const ondeleteaddress = async (id) => {
-        try{
-          setisloading(true)
-          const res = await axios.delete('https://6219df4381d4074e85b37570.mockapi.io/address/addresses/'+id);
-          setaddressList(addressList.filter((item)=> item.id !== id))
-          setisloading(false)
-          toastsuccess("Deleted Address Sucessfully")
-        }catch(err){
-          console.log(err)
-          setisloading(false)
-          toasterror()
-        }
-        
-      }
-    
-      const oneditaddress = async (address) => {
-        try{
-          setisloading(true)
-          const res = await axios.put('https://6219df4381d4074e85b37570.mockapi.io/address/addresses/'+address.id, address);
-          setaddressList(addressList.map((i)=> i.id === address.id ? address : i ))
-          setisloading(false)
-          toastsuccess("Edited Address Sucessfully")
-        }catch(err){
-          console.log(err)
-          setisloading(false)
-          toasterror()
-        }
-        
-      }
-
-    return (
-        <AddressContext.Provider value={{addressList, isloading, onaddaddress, oneditaddress, ondeleteaddress}}>
-            {children}
-        </AddressContext.Provider>
-    )
+  return (
+      <AddressContext.Provider value={{addressList, isloading, onaddaddress, oneditaddress, ondeleteaddress}}>
+          {children}
+      </AddressContext.Provider>
+  )
 }
 
 export {AddressContext, AddressProvider, useAddress}

@@ -1,9 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import CartCheckout from '../../Components/CartCheckout/CartCheckout'
 import CartProducts from '../../Components/CartProducts/CartProducts'
+import { useCheckout } from '../../Context/CheckoutContext/CheckoutContext'
 import './OrderSummaryPage.css'
 
 function OrderSummaryPage() {
+
+  const { selectedAddress } = useCheckout()
+
+  const navigate = useNavigate()
+
+  const navigatetoplaceorder = () => navigate("/checkout/ordersuccess")
+
   return (
     <div className="checkout">
         <div>
@@ -16,14 +25,14 @@ function OrderSummaryPage() {
               <div className="single-adress--content padding--medium">
                 <p className="text--bold">Address</p>
                 <div className="container__flex margin-bottom--medium">
-                  <p><span className="text--bold margin-right--small">{"name"}:</span>{`${"address"}, ${"city"}`}</p>
+                  <p><span className="text--bold margin-right--small">{selectedAddress?.name}:</span>{`${selectedAddress?.address}, ${selectedAddress?.city}`}</p>
                 </div>
               </div>
             </div>
           </div>
-          <CartProducts />
+          <CartProducts checkout={true} />
         </div>
-        <CartCheckout label={"PlaceOrder"} nextpath={"/checkout/ordersuccess"} />
+        <CartCheckout label={"PlaceOrder"} nextpath={navigatetoplaceorder} />
     </div>
   )
 }

@@ -14,8 +14,8 @@ function AddressModal({ editmode, showmodal, closeModal, onsubmit, useraddress})
 
   const handlesubmit = () => {
     let newobj = { name, address, city}
-    if (useraddress?.id){
-      newobj['id']=useraddress.id
+    if (useraddress?._id){
+      newobj['_id']=useraddress._id
     }
 
     onsubmit(newobj)

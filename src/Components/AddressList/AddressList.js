@@ -9,7 +9,8 @@ function AddressList() {
 
   const { addressList, isloading } = useAddress()
 
-  const { selected } = useCheckout()
+  const { selectedAddress } = useCheckout()
+
    
   return (
     <div className="container__flex--center margin-tb--medium">
@@ -18,7 +19,7 @@ function AddressList() {
         { isloading && <Loader />}
         <div className="addresslist__container">
           {addressList?.map((item)=> {
-            return <DisplayAddress key={item.id} useraddress={item} selected={item.id===selected} />
+            return <DisplayAddress key={item._id} useraddress={item} selected={item._id===selectedAddress?._id} />
           })}
         </div>
       </div>

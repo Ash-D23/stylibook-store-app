@@ -4,12 +4,11 @@ import { useCart } from '../../Context/CartContext/CartContext';
 import './CartCheckout.css';
 
 function CartCheckout({ label, nextpath}) {
-  
-  let navigate = useNavigate()
 
   const {calculateTotal} = useCart()
 
   const total = calculateTotal()
+  
   return (
     <div className="checkout__Cart">
           <div className="checkout__amount margin--large">
@@ -39,7 +38,7 @@ function CartCheckout({ label, nextpath}) {
                       <p>Order Total</p>
                       <p>Rs.{total}</p>
                   </div>
-                  <button onClick={() => navigate(nextpath)} className="btn btn--secondary">{label}</button>
+                  <button onClick={nextpath} className="btn btn--secondary">{label}</button>
               </div>
           </div>
       </div>

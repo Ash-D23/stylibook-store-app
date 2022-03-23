@@ -6,17 +6,17 @@ const useCheckout = () => useContext(CheckoutContext)
 
 const CheckoutProvider = ({ children }) => {
 
-    const [selected, setselected] = useState(null);
+    const [selectedAddress, setselectedAddress] = useState(null);
 
-    const onselect = (id) => {
-        if(id===selected){
-        setselected(null)
+    const onselect = (address) => {
+        if(address._id === selectedAddress?._id){
+            setselectedAddress(null)
         }else{
-        setselected(id)
+            setselectedAddress(address)
         }
     }
 
-    return <CheckoutContext.Provider value={{ selected, onselect}}>
+    return <CheckoutContext.Provider value={{ selectedAddress, onselect}}>
         {children}
     </CheckoutContext.Provider>
 }
