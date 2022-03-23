@@ -20,7 +20,6 @@ import RequireAuth from "./hooks/RequireAuth";
 function App() {
 
   const { user } = useAuthContext()
-  console.log(user)
   return (
     <div>
       <Navigation />

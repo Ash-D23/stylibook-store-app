@@ -66,7 +66,6 @@ const CartProvider = ({children}) => {
           // if item not in cart set cart with item and quantity 1
           try{
             let result = await axios.post('/api/user/cart', { product: { ...item } } , config)
-            console.log(result)
             setcartitems(result.data?.cart)
             toastsuccess("Added Item to cart")
           }catch(err){
