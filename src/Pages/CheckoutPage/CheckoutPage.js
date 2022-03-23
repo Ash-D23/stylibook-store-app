@@ -10,13 +10,13 @@ function CheckoutPage() {
 
   return (
     <CheckoutProvider>
-      <div className="checkout">
+      <>
         <Routes>
           <Route path='/' element={<SelectAddressPage />} />
           <Route path='/ordersummary' element={<OrderSummaryPage />} />
           <Route path='/ordersuccess' element={<OrderSuccessPage />} />
         </Routes>
-      </div>
+      </>
     </CheckoutProvider>
     
   )

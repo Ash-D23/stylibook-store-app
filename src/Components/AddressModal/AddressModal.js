@@ -33,7 +33,7 @@ function AddressModal({ editmode, showmodal, closeModal, onsubmit, useraddress})
   }
 
   return (
-    <div classNameName={`modal__overlay address__modal ${showmodal ? '' : 'hide'}`}>
+    <div className={`modal__overlay address__modal ${showmodal ? '' : 'hide'}`}>
       <div className="modal__container">
           <div className="modal__header container__flex margin--medium">
               <h3 className="text--large">{editmode ? 'Edit' : 'Add'} Address</h3>

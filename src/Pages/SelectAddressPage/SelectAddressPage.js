@@ -5,12 +5,12 @@ import AddressManagement from '../../Components/Addressmanagement/Addressmanagem
 
 function SelectAddressPage() {
   return (
-    <>
+    <div className="checkout">
         <AddressProvider>
             <AddressManagement />
         </AddressProvider>
         <CartCheckout label={"View Order"} nextpath={"/checkout/ordersummary"} />
-    </>
+    </div>
   )
 }
 

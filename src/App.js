@@ -16,6 +16,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuthContext } from "./Context/AuthContext/AuthContext";
 import RequireAuth from "./hooks/RequireAuth";
+import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
 
 function App() {
 

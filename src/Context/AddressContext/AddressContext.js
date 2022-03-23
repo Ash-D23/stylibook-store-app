@@ -15,9 +15,7 @@ const useAddress = () => {
 const AddressProvider = ({ children }) => {
 
     const [addressList, setaddressList] = useState()
-    const [isloading, setisloading] = useState(false)
-
-    
+    const [isloading, setisloading] = useState(false)  
     
       const getalladdress = async ()=>{
         try{
