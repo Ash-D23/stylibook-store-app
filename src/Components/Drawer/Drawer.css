@@ -6,7 +6,7 @@
     max-width: 25rem;
     border-right: 1px solid var(--clr-dark-grey);
     position: fixed;
-    z-index: 2;
+    z-index: 3;
 }
 
 .drawer__heading{

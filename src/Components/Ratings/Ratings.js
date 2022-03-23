@@ -7,7 +7,7 @@ function Ratings({ value }) {
   const setStars = () => {
     let arr = [0,0,0,0,0]
     arr = arr.map((item,i) => i<=filled-1 ? 1 : 0)
-    return arr.map((item) => item===1 ? <label className="star-filled"></label> : <label className="star"></label>)
+    return arr.map((item, index) => item===1 ? <label key={index} className="star-filled"></label> : <label key={index} className="star"></label>)
   }
 
   return (
