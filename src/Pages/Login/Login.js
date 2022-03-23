@@ -15,6 +15,12 @@ function Login() {
     setpassword('')
   }
 
+  const loginwithtesthandler = () => {
+    signin({ email: 'adarshbalika@gmail.com', password: 'adarshbalika'})
+    setemail('')
+    setpassword('')
+  }
+
   return (
     <div className="auth__container">
       <div className="auth__contents border--grey">
@@ -28,6 +34,7 @@ function Login() {
               <input type="password" value={password} onChange={(e)=>setpassword(e.target.value)} className="form-field margin-tb--small" placeholder="Password"/>
           </div>
           <button onClick={loginhandler} className="btn btn-auth margin-bottom--medium">Login</button>
+          <button onClick={loginwithtesthandler} className="btn btn-auth margin-bottom--medium">Login with test credentials</button>
 
           <Link className="auth__link margin-tb--medium" to="/signup">Create New Account</Link>
           
