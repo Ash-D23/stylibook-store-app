@@ -12,7 +12,7 @@ function ProductList() {
     <>
       <div className="products product--cards container__flex--wrap">
           { Loading ? <Loader /> : products.map((item)=>{
-            return <SingleProduct product={item} />
+            return <SingleProduct key={item._id} product={item} />
           })}
       </div>
     </>

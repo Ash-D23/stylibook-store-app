@@ -46,11 +46,11 @@ function Filters() {
                 <h3 className="text--medium">Sort by Price</h3>
                 <div className="form-element">
                     <input id="low"type="radio" onChange={(e) => pricesort(e.target.value)} className="form-radio" name="sortvalue" value="asc" checked={filterstate.sort==="asc"} />
-                    <label for="low"> Low to High </label>
+                    <label htmlFor="low"> Low to High </label>
                 </div>
                 <div className="form-element">
                     <input id="high" type="radio" onChange={(e) => pricesort(e.target.value)} className="form-radio" name="sortvalue" value="desc" checked={filterstate.sort==="desc"}/>
-                    <label for="high"> High to Low </label>
+                    <label htmlFor="high"> High to Low </label>
                 </div>
             </div>
             <div className="filter__section">
@@ -73,42 +73,42 @@ function Filters() {
                 <h3 className="text--medium">Select Category</h3>
                 <div className="form-element">
                     <input id="Fiction" type="checkbox" onChange={changeCategory} className="form-checkbox" value="Fiction" checked={filterstate.category.Fiction} /> 
-                    <label for="Fiction">Fiction </label>
+                    <label htmlFor="Fiction">Fiction </label>
                 </div>
                 <div className="form-element">
                     <input id="Non_Fiction" type="checkbox" onChange={changeCategory} className="form-checkbox" value="Non_Fiction" checked={filterstate.category.Non_Fiction} /> 
-                    <label for="Non_Fiction">Non Fiction </label>
+                    <label htmlFor="Non_Fiction">Non Fiction </label>
                 </div>
                 <div className="form-element">
                     <input id="Academics" type="checkbox" onChange={changeCategory} className="form-checkbox" value="Academics" checked={filterstate.category.Academics} /> 
-                    <label for="Academics">Academics </label>
+                    <label htmlFor="Academics">Academics </label>
                 </div>
                 <div className="form-element">
                     <input id="Fantasy" type="checkbox" onChange={changeCategory} className="form-checkbox" value="Fantasy" checked={filterstate.category.Fantasy} /> 
-                    <label for="Fantasy">Fantasy </label>
+                    <label htmlFor="Fantasy">Fantasy </label>
                 </div>
                 <div className="form-element">
                     <input id="all"type="checkbox" onChange={changeCategory} className="form-checkbox" value="all" checked={filterstate.category.all} /> 
-                    <label for="all">All </label>
+                    <label htmlFor="all">All </label>
                 </div>
             </div>
             <div className="filter__section">
                 <h3 className="text--medium">Ratings</h3>
                 <div className="form-element">
                     <input id="star5" type="radio" onChange={changeRatings} className="form-radio" name="ratings" value="4" checked={filterstate.ratings==="4"} />
-                    <label for="star5"> 4 to 5 Stars </label>
+                    <label htmlFor="star5"> 4 to 5 Stars </label>
                 </div>
                 <div className="form-element">
                     <input id="star4" type="radio" onChange={changeRatings} className="form-radio" name="ratings" value="3" checked={filterstate.ratings==="3"} />
-                    <label for="star4"> 3 to 5 Stars </label>
+                    <label htmlFor="star4"> 3 to 5 Stars </label>
                 </div>
                 <div className="form-element">
                     <input id="star3" type="radio" onChange={changeRatings} className="form-radio" name="ratings" value="2" checked={filterstate.ratings==="2"}/>
-                    <label for="star3"> 2 to 5 Stars </label>
+                    <label htmlFor="star3"> 2 to 5 Stars </label>
                 </div>
                 <div className="form-element">
                     <input id="allstar"type="radio" onChange={changeRatings} className="form-radio" name="ratings" value="all" checked={filterstate.ratings==="all"}/>
-                    <label for="allstar"> All</label>
+                    <label htmlFor="allstar"> All</label>
                 </div>
             </div>
         </div>

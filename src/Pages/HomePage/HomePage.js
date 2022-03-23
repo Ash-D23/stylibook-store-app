@@ -49,7 +49,7 @@ function HomePage() {
             </div>
             { isloading ? <Loader /> : <div className="container__flex--center container__flex--wrap">
                 {categories?.map((item)=>{
-                    return <CategoryCard category={item} />
+                    return <CategoryCard key={item._id} category={item} />
                 })}
             </div>}
       </div>
@@ -59,7 +59,7 @@ function HomePage() {
             </div>
             { isloading ? <Loader /> : <div className="product--cards container__flex--center container__flex--wrap margin-bottom--medium">
                 {featuredproducts?.map((item)=>{
-                    return <SingleProduct product={item} />
+                    return <SingleProduct key={item._id} product={item} />
                 })}
             </div> }
       </div>

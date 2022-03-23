@@ -21,7 +21,6 @@ const useAuth = () => {
     const [user, setuser] = useLocalStorage("user", null)
 
     const signin = async (data) => {
-        console.log(data)
         try{
             let authresult = await axios.post('/api/auth/login', data)
             let userObj = { ...authresult.data?.foundUser  }

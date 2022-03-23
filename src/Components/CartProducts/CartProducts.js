@@ -13,7 +13,7 @@ function CartProducts() {
           { cartitems.length === 0 ? <p className="text--large margin--large">No items in Cart</p> : <h3 className="checkout__title margin--large">Items in Cart</h3> }
           { cartloading && <Loader />}
           {cartitems?.map((item)=>{
-            return <SingleCartProduct cartItem={item} />
+            return <SingleCartProduct key={item._id} cartItem={item} />
           })}
       </div>
   )
