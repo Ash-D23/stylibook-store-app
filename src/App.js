@@ -20,11 +20,12 @@ import RequireAuth from "./hooks/RequireAuth";
 function App() {
 
   const { user } = useAuthContext()
-  console.log(user)
+
   return (
     <div>
       <Navigation />
       <Routes>
+
         <Route path='/' element={<HomePage />} />
         
         <Route path='/products' element={<ProductListingPage />} />
@@ -35,10 +36,9 @@ function App() {
       
         <Route path='/wishlist' element={<RequireAuth><WishlistPage /></RequireAuth>} />
       
-        <Route path='/profile' element={
-          <RequireAuth>
-            <UserProfile />
-          </RequireAuth>} />
+        <Route path='/profile' element={<RequireAuth><UserProfile /></RequireAuth>} />
+
+        <Route path="/checkout/*" element={<CheckoutPage />} />
       
         { user ? <Route path='/login' element={<Navigate to="/" />} /> : <Route path='/login' element={<Login />} /> }
     

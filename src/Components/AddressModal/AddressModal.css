@@ -1,0 +1,29 @@
+.form-element--column{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-element--column .form-label{
+    font-size: 1.8rem;
+    margin: var(--margin-medium) var(--margin-small);
+}
+
+.form-element--column .form-field{
+    flex-grow: 1;
+}
+
+.modal__actions .btn:last-of-type{
+    margin-right:0;
+}
+
+.modal__body{
+    max-height: 30rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.address__modal .modal__container {
+    margin: 5% auto;
+}
+
