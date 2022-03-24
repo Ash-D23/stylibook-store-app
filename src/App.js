@@ -16,6 +16,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuthContext } from "./Context/AuthContext/AuthContext";
 import RequireAuth from "./hooks/RequireAuth";
+import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
     <div>
       <Navigation />
       <Routes>
+
         <Route path='/' element={<HomePage />} />
         
         <Route path='/products' element={<ProductListingPage />} />
@@ -34,10 +36,9 @@ function App() {
       
         <Route path='/wishlist' element={<RequireAuth><WishlistPage /></RequireAuth>} />
       
-        <Route path='/profile' element={
-          <RequireAuth>
-            <UserProfile />
-          </RequireAuth>} />
+        <Route path='/profile' element={<RequireAuth><UserProfile /></RequireAuth>} />
+
+        <Route path="/checkout/*" element={<CheckoutPage />} />
       
         { user ? <Route path='/login' element={<Navigate to="/" />} /> : <Route path='/login' element={<Login />} /> }
     
