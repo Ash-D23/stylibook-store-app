@@ -19,22 +19,18 @@ function UserProfile() {
     headers: {
       authorization: user?.token,
     }
-    }
+  }
 
   const onUpdateSubmit = async ()=> {
-    
       try{
-          //if success update user in auth
           let result = await axios.post('/api/user/profile', { updatedUser: userProfile} ,config)  
           setuser(userProfile)
           toastsuccess("Updated User Succesfully")
       }catch(err){
-          // reset user
           console.log(err)
           userProfileDispatch({ type: 'resetProfile', payload: user})
           toasterror("There was an Error")
       }
-      //set editmode false
       seteditmode(false)
   }
 
@@ -91,7 +87,7 @@ function UserProfile() {
                 type="text" 
                 onChange={(e) => userProfileDispatch({ type: 'updatePhone', payload: e.target.value})} 
                 className="form-field" 
-                value={phone} 
+                value={phone || ''} 
                 disabled={!editmode} />
             </div>
 
