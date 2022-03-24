@@ -1,0 +1,40 @@
+.form-element .form-label {
+    width: min(20%, 15rem);
+    font-size: 1.8rem;
+}
+
+.form-element .form-field {
+    flex-grow: 1;
+}
+
+.user-profile__container{
+    max-width: min(80%, 80rem);
+    padding: var(--padding-medium);
+    margin: var(--margin-large) auto;
+    border: 1px solid var(--clr-grey)
+}
+
+.profile-pic__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-file{
+    width: 20rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .user-profile__container{
+        max-width: 100%;
+        padding: 0;
+        margin: 0 auto;
+        border: none;
+    }    
+
+    .form-element .form-label {
+        width: min(20%, 15rem);
+        font-size: 1.6rem;
+    }
+
+}
