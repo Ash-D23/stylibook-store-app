@@ -20,7 +20,6 @@ function Navbar({ onMenuClick }) {
 
   const searchSubmit = () => {
     let path = '/products?search='+search
-    console.log(path)
     setsearch('')
     navigate(path)
   }

@@ -1,8 +1,42 @@
-import React, {useState} from 'react';
-import './UserProfile.css'
+import axios from 'axios';
+import React, {useState, useReducer} from 'react';
+import { useAuthContext } from '../../Context/AuthContext/AuthContext';
+import { userProfileReducerFn } from '../../Reducers/UserProfile/UserProfileReducer';
+import { toastsuccess, toasterror } from '../../Utilities/ToastMessage'
+import './UserProfile.css';
 
 function UserProfile() {
+
   const [editmode, seteditmode] = useState(false)
+
+  const { user, setuser } = useAuthContext()
+
+  const [userProfile, userProfileDispatch ] = useReducer( userProfileReducerFn , user )
+
+  const { userName, firstName, lastName, email, phone, gender } = userProfile
+
+  let config = {
+    headers: {
+      authorization: user?.token,
+    }
+    }
+
+  const onUpdateSubmit = async ()=> {
+    
+      try{
+          //if success update user in auth
+          let result = await axios.post('/api/user/profile', { updatedUser: userProfile} ,config)  
+          setuser(userProfile)
+          toastsuccess("Updated User Succesfully")
+      }catch(err){
+          // reset user
+          console.log(err)
+          userProfileDispatch({ type: 'resetProfile', payload: user})
+          toasterror("There was an Error")
+      }
+      //set editmode false
+      seteditmode(false)
+  }
 
   return (
     <div className="user-profile__container">
@@ -11,38 +45,82 @@ function UserProfile() {
 
             <div className="form-element">
                 <label className="form-label form-label--required">User Name</label>
-                <input type="text" className="form-field" value="efe" placeholder="Username" disabled={!editmode} />
+                <input 
+                type="text"
+                onChange={(e) => userProfileDispatch({ type: 'updateUserName', payload: e.target.value})}
+                className="form-field"
+                value={userName}
+                placeholder="Username"
+                disabled={!editmode} />
             </div>
             
             <div className="form-element">
                 <label className="form-label form-label--required">First Name</label>
-                <input type="text" className="form-field" value="efe" placeholder="Enter First Name" disabled={!editmode} />
+                <input
+                type="text"
+                onChange={(e) => userProfileDispatch({ type: 'updateFirstName', payload: e.target.value})}
+                className="form-field"
+                value={firstName}
+                placeholder="Enter First Name"
+                disabled={!editmode} />
             </div>
             
             <div className="form-element">
                 <label className="form-label form-label--required">Last Name</label>
-                <input type="text" className="form-field" placeholder="Enter Last Name" disabled={!editmode} />
+                <input 
+                type="text"
+                onChange={(e)=> userProfileDispatch({ type: 'updateLastName', payload: e.target.value})}
+                className="form-field"
+                value={lastName}
+                placeholder="Enter Last Name"
+                disabled={!editmode} />
             </div>
 
             <div className="form-element">
                 <label className="form-label form-label--required">Email</label>
-                <input type="email" className="form-field--text-only" value="abc@example.com" disabled={!editmode} />
+                <input 
+                type="email" 
+                className="form-field--text-only" 
+                value={email} 
+                disabled={true} />
             </div>
 
             <div className="form-element">
                 <label className="form-label form-label--required">Phone No.</label>
-                <input type="Number" className="form-field" value="98765656556" disabled={!editmode} />
+                <input 
+                type="text" 
+                onChange={(e) => userProfileDispatch({ type: 'updatePhone', payload: e.target.value})} 
+                className="form-field" 
+                value={phone} 
+                disabled={!editmode} />
             </div>
 
             <div className="form-element">
                 <label className="form-label">Gender</label>
 
-                <input type="radio" className="form-radio" name="gender" value="Male" disabled={!editmode} />
+                <input 
+                type="radio" 
+                onChange={(e) => userProfileDispatch({ type: 'updateGender', payload: e.target.value})}
+                checked={gender==='Male'}
+                className="form-radio"
+                name="gender" 
+                value="Male" 
+                disabled={!editmode} />
+
                 <span> Male </span>
-                <input type="radio" className="form-radio" name="gender" value="Female" disabled={!editmode} />
+
+                <input 
+                type="radio" 
+                onChange={(e) => userProfileDispatch({ type: 'updateGender', payload: e.target.value})} 
+                checked={gender==='Female'} 
+                className="form-radio" 
+                name="gender" 
+                value="Female" 
+                disabled={!editmode} />
+
                 <span> Female</span>
             </div>
-            {editmode ? <button onClick={()=> seteditmode(false)} className="btn btn--outline-secondary margin--small">Save</button> : 
+            {editmode ? <button onClick={onUpdateSubmit} className="btn btn--outline-secondary margin--small">Save</button> : 
                         <button onClick={()=> seteditmode(true)}className="btn btn--outline-secondary margin--small">Edit</button> }
             
         </div>

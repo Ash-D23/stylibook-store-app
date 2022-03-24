@@ -46,7 +46,7 @@ const useAuth = () => {
         setuser(null)
     }
 
-    return { user, signin, signup, signout}
+    return { user, setuser, signin, signup, signout}
 }
 
 export {AuthContext, useAuthContext, AuthProvider}

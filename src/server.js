@@ -4,6 +4,9 @@ import {
   signupHandler,
 } from "./backend/controllers/AuthController";
 import {
+  userUpdateHandler,
+} from "./backend/controllers/UserController";
+import {
   addItemToCartHandler,
   getCartItemsHandler,
   removeItemFromCartHandler,
@@ -76,6 +79,9 @@ export function makeServer({ environment = "development" } = {}) {
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));
       this.post("/auth/login", loginHandler.bind(this));
+
+      // Update User Profile
+      this.post("/user/profile", userUpdateHandler.bind(this));
 
       // products routes (public)
       this.get("/products", getAllProductsHandler.bind(this));
