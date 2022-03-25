@@ -13,7 +13,7 @@ export const toastsuccess = (msg) => {
 }
 
 export const toasterror = (msg) => {
-    toast.error('Error Occured', {
+    toast.error(msg, {
       position: "bottom-center",
       autoClose: 5000,
       hideProgressBar: true,

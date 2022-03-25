@@ -56,14 +56,11 @@ const CartProvider = ({children}) => {
       }  
   
     const addtocart = async (item) => {
-        // check if item in cart and return true or false
         let itemincart = checkitemincart(item._id)
   
         if(itemincart){
-          // if item in cart filter items and add 1 quantity and append
           increasequantity(item)
         }else{
-          // if item not in cart set cart with item and quantity 1
           try{
             let result = await axios.post('/api/user/cart', { product: { ...item } } , config)
             setcartitems(result.data?.cart)
@@ -72,9 +69,7 @@ const CartProvider = ({children}) => {
             console.log(err)
             toasterror("There was an error")
           }
-          
         }
-        
     }
 
     const removeproductfromcart = async (_id) => {
@@ -106,7 +101,6 @@ const CartProvider = ({children}) => {
     }
 
     const decreasequantity = async (item) => {
-        
         if(item.quantity <= 1 ){
             removeproductfromcart(item._id)
         }else{
@@ -120,10 +114,11 @@ const CartProvider = ({children}) => {
                 setcartloading(false)
             }
         }
-
     }
 
-    return <CartContext.Provider value={{ calculateTotal, cartloading, cartitems, addtocart, totalitemsincart, checkitemincart, removeproductfromcart, increasequantity, decreasequantity}}>
+    const emptyCart = () => setcartitems([])
+
+    return <CartContext.Provider value={{ calculateTotal, cartloading, cartitems, emptyCart, addtocart, totalitemsincart, checkitemincart, removeproductfromcart, increasequantity, decreasequantity}}>
         {children}
     </CartContext.Provider>
 }

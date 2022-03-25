@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import CartCheckout from '../../Components/CartCheckout/CartCheckout'
 import CartProducts from '../../Components/CartProducts/CartProducts'
+import { useCart } from '../../Context/CartContext/CartContext'
 import { useCheckout } from '../../Context/CheckoutContext/CheckoutContext'
 import './OrderSummaryPage.css'
 
@@ -9,9 +10,14 @@ function OrderSummaryPage() {
 
   const { selectedAddress } = useCheckout()
 
+  const { emptyCart } = useCart()
+
   const navigate = useNavigate()
 
-  const navigatetoplaceorder = () => navigate("/checkout/ordersuccess")
+  const navigatetoplaceorder = () => {
+    emptyCart()
+    navigate("/checkout/ordersuccess")
+  }
 
   return (
     <div className="checkout">
