@@ -21,6 +21,7 @@ import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
 function App() {
 
   const { user } = useAuthContext()
+  
   return (
     <div>
       <Navigation />
