@@ -42,7 +42,7 @@ function ProductMain({ product }) {
 
         <div className="product__description">
             <h2 className="product__title margin-bottom--large">{productName}</h2>
-            <p className="margin-tb--small">{category}</p>
+            <p className="margin-tb--small">{category.replace('_',' ')}</p>
 
             <p className="clr--secondary text--bold margin-tb--medium">Rs. {price} <span className="text--line-through"> {originalprice} </span></p>
 

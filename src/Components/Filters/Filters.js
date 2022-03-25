@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useFilterProducts } from '../../Context/FilterProducts/FilterProductContext';
 import './Filters.css';
@@ -6,6 +6,8 @@ import './Filters.css';
 function Filters() {
 
   const { filterdispatch, filterstate } = useFilterProducts()
+
+  const [ showFilters, setshowfilters ] = useState(false)
 
   const pricesort = (val) => filterdispatch({ type:'sort', payload: val})
 
@@ -34,10 +36,10 @@ function Filters() {
   
   return (
     <>
-        <div className="filter__view filters__heading">
-            <h2 className="text--medium">Show Filters</h2>
+        <div onClick={()=> setshowfilters( prev => !prev)} className="filter__view filters__heading">
+            <h2 className="text--medium">{ showFilters ? 'Hide' : 'Show'} Filters</h2>
         </div>
-        <div className="filters padding--medium">
+        <div className={`filters padding--medium ${ showFilters ? 'display-filters' : null}`}>
             <div className="filter__section filters__heading">
                 <h2 className="text--medium">Filters</h2>
                 <p onClick={clearall} className="filter--clear pointer">Clear All</p>

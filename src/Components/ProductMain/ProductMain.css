@@ -3,6 +3,7 @@
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    min-height: 67vh;
 }
 
 .product__btn--container{
