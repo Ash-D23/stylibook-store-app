@@ -30,7 +30,6 @@ const CartProvider = ({children}) => {
     }
 
     useEffect(()=>{
-        // set cart from user id
         if(user){
             getcartItems()
         }else{

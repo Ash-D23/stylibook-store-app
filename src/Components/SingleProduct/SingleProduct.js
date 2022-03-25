@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../Context/AuthContext/AuthContext'
 import { useCart } from '../../Context/CartContext/CartContext'
 import { useWishlist } from '../../Context/WishlistContext/WishlistContext'
 
@@ -7,7 +8,9 @@ function SingleProduct({ product, wishlistproduct }){
 
   const {_id, img, productName, bestseller, price, originalprice} = product
 
-  const { addtocart, checkitemincart, cartloading } = useCart()
+  const { user } = useAuthContext()
+
+  const { addtocart, checkitemincart } = useCart()
 
   const { checkproductinwishlist, addtoWishlist, removefromwishlist } = useWishlist()
 
@@ -15,7 +18,14 @@ function SingleProduct({ product, wishlistproduct }){
 
   const isProductInWishlist = checkproductinwishlist(_id)
 
+  const navigate = useNavigate()
+
   const toggleWhishlist = () => {
+      if(!user){
+          navigate('/login')
+          return
+      }
+
       if(isProductInWishlist){
           removefromwishlist(_id)
       }else{
@@ -23,9 +33,13 @@ function SingleProduct({ product, wishlistproduct }){
       }
   }
 
-  const navigate = useNavigate()
-
-  
+  const checkauthandaddtocart = () => {
+    if(!user){
+        navigate('/login')
+        return
+    }
+    addtocart(product)
+  }
 
   return (
     <div className="card">
@@ -47,7 +61,7 @@ function SingleProduct({ product, wishlistproduct }){
             <div className="card__actions">
                 <div className="card__actions--buttons">
                 { isProductInCart ? <button onClick={()=> navigate('/cart')}className="btn btn--secondary btn--icon cart">Go to Cart</button> :
-                    <button onClick={()=> addtocart(product)} className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button> }  
+                    <button onClick={()=> checkauthandaddtocart()} className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button> }  
                 </div>
             </div>
         </div> 
