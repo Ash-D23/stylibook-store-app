@@ -7,7 +7,7 @@ function WishlistPage() {
   const { wishlistitems } = useWishlist()
 
   return (
-    <div className="container--90">
+    <div className="container--90 wishlist--container">
         <h2 className="text--center padding--large">Wishlist</h2>
         <div className="product--cards container__flex--center container__flex--wrap">
             {wishlistitems?.map((item)=> {

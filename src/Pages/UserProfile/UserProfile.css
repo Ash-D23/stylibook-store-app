@@ -1,3 +1,7 @@
+.user-profile--section{
+    min-height: 65vh;
+}
+
 .form-element .form-label {
     width: min(20%, 15rem);
     font-size: 1.8rem;

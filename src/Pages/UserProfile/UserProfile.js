@@ -35,7 +35,8 @@ function UserProfile() {
   }
 
   return (
-    <div className="user-profile__container">
+    <div className='user-profile--section'>
+        <div className="user-profile__container">
         <h2 className="text--center margin-tb--medium">User Profile</h2>
         <div className="form">
 
@@ -120,6 +121,7 @@ function UserProfile() {
                         <button onClick={()=> seteditmode(true)}className="btn btn--outline-secondary margin--small">Edit</button> }
             
         </div>
+    </div>
     </div>
   )
 }
