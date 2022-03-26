@@ -19,7 +19,7 @@ function Logout() {
   }, [])
 
   return (
-    <div className="logout--container">
+    <div className="full--container">
       <div className="logout">
           <p className="text--large text--center">User has Succesfully Logged Out</p>
           <div className="auth__btn--container margin-tb--medium">

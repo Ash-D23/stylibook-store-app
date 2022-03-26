@@ -1,6 +1,6 @@
 .auth__container{
     width: 100%;
-    height: 80vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,7 +8,7 @@
 }
 
 .auth__contents{
-    max-width: 50rem;
+    width: 40rem;
     padding: 2rem;
     background-color: #ffffff;
 }
@@ -55,7 +55,7 @@
     margin-left: 0;
 }
 
-.logout--container{
+.full--container{
     height: 70vh;
     display: flex;
     align-items: center;
@@ -66,4 +66,16 @@
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.error--message{
+    color: red;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .auth__contents{
+        width: 100%;
+    }
+
 }
