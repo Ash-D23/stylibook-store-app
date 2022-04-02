@@ -1,10 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import CartCheckout from '../../Components/CartCheckout/CartCheckout'
-import CartProducts from '../../Components/CartProducts/CartProducts'
-import { useCart } from '../../Context/CartContext/CartContext'
-import { useCheckout } from '../../Context/CheckoutContext/CheckoutContext'
-import './OrderSummaryPage.css'
+import { CartCheckout, CartProducts } from '../../Components';
+import { useCart, useCheckout } from '../../Context/';
+import './OrderSummaryPage.css';
 
 function OrderSummaryPage() {
 
@@ -43,4 +41,4 @@ function OrderSummaryPage() {
   )
 }
 
-export default OrderSummaryPage
+export { OrderSummaryPage }

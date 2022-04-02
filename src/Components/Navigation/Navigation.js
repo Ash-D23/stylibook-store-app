@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import Navbar from '../Navbar/Navbar';
-import Drawer from '../Drawer/Drawer';
+import { Navbar } from '../Navbar/Navbar';
+import { Drawer } from '../Drawer/Drawer';
 
 function Navigation() {
 
@@ -18,4 +18,4 @@ function Navigation() {
   )
 }
 
-export default Navigation
+export { Navigation }

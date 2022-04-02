@@ -1,8 +1,6 @@
 import React from 'react'
-import CartCheckout from '../../Components/CartCheckout/CartCheckout';
-import {AddressProvider} from '../../Context/AddressContext/AddressContext';
-import AddressManagement from '../../Components/Addressmanagement/Addressmanagement';
-import { useCheckout } from '../../Context/CheckoutContext/CheckoutContext';
+import { AddressProvider, useCheckout } from '../../Context';
+import { AddressManagement, CartCheckout } from '../../Components';
 import { useNavigate } from 'react-router-dom';
 import { toasterror } from '../../Utilities/ToastMessage';
 
@@ -30,4 +28,4 @@ function SelectAddressPage() {
   )
 }
 
-export default SelectAddressPage
+export { SelectAddressPage }

@@ -95,5 +95,5 @@ function AddressModal({ editmode, showmodal, closeModal, onsubmit, useraddress})
   )
 }
 
-export default AddressModal
+export { AddressModal }
 

@@ -1,6 +1,5 @@
 import React from 'react'
-import { useCart } from '../../Context/CartContext/CartContext'
-import { useWishlist } from '../../Context/WishlistContext/WishlistContext'
+import { useCart, useWishlist } from '../../Context'
 
 function SingleCartProduct({ cartItem, checkout }) {
 
@@ -45,4 +44,4 @@ function SingleCartProduct({ cartItem, checkout }) {
   )
 }
 
-export default SingleCartProduct
+export { SingleCartProduct }

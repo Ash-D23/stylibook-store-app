@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useAuthContext } from "../AuthContext/AuthContext";
 import { toasterror, toastsuccess } from "../../Utilities/ToastMessage";
@@ -94,4 +93,4 @@ const AddressProvider = ({ children }) => {
   )
 }
 
-export {AddressContext, AddressProvider, useAddress}
+export { AddressProvider, useAddress}

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import AddressList from '../AddressList/AddressList';
-import AddressModal from '../AddressModal/AddressModal';
-import { useAddress } from '../../Context/AddressContext/AddressContext';
+import { AddressList } from '../AddressList/AddressList';
+import { AddressModal } from '../AddressModal/AddressModal';
+import { useAddress } from '../../Context';
 
-function Addressmanagement() {
+function AddressManagement() {
   const [showmodal, setshowmodal] = useState(false)
   const { onaddaddress } = useAddress()
 
@@ -19,4 +19,4 @@ function Addressmanagement() {
   )
 }
 
-export default Addressmanagement
+export { AddressManagement }

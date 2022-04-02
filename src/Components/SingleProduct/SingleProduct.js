@@ -1,8 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAuthContext } from '../../Context/AuthContext/AuthContext'
-import { useCart } from '../../Context/CartContext/CartContext'
-import { useWishlist } from '../../Context/WishlistContext/WishlistContext'
+import { useAuthContext, useCart, useWishlist } from '../../Context'
 
 function SingleProduct({ product, wishlistproduct }){
 
@@ -69,4 +67,4 @@ function SingleProduct({ product, wishlistproduct }){
   )
 }
 
-export default SingleProduct
+export { SingleProduct }

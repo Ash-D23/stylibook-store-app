@@ -1,8 +1,7 @@
 import React from 'react';
-import { useAddress } from '../../Context/AddressContext/AddressContext';
-import { useCheckout } from '../../Context/CheckoutContext/CheckoutContext';
-import DisplayAddress from '../DisplayAddress/DisplayAddress';
-import Loader from '../Loader/Loader';
+import { useAddress, useCheckout } from '../../Context';
+import { DisplayAddress } from '../DisplayAddress/DisplayAddress';
+import { Loader } from '../Loader/Loader';
 import './AddressList.css';
 
 function AddressList() {
@@ -27,4 +26,4 @@ function AddressList() {
   )
 }
 
-export default AddressList
+export { AddressList }

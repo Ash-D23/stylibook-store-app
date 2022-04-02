@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import { useFilterProducts } from '../../Context/FilterProducts/FilterProductContext';
-import SingleProduct from '../SingleProduct/SingleProduct';
-import Loader from '../Loader/Loader'
+import React from 'react';
+import { useFilterProducts } from '../../Context';
+import { SingleProduct } from '../SingleProduct/SingleProduct';
+import { Loader } from '../Loader/Loader'
 import './ProductList.css';
 
 
@@ -19,4 +19,4 @@ function ProductList() {
   )
 }
 
-export default ProductList
+export { ProductList }

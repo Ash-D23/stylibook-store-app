@@ -1,6 +1,6 @@
 import React from 'react';
-import SingleProduct from '../../Components/SingleProduct/SingleProduct';
-import { useWishlist } from '../../Context/WishlistContext/WishlistContext';
+import { SingleProduct } from '../../Components';
+import { useWishlist } from '../../Context';
 
 function WishlistPage() {
 
@@ -18,4 +18,4 @@ function WishlistPage() {
   )
 }
 
-export default WishlistPage
+export { WishlistPage }

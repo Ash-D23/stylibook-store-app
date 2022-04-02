@@ -1,7 +1,7 @@
 import React from 'react';
-import { useCart } from '../../Context/CartContext/CartContext';
-import SingleCartProduct from '../SingleCartProduct/SingleCartProduct';
-import Loader from '../Loader/Loader'
+import { useCart } from '../../Context';
+import { SingleCartProduct } from '../SingleCartProduct/SingleCartProduct';
+import { Loader } from '../Loader/Loader'
 import './CartProducts.css'
 
 function CartProducts({ checkout }) {
@@ -19,4 +19,4 @@ function CartProducts({ checkout }) {
   )
 }
 
-export default CartProducts
+export { CartProducts }

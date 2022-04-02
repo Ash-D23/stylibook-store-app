@@ -1,10 +1,7 @@
 import axios from 'axios';
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import CategoryCard from '../../Components/CategoryCard/CategoryCard';
-import SingleProduct from '../../Components/SingleProduct/SingleProduct';
-import Loader from '../../Components/Loader/Loader'
-import { toast } from 'react-toastify';
+import { CategoryCard, SingleProduct, Loader } from '../../Components';
 import './HomePage.css'
 
 function HomePage() {
@@ -19,9 +16,9 @@ function HomePage() {
       let featuredproductsresult = await axios.get('/api/featuredproducts')
       setcategories(categoryresult.data.categories)
       setfeaturedproducts(featuredproductsresult.data.Featuredproducts )
-      setisloading(false)
     }catch(err){
       console.log(err)
+    }finally{
       setisloading(false)
     }
   }
@@ -67,4 +64,4 @@ function HomePage() {
     </>
   )
 }
-export default HomePage
+export { HomePage }

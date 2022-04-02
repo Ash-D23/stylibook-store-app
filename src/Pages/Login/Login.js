@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
-import { useAuthContext } from '../../Context/AuthContext/AuthContext';
+import { useAuthContext } from '../../Context';
 import './Auth.css';
 
 function Login() {
@@ -70,4 +70,4 @@ function Login() {
   )
 }
 
-export default Login
+export { Login }

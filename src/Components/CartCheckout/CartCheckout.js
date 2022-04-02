@@ -1,6 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useCart } from '../../Context/CartContext/CartContext';
+import { useCart } from '../../Context';
 import './CartCheckout.css';
 
 function CartCheckout({ label, nextpath}) {
@@ -45,4 +44,4 @@ function CartCheckout({ label, nextpath}) {
   )
 }
 
-export default CartCheckout
+export { CartCheckout }

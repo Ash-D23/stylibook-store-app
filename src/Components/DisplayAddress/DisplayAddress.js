@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import { useAddress } from '../../Context/AddressContext/AddressContext';
+import { useAddress } from '../../Context';
 import { useCheckout } from '../../Context/CheckoutContext/CheckoutContext';
-import AddressModal from '../AddressModal/AddressModal';
+import { AddressModal } from '../AddressModal/AddressModal';
 import './DisplayAddress.css';
 
 function DisplayAddress({ useraddress, selected }) {
@@ -40,4 +40,4 @@ function DisplayAddress({ useraddress, selected }) {
   )
 }
 
-export default DisplayAddress
+export { DisplayAddress }

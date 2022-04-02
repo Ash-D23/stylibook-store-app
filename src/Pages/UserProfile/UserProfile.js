@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, {useState, useReducer} from 'react';
-import { useAuthContext } from '../../Context/AuthContext/AuthContext';
+import React, { useState, useReducer } from 'react';
+import { useAuthContext } from '../../Context';
 import { userProfileReducerFn } from '../../Reducers/UserProfile/UserProfileReducer';
 import { toastsuccess, toasterror } from '../../Utilities/ToastMessage'
 import './UserProfile.css';
@@ -126,4 +126,4 @@ function UserProfile() {
   )
 }
 
-export default UserProfile
+export { UserProfile }

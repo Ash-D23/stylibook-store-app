@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useFilterProducts } from '../../Context/FilterProducts/FilterProductContext';
+import { useFilterProducts } from '../../Context';
 import './Filters.css';
 
 function Filters() {
@@ -117,5 +117,5 @@ function Filters() {
     </>
   )
 }
-
-export default Filters
+ 
+export { Filters }

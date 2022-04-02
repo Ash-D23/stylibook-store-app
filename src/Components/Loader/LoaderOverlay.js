@@ -14,4 +14,4 @@ function LoaderOverlay() {
   )
 }
 
-export default LoaderOverlay
+export { LoaderOverlay }

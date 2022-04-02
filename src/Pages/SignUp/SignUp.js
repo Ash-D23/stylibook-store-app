@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
-import { useAuthContext } from '../../Context/AuthContext/AuthContext'
+import { useAuthContext } from '../../Context'
 
 function SignUp() {
 
@@ -79,4 +79,4 @@ function SignUp() {
   )
 }
 
-export default SignUp
+export { SignUp }

@@ -1,8 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import ProductMain from '../../Components/ProductMain/ProductMain';
-import Loader from '../../Components/Loader/Loader'
+import { ProductMain, Loader }  from '../../Components';
 
 function SingleProductPage() {
 
@@ -35,4 +34,4 @@ function SingleProductPage() {
   )
 }
 
-export default SingleProductPage
+export { SingleProductPage }

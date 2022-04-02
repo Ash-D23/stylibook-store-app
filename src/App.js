@@ -1,22 +1,13 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import HomePage from './Pages/HomePage/HomePage';
-import ProductListingPage from './Pages/ProductListingPage/ProductListingPage';
-import SingleProductPage from './Pages/SingleProductPage/SingleProductPage';
-import CartManagementPage from './Pages/CartManagementPage/CartManagementPage';
-import WishlistPage from './Pages/WishlistPage/WishListPage';
-import UserProfile from './Pages/UserProfile/UserProfile';
-import Login from './Pages/Login/Login';
-import SignUp from './Pages/SignUp/SignUp';
-import Logout from './Pages/Logout/Logout';
-import Navigation from './Components/Navigation/Navigation';
-import Footer from './Components/Footer/Footer';
+import { HomePage, ProductListingPage, SingleProductPage, CartManagementPage, WishlistPage, UserProfile,
+  Login, SignUp, Logout, CheckoutPage  } from "./Pages";
+import { Footer, Navigation } from './Components';
 import "./App.css";
 import Mockman from "mockman-js";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useAuthContext } from "./Context/AuthContext/AuthContext";
+import { useAuthContext } from "./Context";
 import RequireAuth from "./hooks/RequireAuth";
-import CheckoutPage from "./Pages/CheckoutPage/CheckoutPage";
 
 function App() {
 

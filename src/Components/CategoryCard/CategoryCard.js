@@ -16,4 +16,4 @@ function CategoryCard({ category : {_id, img, categoryName}}) {
   )
 }
 
-export default CategoryCard
+export { CategoryCard }

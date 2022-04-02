@@ -14,4 +14,4 @@ function OrderSuccessPage() {
   )
 }
 
-export default OrderSuccessPage
+export { OrderSuccessPage }

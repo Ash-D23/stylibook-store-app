@@ -17,4 +17,4 @@ function Ratings({ value }) {
   )
 }
 
-export default Ratings
+export { Ratings }

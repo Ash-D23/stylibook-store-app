@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react/cjs/react.development'
-import { useAuthContext } from '../../Context/AuthContext/AuthContext'
+import { useAuthContext } from '../../Context'
 
 function Logout() {
 
@@ -30,4 +29,4 @@ function Logout() {
   )
 }
 
-export default Logout
+export { Logout }

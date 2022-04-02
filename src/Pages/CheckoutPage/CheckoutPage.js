@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Routes, Route} from 'react-router-dom';
-import { CheckoutProvider } from '../../Context/CheckoutContext/CheckoutContext';
-import SelectAddressPage from '../SelectAddressPage/SelectAddressPage';
-import OrderSummaryPage from '../OrderSummaryPage/OrderSummaryPage';
-import OrderSuccessPage from '../OrderSuccessPage/OrderSuccessPage';
-
+import { CheckoutProvider } from '../../Context';
+import { SelectAddressPage } from '../SelectAddressPage/SelectAddressPage';
+import { OrderSummaryPage } from '../OrderSummaryPage/OrderSummaryPage';
+import { OrderSuccessPage } from '../OrderSuccessPage/OrderSuccessPage';
 
 function CheckoutPage() {
 
@@ -22,4 +21,4 @@ function CheckoutPage() {
   )
 }
 
-export default CheckoutPage
+export { CheckoutPage }

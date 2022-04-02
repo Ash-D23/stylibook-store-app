@@ -1,8 +1,7 @@
 import React from 'react';
 import './ProductMain.css';
-import Ratings from '../Ratings/Ratings';
-import { useCart } from '../../Context/CartContext/CartContext';
-import { useWishlist } from '../../Context/WishlistContext/WishlistContext';
+import { Ratings } from '../Ratings/Ratings';
+import { useCart, useWishlist } from '../../Context';
 import { useNavigate } from 'react-router-dom';
 
 function ProductMain({ product }) {
@@ -64,4 +63,4 @@ function ProductMain({ product }) {
   )
 }
 
-export default ProductMain
+export { ProductMain }

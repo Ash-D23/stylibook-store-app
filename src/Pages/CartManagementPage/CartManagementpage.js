@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import CartProducts from '../../Components/CartProducts/CartProducts';
-import CartCheckout from '../../Components/CartCheckout/CartCheckout';
+import React from 'react';
+import { CartProducts, CartCheckout } from '../../Components';
 import './CartManagementPage.css';
 import { useNavigate } from 'react-router-dom';
-import { useCart } from '../../Context/CartContext/CartContext';
+import { useCart } from '../../Context';
 import { toasterror } from '../../Utilities/ToastMessage';
 
 function CartManagementPage() {
@@ -28,4 +27,4 @@ function CartManagementPage() {
   )
 }
 
-export default CartManagementPage
+export { CartManagementPage } ;
