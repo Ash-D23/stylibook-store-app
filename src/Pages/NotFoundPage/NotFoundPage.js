@@ -5,7 +5,7 @@ function NotFoundPage() {
   return (
     <div className="not-found--container">
         <div className='not-found--content'>
-            <img className="padding--medium" src="./Images/lost.svg" />
+            <img className="" src="/Images/lost.svg" />
             <h2 className="text--center margin--medium">Page Not Found</h2>
         </div>
     </div>
