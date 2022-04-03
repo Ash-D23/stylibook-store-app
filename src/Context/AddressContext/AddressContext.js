@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from 'axios';
 import { useAuthContext } from "../AuthContext/AuthContext";
-import { toasterror, toastsuccess } from "../../Utilities/ToastMessage";
+import { toasterror, toastsuccess } from "../../Utilities";
 
 const AddressContext = createContext();
 
