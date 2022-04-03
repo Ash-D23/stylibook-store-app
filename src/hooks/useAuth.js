@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toasterror, toastsuccess } from "../Utilities";
 import { useLocalStorage } from "./LocalStorage";
 
 export const useAuth = () => {
@@ -11,8 +12,10 @@ export const useAuth = () => {
             let userObj = { ...authresult.data?.foundUser };
             userObj.token = authresult.data?.encodedToken;
             setuser(userObj);
+            toastsuccess("Login Successfull")
         } catch (err) {
             console.log(err);
+            toasterror("Login Failed")
         }
     };
 
@@ -22,8 +25,10 @@ export const useAuth = () => {
             let userObj = { ...authresult.data?.createdUser };
             userObj.token = authresult.data?.encodedToken;
             setuser(userObj);
+            toastsuccess("Sign Up Successfull")
         } catch (err) {
             console.log(err);
+            toasterror("An Error Occuered")
         }
     };
 

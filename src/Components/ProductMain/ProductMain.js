@@ -1,12 +1,14 @@
 import React from 'react';
 import './ProductMain.css';
 import { Ratings } from '../Ratings/Ratings';
-import { useCart, useWishlist } from '../../Context';
+import { useAuthContext, useCart, useWishlist } from '../../Context';
 import { useNavigate } from 'react-router-dom';
 
 function ProductMain({ product }) {
   
   const { _id, img, productName, seller, price, description, category ,originalprice, ratings} = product
+
+  const { user } = useAuthContext()
 
   const { addtocart, checkitemincart } = useCart()
 
@@ -16,13 +18,26 @@ function ProductMain({ product }) {
 
   const isProductInWishlist = checkproductinwishlist(_id)
 
-  const toggleWhishlist = () => {
-        if(isProductInWishlist){
-            removefromwishlist(_id)
-        }else{
-            addtoWishlist(product)
-        }
-   }
+   const toggleWhishlist = () => {
+    if(!user){
+        navigate('/login')
+        return
+    }
+
+    if(isProductInWishlist){
+        removefromwishlist(_id)
+    }else{
+        addtoWishlist(product)
+    }
+}
+
+    const checkauthandaddtocart = () => {
+    if(!user){
+        navigate('/login')
+        return
+    }
+    addtocart(product)
+    }
 
   let navigate = useNavigate()
 
@@ -35,7 +50,7 @@ function ProductMain({ product }) {
             <div className="product__btn--container margin-tb--large">
             { isProductInWishlist ? <button onClick={toggleWhishlist} className="btn btn--primary btn--icon border--grey view margin-right--medium"><i className="fas fa-heart text--medium "></i>Wishlisted</button> : <button onClick={toggleWhishlist} className="btn btn--primary btn--icon border--grey view margin-right--medium"><i className="far fa-heart text--medium"></i> Wishlist</button> }
             { isProductInCart ? <button onClick={()=> navigate('/cart')}className="btn btn--secondary btn--icon cart">Go to Cart</button> :
-            <button onClick={()=> addtocart(product)} className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button> }                            
+            <button onClick={checkauthandaddtocart} className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button> }                            
             </div>
         </div>
 

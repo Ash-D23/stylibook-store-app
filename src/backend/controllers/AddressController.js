@@ -94,7 +94,6 @@ export const getAddressHandler = function (schema, request) {
       let Address = schema.users.findBy({ _id: userId }).address;
       const { updatedAddress } = JSON.parse(request.requestBody);
       Address = Address.map((item) => item._id === updatedAddress._id ? updatedAddress : item)
-      console.log(Address)
       this.db.users.update({ _id: userId }, { address: Address });
       return new Response(200, {}, { address: Address });
     } catch (error) {
