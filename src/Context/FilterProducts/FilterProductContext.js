@@ -1,6 +1,5 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import { productsreducerfn } from '../../Reducers/Products/ProductsReducer';
-import { filterreducerfn, initialfilters } from '../../Reducers/Filters/FiltersReducer';
+import { filterreducerfn, initialfilters, productsreducerfn } from '../../Reducers';
 import { sortproducts, filterproductsbyprice, filterproductsbysearch, filterproductsbyratings,filterproductsbycategory } from '../../Utilities/FilterProducts'
 import axios from "axios";
 

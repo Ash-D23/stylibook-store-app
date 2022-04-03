@@ -28,7 +28,6 @@ const WishlistProvider = ({children}) => {
     }
 
     useEffect(()=>{
-        // set cart from user id
         if(user){
             getWishlistItems()
         }else{

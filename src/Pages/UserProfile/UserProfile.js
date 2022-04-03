@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useReducer } from 'react';
 import { useAuthContext } from '../../Context';
-import { userProfileReducerFn } from '../../Reducers/UserProfile/UserProfileReducer';
+import { userProfileReducerFn } from '../../Reducers';
 import { toastsuccess, toasterror } from '../../Utilities/ToastMessage'
 import './UserProfile.css';
 
