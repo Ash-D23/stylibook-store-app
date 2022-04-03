@@ -1,18 +1,20 @@
+import { FILTER_ACTIONS } from '../../Utilities'
+
 export const filterreducerfn = (state, action) => {
     switch (action.type) {
-      case "sort":
+      case FILTER_ACTIONS.SORT:
         return { ...state, sort: action.payload };
-      case "setpriceRange":
+      case FILTER_ACTIONS.SET_PRICE_RANGE:
         return { ...state, priceRange: action.payload };
-      case "reset":
+      case FILTER_ACTIONS.RESET:
         return initialfilters
-      case "setratings":
+      case FILTER_ACTIONS.SET_RATINGS:
         return { ...state, ratings: action.payload }
-      case "setcategory":
+      case FILTER_ACTIONS.SET_CATEGORY:
         return { ...state, category: {...state.category, [action.payload]: !state.category[action.payload]}}
-      case "setsearch":
+      case FILTER_ACTIONS.SET_SEARCH:
         return { ...state, search: action.payload }
-      case "initializecategory":
+      case FILTER_ACTIONS.INITIALIZE_CATEGORY:
         return { ...state, category: { ...state.category, ...action.payload}}
       default:
         return state;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useFilterProducts } from '../../Context';
+import { FILTER_ACTIONS } from '../../Utilities';
 import './Filters.css';
 
 function Filters() {
@@ -9,15 +10,15 @@ function Filters() {
 
   const [ showFilters, setshowfilters ] = useState(false)
 
-  const pricesort = (val) => filterdispatch({ type:'sort', payload: val})
+  const pricesort = (val) => filterdispatch({ type: FILTER_ACTIONS.SORT, payload: val})
 
-  const changepricerange = (e) => filterdispatch({ type: "setpriceRange", payload: e.target.value });
+  const changepricerange = (e) => filterdispatch({ type: FILTER_ACTIONS.SET_PRICE_RANGE, payload: e.target.value });
 
-  const clearall = () => filterdispatch({type: 'reset'})
+  const clearall = () => filterdispatch({type: FILTER_ACTIONS.RESET})
 
-  const changeRatings = (e) => filterdispatch({type: 'setratings', payload: e.target.value})
+  const changeRatings = (e) => filterdispatch({type: FILTER_ACTIONS.SET_RATINGS, payload: e.target.value})
 
-  const changeCategory = (e) => filterdispatch({type: 'setcategory', payload: e.target.value})
+  const changeCategory = (e) => filterdispatch({type: FILTER_ACTIONS.SET_CATEGORY, payload: e.target.value})
 
   const [searchParams] = useSearchParams()
 
@@ -27,10 +28,10 @@ function Filters() {
 
   useEffect(()=>{
     if(initialcategory){
-        filterdispatch({ type: 'initializecategory', payload: {'all': false, [initialcategory]: true}})
+        filterdispatch({ type: FILTER_ACTIONS.INITIALIZE_CATEGORY, payload: {'all': false, [initialcategory]: true}})
     }
     if(search){
-        filterdispatch({ type: 'setsearch', payload: search})
+        filterdispatch({ type: FILTER_ACTIONS.SET_SEARCH, payload: search})
     }
   }, [search, initialcategory])
   

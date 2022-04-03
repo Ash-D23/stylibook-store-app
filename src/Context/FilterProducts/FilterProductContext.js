@@ -2,6 +2,7 @@ import { createContext, useContext, useReducer, useEffect } from "react";
 import { filterreducerfn, initialfilters, productsreducerfn } from '../../Reducers';
 import { sortproducts, filterproductsbyprice, filterproductsbysearch, filterproductsbyratings,filterproductsbycategory } from '../../Utilities/FilterProducts'
 import axios from "axios";
+import { PRODUCTS_ACTIONS } from "../../Utilities";
 
 const FilterProductContext  = createContext()
 
@@ -20,19 +21,18 @@ const FilterProductsProvider = ({children}) => {
       );
 
       const getProducts = async () => {
+        productdispatch({ type: PRODUCTS_ACTIONS.PRODUCT_LOADING , payload: true})
         try{
           let result = await axios.get('/api/products')
-          productdispatch({ type: 'setproducts' , payload: result.data.products})
-          productdispatch({ type: 'productLoading' , payload: false})
-          
+          productdispatch({ type: PRODUCTS_ACTIONS.SET_PRODUCTS , payload: result.data.products})
         }catch(err){
           console.log(err)
-          productdispatch({ type: 'productLoading' , payload: false})
+        }finally{
+          productdispatch({ type: PRODUCTS_ACTIONS.PRODUCT_LOADING , payload: false})
         }
       }
     
       useEffect(() => {
-        productdispatch({ type: 'productLoading' , payload: true})
         getProducts()
       }, []);
     
