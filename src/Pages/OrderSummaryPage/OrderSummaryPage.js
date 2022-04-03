@@ -1,20 +1,39 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { CartCheckout, CartProducts } from '../../Components';
-import { useCart, useCheckout } from '../../Context/';
+import { CartCheckout, CartProducts, LoaderOverlay } from '../../Components';
+import { useAuthContext, useCart, useCheckout } from '../../Context/';
 import './OrderSummaryPage.css';
 
 function OrderSummaryPage() {
+
+  const [Loading, setLoading] = useState(false)
 
   const { selectedAddress } = useCheckout()
 
   const { emptyCart } = useCart()
 
+  const {user} = useAuthContext()
+
   const navigate = useNavigate()
 
-  const navigatetoplaceorder = () => {
-    emptyCart()
-    navigate("/checkout/ordersuccess")
+  let config = {
+    headers: {
+      authorization: user?.token,
+    }
+  }
+
+  const navigatetoplaceorder = async () => {
+    setLoading(true)
+    try{
+        let result = await axios.post('/api/user/emptyCart', {} , config)
+        setLoading(false)
+        emptyCart()
+        navigate("/checkout/ordersuccess")
+    }catch(err){
+        console.log(err)
+        setLoading(false)
+    }
   }
 
   return (
@@ -37,6 +56,7 @@ function OrderSummaryPage() {
           <CartProducts checkout={true} />
         </div>
         <CartCheckout label={"PlaceOrder"} nextpath={navigatetoplaceorder} />
+        { Loading && <LoaderOverlay />}
     </div>
   )
 }

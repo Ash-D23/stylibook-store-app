@@ -11,6 +11,7 @@ import {
   getCartItemsHandler,
   removeItemFromCartHandler,
   updateCartItemHandler,
+  EmptyCartHandler
 } from "./backend/controllers/CartController";
 import {
   getAddressHandler,
@@ -95,6 +96,7 @@ export function makeServer({ environment = "development" } = {}) {
       // cart routes (private)
       this.get("/user/cart", getCartItemsHandler.bind(this));
       this.post("/user/cart", addItemToCartHandler.bind(this));
+      this.post("/user/emptyCart", EmptyCartHandler.bind(this));
       this.post("/user/cart/:productId", updateCartItemHandler.bind(this));
       this.delete(
         "/user/cart/:productId",
