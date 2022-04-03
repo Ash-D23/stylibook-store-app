@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, NavLink, useNavigate} from 'react-router-dom';
 import { useAuthContext, useCart } from '../../Context';
 import './Navbar.css';
 
@@ -23,6 +23,12 @@ function Navbar({ onMenuClick }) {
     navigate(path)
   }
 
+  const navActive = ({ isActive }) => {
+        return {
+            color: isActive ? "red" : "",
+        };
+    }
+
   const { user } = useAuthContext()
 
   return (
@@ -40,10 +46,18 @@ function Navbar({ onMenuClick }) {
             </div>
             <ul className="navbar__list-container text--medium margin-top--small">
                 <li className="navbar__item">
-                    <Link to="/">Home</Link>
+                    <NavLink
+                        style={navActive}
+                        to={`/`}
+                        key={'home'}
+                    >Home</NavLink>
                 </li>
                 <li className="navbar__item">
-                    <Link to="/products">Shop</Link>
+                    <NavLink
+                        style={navActive}
+                        to={`/products`}
+                        key={'shop'}
+                    >Shop</NavLink>
                 </li>
             </ul>
             <div className="navbar__menu padding--small">
@@ -54,7 +68,11 @@ function Navbar({ onMenuClick }) {
             </div>
             <div className="navbar__item--cart padding--small">
                 <div className="badge-content">
-                    <Link to="/cart"><i className="fas fa-shopping-cart"></i></Link>
+                    <NavLink
+                        style={navActive}
+                        to={`/cart`}
+                        key={'cart-mobile'}
+                    ><i className="fas fa-shopping-cart"></i></NavLink>
                     <div className="badge badge--round badge-topright badge--medium">{totalitemsincart()}</div>
                 </div>
             </div>

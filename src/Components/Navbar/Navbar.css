@@ -19,7 +19,7 @@
     color: var(--clr-dark-grey)
 }
 
-.navbar__item a{
+.navbar__item a, .navbar__item p{
     color: var(--clr-dark-grey)
 }
 

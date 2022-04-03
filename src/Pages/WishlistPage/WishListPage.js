@@ -13,6 +13,11 @@ function WishlistPage() {
             {wishlistitems?.map((item)=> {
               return <SingleProduct key={item._id} product={item} wishlistproduct={true} />
             })}
+            { wishlistitems.length === 0 ? (
+              <div className='empty-cart--container'>
+                <img src="./Images/empty-cart.svg" />
+              </div>
+            ) : null}
         </div>  
     </div>
   )

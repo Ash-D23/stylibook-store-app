@@ -28,6 +28,10 @@
     margin: var(--margin-large) 0;
 }
 
+.cart__quantity--section{
+    min-width: 9rem;
+}
+
 @media only screen and (max-width: 700px){
 
     .card--horizontal .card__image--container{

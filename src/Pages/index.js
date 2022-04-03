@@ -8,4 +8,8 @@ export { Login } from './Login/Login';
 export { SignUp } from './SignUp/SignUp';
 export { Logout } from './Logout/Logout';
 export { CheckoutPage } from "./CheckoutPage/CheckoutPage";
+export { SelectAddressPage } from './SelectAddressPage/SelectAddressPage';
+export { OrderSummaryPage } from './OrderSummaryPage/OrderSummaryPage';
+export { OrderSuccessPage } from './OrderSuccessPage/OrderSuccessPage';
+export { NotFoundPage } from './NotFoundPage/NotFoundPage';
 

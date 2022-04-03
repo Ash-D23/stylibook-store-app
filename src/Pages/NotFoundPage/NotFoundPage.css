@@ -1,0 +1,20 @@
+.not-found--container{
+    max-width: 80%;
+    margin: auto;
+}
+
+.not-found--content img{
+    max-height: 60vh;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .not-found--container{
+        max-width: 100%;
+    }
+    
+    .not-found--content img{
+        max-height: 80vh;
+    }
+
+}

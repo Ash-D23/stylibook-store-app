@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import { HomePage, ProductListingPage, SingleProductPage, CartManagementPage, WishlistPage, UserProfile,
-  Login, SignUp, Logout, CheckoutPage  } from "./Pages";
+  Login, SignUp, Logout, CheckoutPage, SelectAddressPage, OrderSummaryPage, OrderSuccessPage, NotFoundPage } from "./Pages";
 import { Footer, Navigation } from './Components';
 import "./App.css";
 import Mockman from "mockman-js";
@@ -30,7 +30,11 @@ function App() {
       
         <Route path='/profile' element={<RequireAuth><UserProfile /></RequireAuth>} />
 
-        <Route path="/checkout/*" element={<CheckoutPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} >
+          <Route path='' element={<SelectAddressPage />} />
+          <Route path='ordersummary' element={<OrderSummaryPage />} />
+          <Route path='ordersuccess' element={<OrderSuccessPage />} />
+        </Route>
       
         { user ? <Route path='/login' element={<Navigate to="/" />} /> : <Route path='/login' element={<Login />} /> }
     
@@ -39,6 +43,8 @@ function App() {
         <Route path='/logout' element={<Logout />} />
 
         <Route path="/testApi" element={<Mockman />} />
+
+        <Route path="*" element={<NotFoundPage />} />
 
       </Routes>
       <Footer />

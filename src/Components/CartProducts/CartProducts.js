@@ -15,6 +15,11 @@ function CartProducts({ checkout }) {
           {cartitems?.map((item)=>{
             return <SingleCartProduct key={item._id} cartItem={item} checkout={checkout} />
           })}
+          { cartitems.length === 0 ? (
+              <div className='empty-cart--container'>
+                <img src="./Images/empty-cart.svg" />
+              </div>
+            ) : null}
       </div>
   )
 }
