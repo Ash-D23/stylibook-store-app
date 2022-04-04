@@ -35,7 +35,7 @@ const AddressProvider = ({ children }) => {
         setaddressList(res.data?.Address)
         setisloading(false)
       }catch(err){
-        console.log(err)
+        console.error(err)
         setisloading(false)
       }
     }
@@ -52,7 +52,7 @@ const AddressProvider = ({ children }) => {
         setisloading(false)
         toastsuccess("Added Address Sucessfully")
       }catch(err){
-        console.log(err)
+        console.error(err)
         setisloading(false)
         toasterror()
       }
@@ -66,7 +66,7 @@ const AddressProvider = ({ children }) => {
         setisloading(false)
         toastsuccess("Deleted Address Sucessfully")
       }catch(err){
-        console.log(err)
+        console.error(err)
         setisloading(false)
         toasterror()
       }
@@ -80,7 +80,7 @@ const AddressProvider = ({ children }) => {
         setisloading(false)
         toastsuccess("Edited Address Sucessfully")
       }catch(err){
-        console.log(err)
+        console.error(err)
         setisloading(false)
         toasterror()
       }

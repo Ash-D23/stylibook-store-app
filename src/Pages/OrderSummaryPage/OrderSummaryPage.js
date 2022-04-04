@@ -31,7 +31,7 @@ function OrderSummaryPage() {
         emptyCart()
         navigate("/checkout/ordersuccess")
     }catch(err){
-        console.log(err)
+        console.error(err)
         setLoading(false)
     }
   }

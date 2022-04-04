@@ -27,7 +27,7 @@ function UserProfile() {
           setuser(userProfile)
           toastsuccess("Updated User Succesfully")
       }catch(err){
-          console.log(err)
+          console.error(err)
           userProfileDispatch({ type: 'resetProfile', payload: user})
           toasterror("There was an Error")
       }

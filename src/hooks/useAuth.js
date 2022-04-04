@@ -14,7 +14,7 @@ export const useAuth = () => {
             setuser(userObj);
             toastsuccess("Login Successfull")
         } catch (err) {
-            console.log(err);
+            console.error(err);
             toasterror("Login Failed")
         }
     };
@@ -27,7 +27,7 @@ export const useAuth = () => {
             setuser(userObj);
             toastsuccess("Sign Up Successfull")
         } catch (err) {
-            console.log(err);
+            console.error(err);
             toasterror("An Error Occuered")
         }
     };

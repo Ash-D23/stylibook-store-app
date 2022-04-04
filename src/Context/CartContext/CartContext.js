@@ -25,7 +25,7 @@ const CartProvider = ({children}) => {
             let result = await axios.get('/api/user/cart', config)
             setcartitems(result.data?.cart)
           }catch(err){
-            console.log(err)
+            console.error(err)
           }
     }
 
@@ -65,7 +65,7 @@ const CartProvider = ({children}) => {
             setcartitems(result.data?.cart)
             toastsuccess("Added Item to cart")
           }catch(err){
-            console.log(err)
+            console.error(err)
             toasterror("There was an error")
           }
         }
@@ -79,7 +79,7 @@ const CartProvider = ({children}) => {
             setcartloading(false)
             toastsuccess('Removed Item from Cart')
         }catch(err){
-            console.log(err)
+            console.error(err)
             setcartloading(false)
             toasterror('There was an error')
         }
@@ -94,7 +94,7 @@ const CartProvider = ({children}) => {
             setcartitems(cartitems.map((item) => item._id === _id ? {...item, quantity: item.quantity + 1} : item))
             setcartloading(false)
         }catch(err){
-            console.log(err)
+            console.error(err)
         }
         
     }
@@ -109,7 +109,7 @@ const CartProvider = ({children}) => {
                 setcartitems(cartitems.map((cartProduct) => cartProduct._id === item._id ? {...cartProduct, quantity: cartProduct.quantity - 1} : cartProduct))
                 setcartloading(false)
             }catch(err){
-                console.log(err)
+                console.error(err)
                 setcartloading(false)
             }
         }

@@ -23,7 +23,7 @@ const WishlistProvider = ({children}) => {
             let result = await axios.get('/api/user/wishlist', config)
             setwishlistitems(result.data?.wishlist)
           }catch(err){
-            console.log(err)
+            console.error(err)
           }
     }
 
@@ -41,7 +41,7 @@ const WishlistProvider = ({children}) => {
             let result = await axios.post('/api/user/wishlist', { product: { ...item } } , config)
             setwishlistitems(result.data?.wishlist)
           }catch(err){
-            console.log(err)
+            console.error(err)
           }
     }
 
@@ -63,7 +63,7 @@ const WishlistProvider = ({children}) => {
             let result = await axios.delete('/api/user/wishlist/'+_id, config)
             setwishlistitems(wishlistitems.filter((item)=> item._id != _id))
         }catch(err){
-            console.log(err)
+            console.error(err)
         }
 
     }

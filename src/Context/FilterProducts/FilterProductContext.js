@@ -26,7 +26,7 @@ const FilterProductsProvider = ({children}) => {
           let result = await axios.get('/api/products')
           productdispatch({ type: PRODUCTS_ACTIONS.SET_PRODUCTS , payload: result.data.products})
         }catch(err){
-          console.log(err)
+          console.error(err)
         }finally{
           productdispatch({ type: PRODUCTS_ACTIONS.PRODUCT_LOADING , payload: false})
         }

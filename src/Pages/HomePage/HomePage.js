@@ -17,7 +17,7 @@ function HomePage() {
       setcategories(categoryresult.data.categories)
       setfeaturedproducts(featuredproductsresult.data.Featuredproducts )
     }catch(err){
-      console.log(err)
+      console.error(err)
     }finally{
       setisloading(false)
     }

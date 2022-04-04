@@ -16,7 +16,7 @@ function SingleProductPage() {
       }
       setisLoading(false)
     }catch(err){
-      console.log(err)
+      console.error(err)
       setisLoading(false)
     }
   }
