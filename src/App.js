@@ -1,13 +1,16 @@
 import { Route, Routes, Navigate } from "react-router-dom";
+import Mockman from "mockman-js";
+import { ToastContainer } from 'react-toastify';
+
 import { HomePage, ProductListingPage, SingleProductPage, CartManagementPage, WishlistPage, UserProfile,
   Login, SignUp, Logout, CheckoutPage, SelectAddressPage, OrderSummaryPage, OrderSuccessPage, NotFoundPage } from "./Pages";
 import { Footer, Navigation } from './Components';
-import "./App.css";
-import Mockman from "mockman-js";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import { useAuthContext } from "./Context";
 import RequireAuth from "./hooks/RequireAuth";
+
+import 'react-toastify/dist/ReactToastify.css';
+import "./App.css";
 
 function App() {
 

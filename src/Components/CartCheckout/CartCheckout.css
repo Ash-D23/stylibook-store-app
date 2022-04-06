@@ -19,6 +19,16 @@
     margin: var(--margin-small) 0
 }
 
+.apply-coupon p{
+    border-bottom: 1px solid var(--text-clr-primary);
+}
+
+.apply-coupon p:hover{
+    cursor: pointer;
+    color: var(--clr-secondary);
+    border-bottom: 1px solid var(--clr-secondary);
+}
+
 @media only screen and (max-width: 700px){
 
     .checkout__Cart{
