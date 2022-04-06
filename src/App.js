@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Mockman from "mockman-js";
 import { ToastContainer } from 'react-toastify';
 
@@ -15,6 +15,10 @@ import "./App.css";
 function App() {
 
   const { user } = useAuthContext()
+
+  const location = useLocation()
+
+  const pathName = location.state?.from || '/'
   
   return (
     <div>
@@ -39,7 +43,7 @@ function App() {
           <Route path='ordersuccess' element={<OrderSuccessPage />} />
         </Route>
       
-        { user ? <Route path='/login' element={<Navigate to="/" />} /> : <Route path='/login' element={<Login />} /> }
+        { user ? <Route path='/login' element={<Navigate to={pathName} />} /> : <Route path='/login' element={<Login />} /> }
     
         { user ? <Route path='/signup' element={<Navigate to="/" />} /> : <Route path='/signup' element={<SignUp />} /> }
       
