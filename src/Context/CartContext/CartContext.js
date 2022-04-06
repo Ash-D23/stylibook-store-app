@@ -11,6 +11,16 @@ const CartProvider = ({children}) => {
 
     const [cartitems, setcartitems] = useState([])
     const [cartloading, setcartloading] = useState(false)
+    const [appliedCoupon, setappliedCoupon] = useState(null)
+
+    const applyCoupon = (item) => {
+        if(item.name === appliedCoupon?.name){
+            toasterror("Coupon Already Applied")
+            return
+        }
+        setappliedCoupon(item)
+        toastsuccess("Coupon Applied")
+    }
 
     const {user} = useAuthContext()
 
@@ -19,6 +29,10 @@ const CartProvider = ({children}) => {
           authorization: user?.token,
         }
     }
+
+    const discount = 0
+
+    const deliveryCharge = 0
 
     const getcartItems = async () => {
         try{
@@ -115,9 +129,12 @@ const CartProvider = ({children}) => {
         }
     }
 
-    const emptyCart = () => setcartitems([])
+    const emptyCart = () => {
+        setcartitems([])
+        setappliedCoupon(null)
+    }
 
-    return <CartContext.Provider value={{ calculateTotal, cartloading, cartitems, emptyCart, addtocart, totalitemsincart, checkitemincart, removeproductfromcart, increasequantity, decreasequantity}}>
+    return <CartContext.Provider value={{ calculateTotal, discount, deliveryCharge, appliedCoupon, applyCoupon, cartloading, cartitems, emptyCart, addtocart, totalitemsincart, checkitemincart, removeproductfromcart, increasequantity, decreasequantity}}>
         {children}
     </CartContext.Provider>
 }

@@ -40,3 +40,4 @@ React JS
 * Loaders & Toasts
 * User Profile Page
 * Order Summary Page
+* Apply Coupons

@@ -1,0 +1,35 @@
+.actions--coupon{
+    justify-content: center;
+}
+
+.coupon__input--container{
+    display: flex;
+}
+
+.coupon__modal .coupon__input{
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--text-clr-primary);
+}
+
+.coupon__modal .coupon__input:focus{
+    border: none;
+    border-bottom: 1px solid var(--text-clr-primary);
+    outline: none;
+}
+
+.coupon__modal .modal__container{
+    max-width: 30rem;
+}
+
+.coupon--item{
+    padding: var(--padding-medium) var(--padding-small);
+    border-bottom: 1px solid var(--text-clr-primary);
+}
+
+.coupon--item:hover{
+    cursor: pointer;
+    background-color: var(--clr-secondary);
+    color: var(--text-clr-secondary);
+    border-bottom: none;
+}

@@ -24,6 +24,9 @@ import {
   getCategoryHandler,
 } from "./backend/controllers/CategoryController";
 import {
+  getAllCouponsHandler,
+} from "./backend/controllers/CouponsController";
+import {
   getAllProductsHandler,
   getProductHandler,
   getFeaturedProductshandler,
@@ -38,6 +41,7 @@ import {
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
 import { categories } from "./backend/db/categories";
+import { coupons } from "./backend/db/coupons";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
 import { reviews } from "./backend/db/reviews";
@@ -55,7 +59,8 @@ export function makeServer({ environment = "development" } = {}) {
       cart: Model,
       wishlist: Model,
       review: Model,
-      address: Model
+      address: Model,
+      coupon: Model
     },
 
     // Runs on the start of the server
@@ -71,6 +76,8 @@ export function makeServer({ environment = "development" } = {}) {
       );
 
       categories.forEach((item) => server.create("category", { ...item }));
+
+      coupons.forEach((item) => server.create("coupon", { ...item }));
 
       reviews.forEach((item) => server.create("review", { ...item }));
     },
@@ -92,6 +99,9 @@ export function makeServer({ environment = "development" } = {}) {
       // categories routes (public)
       this.get("/categories", getAllCategoriesHandler.bind(this));
       this.get("/categories/:categoryId", getCategoryHandler.bind(this));
+
+      // coupons
+      this.get('/coupons', getAllCouponsHandler.bind(this))
 
       // cart routes (private)
       this.get("/user/cart", getCartItemsHandler.bind(this));

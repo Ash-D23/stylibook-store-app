@@ -22,7 +22,7 @@ function CartManagementPage() {
   return (
     <div className="checkout">
       <CartProducts />
-      <CartCheckout label={"Checkout"} nextpath={navigatetocheckout} />
+      <CartCheckout label={"Checkout"} nextpath={navigatetocheckout} showApplyCoupon={true} />
     </div>
   )
 }
