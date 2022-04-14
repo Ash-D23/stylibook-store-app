@@ -37,13 +37,25 @@
 
 .review--users{
     display: flex;
-    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 900px){
     .review__input{
         width: 70%;
+    }
+
+    .review--users{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
     }
 
 }
