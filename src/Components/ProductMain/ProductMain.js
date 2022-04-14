@@ -3,10 +3,11 @@ import './ProductMain.css';
 import { Ratings } from '../Ratings/Ratings';
 import { useAuthContext, useCart, useWishlist } from '../../Context';
 import { useNavigate } from 'react-router-dom';
+import { NotFoundPage } from '../../Pages';
 
 function ProductMain({ product }) {
   
-  const { _id, img, productName, seller, price, description, category ,originalprice, ratings} = product
+  const { _id, img, productName, seller, price, description, category ,originalprice, ratings } = product || {}
 
   const { user } = useAuthContext()
 
@@ -41,7 +42,7 @@ function ProductMain({ product }) {
 
   let navigate = useNavigate()
 
-  return (
+  return !product ? <NotFoundPage /> : (
     <div className="single-product--container">
         <div className="product__image--container">
             <div>
@@ -56,7 +57,7 @@ function ProductMain({ product }) {
 
         <div className="product__description">
             <h2 className="product__title margin-bottom--large">{productName}</h2>
-            <p className="margin-tb--small">{category.replace('_',' ')}</p>
+            <p className="margin-tb--small">{category?.replace('_',' ')}</p>
 
             <p className="clr--secondary text--bold margin-tb--medium">Rs. {price} <span className="text--line-through"> {originalprice} </span></p>
 
