@@ -17,3 +17,4 @@ export { ProductMain } from './ProductMain/ProductMain';
 export { Ratings } from './Ratings/Ratings';
 export { SingleCartProduct } from './SingleCartProduct/SingleCartProduct';
 export { SingleProduct } from './SingleProduct/SingleProduct';
+export { ProductReviews } from './ProductReviews/ProductReviews';
