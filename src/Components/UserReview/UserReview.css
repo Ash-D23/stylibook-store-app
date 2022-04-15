@@ -1,0 +1,9 @@
+.review--actions{
+    width: 200px;
+    border: 1px solid grey;
+    position: absolute;
+    right: 0;
+    bottom: -35px;
+    z-index: 2;
+    background-color: aliceblue;
+}
