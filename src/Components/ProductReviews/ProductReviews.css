@@ -30,7 +30,7 @@
     padding: var(--padding-large);
 }
 
-.review--users p{
+.review--users p, .review__input--edit{
     line-height: 1.5;
     flex-grow: 1;
 }
@@ -42,6 +42,13 @@
     margin-left: auto;
     margin-right: auto;
     width: 80%;
+}
+
+.review__input--edit{
+    padding: var(--padding-small);
+    border: none;
+    border-bottom: 1px solid var(--clr-grey);
+    font-size: 1.6rem;
 }
 
 @media only screen and (max-width: 900px){

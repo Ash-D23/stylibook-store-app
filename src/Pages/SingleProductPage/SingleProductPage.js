@@ -30,6 +30,10 @@ function SingleProductPage() {
     setproductReviews([...productReviews, newobj])
   }
 
+  const DeleteReview = (_id) => {
+    setproductReviews(productReviews.filter((item) => item._id !== _id))
+  }
+
   useEffect(() => {
     getSingleProduct()
   }, [])
