@@ -18,3 +18,13 @@
 .review--actions p:hover{
     background-color: var(--clr-grey);
 }
+
+.save--icon{
+    font-size: var(--text-large);
+    color: #1d4ed8;
+}
+
+.cancel--icon{
+    font-size: var(--text-large);
+    color: var(--clr-secondary)
+}
