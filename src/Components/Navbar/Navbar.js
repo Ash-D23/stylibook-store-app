@@ -141,23 +141,23 @@ function Navbar({ onMenuClick }) {
 
                 </li>
                 { user ? <li className="navbar__item">
-                    <i className="fas fa-user"></i>
+                    <Link to="/profile"><i className="fas fa-user"></i></Link>
                     <Link className="icon__text" to="/profile">Profile</Link>
                 </li> : null }
                 <li className="navbar__item">
-                    <i className="fas fa-heart"></i>
+                    <Link to="/wishlist"><i className="fas fa-heart"></i></Link>
                     <Link className="icon__text" to="/wishlist">Wishlist</Link>
                 </li>
                 <li className="navbar__item ">
-                    <div className="badge-content">
+                    <Link to="/cart"><div className="badge-content">
                         <i className="fas fa-shopping-cart"></i>
                         <div className="badge badge--round badge-topright badge--small">{totalitemsincart()}</div>
-                    </div>
+                    </div></Link>
                     
                     <Link className="icon__text" to="/cart">Cart</Link>
                 </li>
                 { user ? <li className="navbar__item">
-                    <i className="fas fa-sign-out-alt"></i>
+                    <Link to="/logout"><i className="fas fa-sign-out-alt"></i></Link>
                     <Link className="icon__text" to="/logout">Logout</Link>
                 </li> : null }
                 { !user ? <li className="navbar__item">
