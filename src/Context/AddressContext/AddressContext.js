@@ -2,10 +2,9 @@ import { createContext, useContext, useState, useEffect } from "react";
 import axios from 'axios';
 import { useAuthContext } from "../AuthContext/AuthContext";
 import { toasterror, toastsuccess } from "../../Utilities";
+import { useCheckout } from "../CheckoutContext/CheckoutContext";
 
 const AddressContext = createContext();
-
-
 
 const useAddress = () => {
     const context = useContext(AddressContext)
@@ -19,6 +18,7 @@ const AddressProvider = ({ children }) => {
 
     const [addressList, setaddressList] = useState()
     const [isloading, setisloading] = useState(false)  
+    const { onselect, selectedAddress, updateSelectedAddress } = useCheckout()
 
     const {user} = useAuthContext()
 
@@ -65,6 +65,9 @@ const AddressProvider = ({ children }) => {
         setaddressList(addressList.filter((item)=> item._id !== _id))
         setisloading(false)
         toastsuccess("Deleted Address Sucessfully")
+        if(_id === selectedAddress?._id){
+          updateSelectedAddress(null)
+        }
       }catch(err){
         console.error(err)
         setisloading(false)
@@ -79,6 +82,9 @@ const AddressProvider = ({ children }) => {
         setaddressList(res.data?.address)
         setisloading(false)
         toastsuccess("Edited Address Sucessfully")
+        if(address?._id === selectedAddress?._id){
+          updateSelectedAddress(address)
+        }
       }catch(err){
         console.error(err)
         setisloading(false)

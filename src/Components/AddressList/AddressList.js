@@ -10,7 +10,6 @@ function AddressList() {
 
   const { selectedAddress } = useCheckout()
 
-   
   return (
     <div className="container__flex--center margin-tb--medium">
       <div className="container--100 padding--medium">

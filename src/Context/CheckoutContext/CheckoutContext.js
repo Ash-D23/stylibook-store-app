@@ -8,6 +8,8 @@ const CheckoutProvider = ({ children }) => {
 
     const [selectedAddress, setselectedAddress] = useState(null);
 
+    const updateSelectedAddress = (address) => setselectedAddress(address)
+
     const onselect = (address) => {
         if(address._id === selectedAddress?._id){
             setselectedAddress(null)
@@ -16,7 +18,7 @@ const CheckoutProvider = ({ children }) => {
         }
     }
 
-    return <CheckoutContext.Provider value={{ selectedAddress, onselect}}>
+    return <CheckoutContext.Provider value={{ selectedAddress, onselect, updateSelectedAddress}}>
         {children}
     </CheckoutContext.Provider>
 }
