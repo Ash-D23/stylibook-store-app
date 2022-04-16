@@ -18,7 +18,7 @@ const AddressProvider = ({ children }) => {
 
     const [addressList, setaddressList] = useState()
     const [isloading, setisloading] = useState(false)  
-    const { onselect, selectedAddress, updateSelectedAddress } = useCheckout()
+    const { selectedAddress, updateSelectedAddress } = useCheckout()
 
     const {user} = useAuthContext()
 
