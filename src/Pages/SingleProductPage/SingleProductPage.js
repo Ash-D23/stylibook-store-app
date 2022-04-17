@@ -49,7 +49,7 @@ function SingleProductPage() {
 
   const DeleteReview = async (_id) => {
     try{
-      const result = await axios.delete('/api/reviews/'+_id, config)
+      await axios.delete('/api/reviews/'+_id, config)
       setproductReviews(productReviews.filter((item) => item._id !== _id))
     }catch(err){
       console.error(err)
@@ -58,7 +58,7 @@ function SingleProductPage() {
 
   const EditReview = async (review) => {
     try{
-      const result = await axios.post('/api/reviews/edit', review, config)
+      await axios.post('/api/reviews/edit', review, config)
       setproductReviews(productReviews.map((item) => item._id === review._id ? review : item))
     }catch(err){
       console.error(err)
