@@ -9,8 +9,8 @@ const useCart = () => useContext(CartContext)
 
 const CartProvider = ({children}) => {
 
-    const [cartitems, setcartitems] = useState([])
-    const [cartloading, setcartloading] = useState(false)
+    const [cartItems, setcartItems] = useState([])
+    const [cartLoading, setcartLoading] = useState(false)
     const [appliedCoupon, setappliedCoupon] = useState(null)
 
     const applyCoupon = (item) => {
@@ -34,10 +34,10 @@ const CartProvider = ({children}) => {
 
     const deliveryCharge = 0
 
-    const getcartItems = async () => {
+    const getCartItems = async () => {
         try{
             let result = await axios.get('/api/user/cart', config)
-            setcartitems(result.data?.cart)
+            setcartItems(result.data?.cart)
           }catch(err){
             console.error(err)
           }
@@ -45,16 +45,16 @@ const CartProvider = ({children}) => {
 
     useEffect(()=>{
         if(user){
-            getcartItems()
+            getCartItems()
         }else{
-            setcartitems([])
+            setcartItems([])
         }
     }, [user])
 
-    const checkitemincart = _id => {
+    const checkItemInCart = _id => {
         let result = false
   
-        cartitems.forEach((item)=>{
+        cartItems.forEach((item)=>{
             if(item._id === _id){
                 result = true
                 return
@@ -65,18 +65,18 @@ const CartProvider = ({children}) => {
     }
 
     const calculateTotal = () => {
-        return cartitems.reduce((acc, curr)=> acc + (parseInt(curr.price)*curr.quantity), 0)
+        return cartItems.reduce((acc, curr)=> acc + (parseInt(curr.price)*curr.quantity), 0)
       }  
   
-    const addtocart = async (item) => {
-        let itemincart = checkitemincart(item._id)
+    const addToCart = async (item) => {
+        let itemincart = checkItemInCart(item._id)
   
         if(itemincart){
-          increasequantity(item)
+          increaseQuantity(item)
         }else{
           try{
             let result = await axios.post('/api/user/cart', { product: { ...item } } , config)
-            setcartitems(result.data?.cart)
+            setcartItems(result.data?.cart)
             toastsuccess("Added Item to cart")
           }catch(err){
             console.error(err)
@@ -85,56 +85,57 @@ const CartProvider = ({children}) => {
         }
     }
 
-    const removeproductfromcart = async (_id) => {
-        setcartloading(true)
+    const removeProductFromCart = async (_id) => {
+        setcartLoading(true)
         try{
-            let result = await axios.delete('/api/user/cart/'+_id, config)
-            setcartitems(cartitems.filter((item)=> item._id !== _id))
-            setcartloading(false)
+            await axios.delete('/api/user/cart/'+_id, config)
+            setcartItems(cartItems.filter((item)=> item._id !== _id))
             toastsuccess('Removed Item from Cart')
         }catch(err){
             console.error(err)
-            setcartloading(false)
             toasterror('There was an error')
+        }finally{
+            setcartLoading(false)
         }
     }
   
-    const totalitemsincart = () => cartitems.reduce((acc, curr)=> acc+curr.quantity, 0)
+    const totalItemsInCart = () => cartItems.reduce((acc, curr)=> acc+curr.quantity, 0)
 
-    const increasequantity = async ({ _id }) => {
-        setcartloading(true)
+    const increaseQuantity = async ({ _id }) => {
+        setcartLoading(true)
         try{
-            let result = await axios.post('/api/user/cart/'+_id, { action: { type: 'increment'}}, config)
-            setcartitems(cartitems.map((item) => item._id === _id ? {...item, quantity: item.quantity + 1} : item))
-            setcartloading(false)
+            await axios.post('/api/user/cart/'+_id, { action: { type: 'increment'}}, config)
+            setcartItems(cartItems.map((item) => item._id === _id ? {...item, quantity: item.quantity + 1} : item))
         }catch(err){
             console.error(err)
+        }finally{
+            setcartLoading(false)
         }
         
     }
 
-    const decreasequantity = async (item) => {
+    const decreaseQuantity = async (item) => {
         if(item.quantity <= 1 ){
-            removeproductfromcart(item._id)
+            removeProductFromCart(item._id)
         }else{
-            setcartloading(true)
+            setcartLoading(true)
             try{
-                let result = await axios.post('/api/user/cart/'+item._id, { action: { type: 'decrement'}}, config)
-                setcartitems(cartitems.map((cartProduct) => cartProduct._id === item._id ? {...cartProduct, quantity: cartProduct.quantity - 1} : cartProduct))
-                setcartloading(false)
+                await axios.post('/api/user/cart/'+item._id, { action: { type: 'decrement'}}, config)
+                setcartItems(cartItems.map((cartProduct) => cartProduct._id === item._id ? {...cartProduct, quantity: cartProduct.quantity - 1} : cartProduct))
             }catch(err){
                 console.error(err)
-                setcartloading(false)
+            }finally{
+                setcartLoading(false)
             }
         }
     }
 
     const emptyCart = () => {
-        setcartitems([])
+        setcartItems([])
         setappliedCoupon(null)
     }
 
-    return <CartContext.Provider value={{ calculateTotal, discount, deliveryCharge, appliedCoupon, applyCoupon, cartloading, cartitems, emptyCart, addtocart, totalitemsincart, checkitemincart, removeproductfromcart, increasequantity, decreasequantity}}>
+    return <CartContext.Provider value={{ calculateTotal, discount, deliveryCharge, appliedCoupon, applyCoupon, cartLoading, cartItems, emptyCart, addToCart, totalItemsInCart, checkItemInCart, removeProductFromCart, increaseQuantity, decreaseQuantity}}>
         {children}
     </CartContext.Provider>
 }

@@ -11,11 +11,11 @@ function ProductMain({ product }) {
 
   const { user } = useAuthContext()
 
-  const { addtocart, checkitemincart } = useCart()
+  const { addToCart, checkItemInCart } = useCart()
 
   const { checkproductinwishlist, addtoWishlist, removefromwishlist } = useWishlist()
 
-  const isProductInCart = checkitemincart(_id)
+  const isProductInCart = checkItemInCart(_id)
 
   const isProductInWishlist = checkproductinwishlist(_id)
 
@@ -32,12 +32,12 @@ function ProductMain({ product }) {
     }
 }
 
-    const checkauthandaddtocart = () => {
+    const checkauthandaddToCart = () => {
     if(!user){
         navigate('/login')
         return
     }
-    addtocart(product)
+    addToCart(product)
     }
 
   let navigate = useNavigate()
@@ -46,12 +46,12 @@ function ProductMain({ product }) {
     <div className="single-product--container">
         <div className="product__image--container">
             <div>
-                <img className="product__image" src={img} />
+                <img className="product__image" src={img} alt="product" />
             </div>
             <div className="product__btn--container margin-tb--large">
             { isProductInWishlist ? <button onClick={toggleWhishlist} className="btn btn--primary btn--icon border--grey view margin-right--medium"><i className="fas fa-heart text--medium "></i>Wishlisted</button> : <button onClick={toggleWhishlist} className="btn btn--primary btn--icon border--grey view margin-right--medium"><i className="far fa-heart text--medium"></i> Wishlist</button> }
             { isProductInCart ? <button onClick={()=> navigate('/cart')}className="btn btn--secondary btn--icon cart">Go to Cart</button> :
-            <button onClick={checkauthandaddtocart} className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button> }                            
+            <button onClick={checkauthandaddToCart} className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button> }                            
             </div>
         </div>
 

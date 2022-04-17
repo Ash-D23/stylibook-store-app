@@ -6,7 +6,7 @@ export const useAuth = () => {
     
     const [user, setuser] = useLocalStorage("user", null);
 
-    const signin = async (data) => {
+    const signIn = async (data) => {
         try {
             let authresult = await axios.post('/api/auth/login', data);
             let userObj = { ...authresult.data?.foundUser };
@@ -19,7 +19,7 @@ export const useAuth = () => {
         }
     };
 
-    const signup = async (data) => {
+    const signUp = async (data) => {
         try {
             let authresult = await axios.post('/api/auth/signup', data);
             let userObj = { ...authresult.data?.createdUser };
@@ -32,9 +32,9 @@ export const useAuth = () => {
         }
     };
 
-    const signout = () => {
+    const signOut = () => {
         setuser(null);
     };
 
-    return { user, setuser, signin, signup, signout };
+    return { user, setuser, signIn, signUp, signOut };
 };

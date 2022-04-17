@@ -36,12 +36,12 @@ function Slider() {
             <p onClick={()=>ChangeActiveImage(-1)} className='slider__arrow arrow--prev'>&#10094;</p>
             <p onClick={()=>ChangeActiveImage(1)} className='slider__arrow arrow--next'>&#10095;</p>
                 
-            <div class="dots">
-                {slider_data?.map((item, index) => <span className={`dot ${index===imageActive ? 'dot--active' : ''}`}></span>)}
+            <div className="dots">
+                {slider_data?.map((item, index) => <span key={index} className={`dot ${index===imageActive ? 'dot--active' : ''}`}></span>)}
             </div>
         </div>
         <div className="container--50 slider--description">
-            <div class="slider--content">
+            <div className="slider--content">
                 <h2 className="text--center shop__title text--light margin-tb--medium">Summer Sale 50% OFF</h2>
                 <p className="text--center text--large text--bold shop__description">Sale is Live 14th - 17th April </p>
                 <div className="container__flex--center margin-tb--large">

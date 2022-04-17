@@ -5,10 +5,10 @@ import './Auth.css';
 
 function Login() {
 
-  const { signin } = useAuthContext();
+  const { signIn } = useAuthContext();
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('')
-  const [ errorvalues, seterrorvalues] = useState({})
+  const [ ErrorValues, setErrorValues] = useState({})
 
   const validateSubmit = () => {
     const errors = {}
@@ -30,18 +30,18 @@ function Login() {
   const loginhandler = () => {
     const errors = validateSubmit()
     if(Object.keys(errors).length === 0){
-      signin({ email, password})
+      signIn({ email, password})
       setemail('')
       setpassword('')
-      seterrorvalues({})
+      setErrorValues({})
     }else{
-      seterrorvalues(errors)
+      setErrorValues(errors)
     }
     
   }
 
   const loginwithtesthandler = () => {
-    signin({ email: 'adarshbalika@gmail.com', password: 'adarshbalika'})
+    signIn({ email: 'adarshbalika@gmail.com', password: 'adarshbalika'})
     setemail('')
     setpassword('')
   }
@@ -53,12 +53,12 @@ function Login() {
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Email</label>
               <input type="text" value={email} onChange={(e)=>setemail(e.target.value)} className="form-field margin-tb--small" placeholder="abc@example.com"/>
-              <span className="error--message">{errorvalues.email}</span>
+              <span className="error--message">{ErrorValues.email}</span>
           </div>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Password</label>
               <input type="password" value={password} onChange={(e)=>setpassword(e.target.value)} className="form-field margin-tb--small" placeholder="Password"/>
-              <span className="error--message">{errorvalues.password}</span>
+              <span className="error--message">{ErrorValues.password}</span>
           </div>
           <button onClick={loginhandler} className="btn btn-auth margin-bottom--medium">Login</button>
           <button onClick={loginwithtesthandler} className="btn btn-auth margin-bottom--medium">Login with test credentials</button>

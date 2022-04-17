@@ -10,7 +10,7 @@ const CheckoutProvider = ({ children }) => {
 
     const updateSelectedAddress = (address) => setselectedAddress(address)
 
-    const onselect = (address) => {
+    const onToggleAddressSelect = (address) => {
         if(address._id === selectedAddress?._id){
             setselectedAddress(null)
         }else{
@@ -18,7 +18,7 @@ const CheckoutProvider = ({ children }) => {
         }
     }
 
-    return <CheckoutContext.Provider value={{ selectedAddress, onselect, updateSelectedAddress}}>
+    return <CheckoutContext.Provider value={{ selectedAddress, onToggleAddressSelect, updateSelectedAddress}}>
         {children}
     </CheckoutContext.Provider>
 }

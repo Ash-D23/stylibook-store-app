@@ -15,7 +15,7 @@ function WishlistPage() {
             })}
             { wishlistitems.length === 0 ? (
               <div className='empty-cart--container'>
-                <img src="./Images/empty-cart.svg" />
+                <img src="./Images/empty-cart.svg" alt="wishlist" />
               </div>
             ) : null}
         </div>  

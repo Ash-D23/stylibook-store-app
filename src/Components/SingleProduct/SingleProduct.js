@@ -8,11 +8,11 @@ function SingleProduct({ product, wishlistproduct }){
 
   const { user } = useAuthContext()
 
-  const { addtocart, checkitemincart } = useCart()
+  const { addToCart, checkItemInCart } = useCart()
 
   const { checkproductinwishlist, addtoWishlist, removefromwishlist } = useWishlist()
 
-  const isProductInCart = checkitemincart(_id)
+  const isProductInCart = checkItemInCart(_id)
 
   const isProductInWishlist = checkproductinwishlist(_id)
 
@@ -31,18 +31,18 @@ function SingleProduct({ product, wishlistproduct }){
       }
   }
 
-  const checkauthandaddtocart = () => {
+  const checkauthandaddToCart = () => {
     if(!user){
         navigate('/login')
         return
     }
-    addtocart(product)
+    addToCart(product)
   }
 
   return (
     <div className="card">
         <div className="card__image--container badge-content">
-            <img onClick={()=> navigate('/product/'+ _id)} className="card__image" src={img} />
+            <img onClick={()=> navigate('/product/'+ _id)} className="card__image" src={img} alt="product" />
             {bestseller && !wishlistproduct ? <p className="badge badge--large badge-card-tr">Best Seller</p> : null}
             { wishlistproduct ?  <i onClick={()=> removefromwishlist(_id)} className="fas fa-times clr--primary card--dismiss card-position--tr"></i> : null}
         </div>
@@ -59,7 +59,7 @@ function SingleProduct({ product, wishlistproduct }){
             <div className="card__actions">
                 <div className="card__actions--buttons">
                 { isProductInCart ? <button onClick={()=> navigate('/cart')}className="btn btn--secondary btn--icon cart">Go to Cart</button> :
-                    <button onClick={()=> checkauthandaddtocart()} className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button> }  
+                    <button onClick={()=> checkauthandaddToCart()} className="btn btn--secondary btn--icon cart"><i className="fas fa-shopping-cart"></i>Add to Cart</button> }  
                 </div>
             </div>
         </div> 

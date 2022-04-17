@@ -10,7 +10,7 @@ function Navbar({ onMenuClick }) {
   const [showSearchItems, setshowSearchItems] = useState(false)
   const [products, setproducts] = useState([])
 
-  const { totalitemsincart } = useCart()
+  const { totalItemsInCart } = useCart()
 
   const navigate = useNavigate()
 
@@ -109,7 +109,7 @@ function Navbar({ onMenuClick }) {
                         to={`/cart`}
                         key={'cart-mobile'}
                     ><i className="fas fa-shopping-cart"></i></NavLink>
-                    <div className="badge badge--round badge-topright badge--medium">{totalitemsincart()}</div>
+                    <div className="badge badge--round badge-topright badge--medium">{totalItemsInCart()}</div>
                 </div>
             </div>
             <ul className="navbar__list-container text--medium margin-top--small">
@@ -135,7 +135,7 @@ function Navbar({ onMenuClick }) {
                    </div>
                     : <div style={{ height: `${2 + SearchProducts.length*2}rem`}}
                      className={`search__items ${ showSearchItems ? `search__items--display` : ''}`}>
-                        {SearchProducts?.map((item) => <p onClick={(e) => handleNavigate(e, item?._id)} className='search__items--list'>{item.productName}</p>)}
+                        {SearchProducts?.map((item) => <p key={item?._id} onClick={(e) => handleNavigate(e, item?._id)} className='search__items--list'>{item.productName}</p>)}
                     </div>}
                 </div>
 
@@ -151,7 +151,7 @@ function Navbar({ onMenuClick }) {
                 <li className="navbar__item ">
                     <Link to="/cart"><div className="badge-content">
                         <i className="fas fa-shopping-cart"></i>
-                        <div className="badge badge--round badge-topright badge--small">{totalitemsincart()}</div>
+                        <div className="badge badge--round badge-topright badge--small">{totalItemsInCart()}</div>
                     </div></Link>
                     
                     <Link className="icon__text" to="/cart">Cart</Link>
@@ -186,7 +186,7 @@ function Navbar({ onMenuClick }) {
                    </div>
                     : <div style={{ height: `${2 + SearchProducts.length*2}rem`}}
                      className={`search__items ${ showSearchItems ? `search__items--mobiledisplay` : ''}`}>
-                        {SearchProducts?.map((item) => <p onClick={(e) => handleNavigate(e, item?._id)} className='search__items--list'>{item.productName}</p>)}
+                        {SearchProducts?.map((item) => <p key={item?._id}  onClick={(e) => handleNavigate(e, item?._id)} className='search__items--list'>{item.productName}</p>)}
               </div>}
           </div>
     </header>

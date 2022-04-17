@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../../Context';
-import { toastsuccess } from '../../Utilities';
 import './CouponModal.css';
 
 function CouponModal({ showModal, closeModal }) {
