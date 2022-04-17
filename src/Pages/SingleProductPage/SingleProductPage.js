@@ -5,7 +5,7 @@ import { ProductMain, Loader }  from '../../Components';
 
 function SingleProductPage() {
 
-  const [singleproduct, setsingleproduct] = useState({})
+  const [singleproduct, setsingleproduct] = useState(null)
   const [isLoading, setisLoading] = useState(true)
 
   const getSingleProduct = async () => {
@@ -21,11 +21,11 @@ function SingleProductPage() {
     }
   }
 
+  const params = useParams()
+
   useEffect(() => {
     getSingleProduct()
-  }, [])
-
-  const params = useParams()
+  }, [params])
   
   return (
     <>

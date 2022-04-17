@@ -26,7 +26,7 @@ function OrderSummaryPage() {
   const navigatetoplaceorder = async () => {
     setLoading(true)
     try{
-        let result = await axios.post('/api/user/emptyCart', {} , config)
+        await axios.post('/api/user/emptyCart', {} , config)
         setLoading(false)
         emptyCart()
         navigate("/checkout/ordersuccess")

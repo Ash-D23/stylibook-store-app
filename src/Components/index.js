@@ -15,5 +15,6 @@ export { Navigation } from './Navigation/Navigation';
 export { ProductList } from './ProductList/ProductList';
 export { ProductMain } from './ProductMain/ProductMain';
 export { Ratings } from './Ratings/Ratings';
+export { Slider } from './Slider/Slider';
 export { SingleCartProduct } from './SingleCartProduct/SingleCartProduct';
 export { SingleProduct } from './SingleProduct/SingleProduct';

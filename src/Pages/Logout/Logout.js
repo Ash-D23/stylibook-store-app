@@ -4,7 +4,7 @@ import { useAuthContext } from '../../Context'
 
 function Logout() {
 
-  const {signout} = useAuthContext()
+  const {signOut} = useAuthContext()
 
   const { user } = useAuthContext()
 
@@ -14,7 +14,7 @@ function Logout() {
     if(!user){
       navigate("/")
     }
-    signout()
+    signOut()
   }, [])
 
   return (

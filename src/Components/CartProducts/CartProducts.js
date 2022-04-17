@@ -6,18 +6,18 @@ import './CartProducts.css'
 
 function CartProducts({ checkout }) {
 
-  const {cartitems, cartloading} = useCart()
+  const {cartItems, cartLoading} = useCart()
   
   return (
       <div className="checkout__products">
-          { cartitems.length === 0 ? <p className="text--large margin--large">No items in Cart</p> : <h3 className="checkout__title margin--large">Items in Cart</h3> }
-          { cartloading && <Loader />}
-          {cartitems?.map((item)=>{
+          { cartItems.length === 0 ? <p className="text--large margin--large">No items in Cart</p> : <h3 className="checkout__title margin--large">Items in Cart</h3> }
+          { cartLoading && <Loader />}
+          {cartItems?.map((item)=>{
             return <SingleCartProduct key={item._id} cartItem={item} checkout={checkout} />
           })}
-          { cartitems.length === 0 ? (
+          { cartItems.length === 0 ? (
               <div className='empty-cart--container'>
-                <img src="./Images/empty-cart.svg" />
+                <img src="./Images/empty-cart.svg" alt="cart product"/>
               </div>
             ) : null}
       </div>

@@ -7,12 +7,12 @@ import { toasterror } from '../../Utilities/ToastMessage';
 
 function CartManagementPage() {
 
-  const { cartitems } = useCart()
+  const { cartItems } = useCart()
 
   const navigate = useNavigate()
 
   const navigatetocheckout = () => {
-    if(cartitems?.length === 0){
+    if(cartItems?.length === 0){
       toasterror("No items in Cart")
       return
     }

@@ -1,4 +1,4 @@
 export const PRODUCTS_ACTIONS = {
-    SET_PRODUCTS: 'setproducts',
+    SET_PRODUCTS: 'setProducts',
     PRODUCT_LOADING: 'productLoading'
 }
