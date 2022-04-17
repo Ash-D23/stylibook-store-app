@@ -50,6 +50,10 @@
     font-size: 1.6rem;
 }
 
+.review__input--edit:focus{
+    outline: none
+}
+
 @media only screen and (max-width: 900px){
     .review__input{
         width: 70%;
