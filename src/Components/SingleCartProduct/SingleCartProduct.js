@@ -4,14 +4,14 @@ import { useCart, useWishlist } from '../../Context'
 function SingleCartProduct({ cartItem, checkout }) {
 
   const { removeProductFromCart, increaseQuantity, decreaseQuantity } = useCart();
-  const { checkproductinwishlist, addtoWishlist, removefromwishlist } = useWishlist();
+  const { checkProductInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
 
   const { _id, productName, img , price, quantity} = cartItem;
 
-  const isProductInWishlist = checkproductinwishlist(_id)
+  const isProductInWishlist = checkProductInWishlist(_id)
 
-  const addtoWishlistandremovefromcart = () => {
-    addtoWishlist(cartItem)
+  const addToWishlistandremovefromcart = () => {
+    addToWishlist(cartItem)
     removeProductFromCart(_id)
   }
 
@@ -35,8 +35,8 @@ function SingleCartProduct({ cartItem, checkout }) {
             <div className="card__actions">
                 { !checkout ?<div className="card__actions--buttons">
                     <button onClick={() => removeProductFromCart(_id)} className="btn btn--secondary btn--icon">Remove from Cart</button>
-                    { !isProductInWishlist ? <button onClick={addtoWishlistandremovefromcart} className="btn btn--primary border--grey">Move to Wishlist</button> :
-                     <button onClick={()=> removefromwishlist(_id)} className="btn btn--primary border--grey">Wishlisted</button> }            
+                    { !isProductInWishlist ? <button onClick={addToWishlistandremovefromcart} className="btn btn--primary border--grey">Move to Wishlist</button> :
+                     <button onClick={()=> removeFromWishlist(_id)} className="btn btn--primary border--grey">Wishlisted</button> }            
                 </div> : null }
             </div>
         </div> 

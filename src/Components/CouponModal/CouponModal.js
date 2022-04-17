@@ -6,7 +6,7 @@ import './CouponModal.css';
 function CouponModal({ showModal, closeModal }) {
 
   const [coupons, setCoupons] = useState([])
-  const [couponSearch, setCouponsearch] = useState('')
+  const [couponSearch, setCouponSearch] = useState('')
   const [error, seterror] = useState(null)
 
   const { calculateTotal, applyCoupon } = useCart()
@@ -14,7 +14,7 @@ function CouponModal({ showModal, closeModal }) {
   const total = calculateTotal()
 
   const handleCloseModal = () => {
-    setCouponsearch('')
+    setCouponSearch('')
     seterror('')
     closeModal()
   }
@@ -25,7 +25,7 @@ function CouponModal({ showModal, closeModal }) {
         handleApplyCoupon(res)
         handleCloseModal()
     }else{
-        setCouponsearch('')
+        setCouponSearch('')
         seterror('Invalid Coupon')
     }
   }
@@ -59,7 +59,7 @@ function CouponModal({ showModal, closeModal }) {
             <div className="form-element--column">
                 <div className='coupon__input--container '>
                     <input type="text" className="form-field coupon__input" value={couponSearch}
-                     onChange={(e) => setCouponsearch(e.target.value)} placeholder="Enter Code"/>
+                     onChange={(e) => setCouponSearch(e.target.value)} placeholder="Enter Code"/>
                     <button onClick={handleSearchCoupon} className='btn btn--secondary'>Apply</button>
                 </div>
                 <span className="error--message margin--small">{error}</span>

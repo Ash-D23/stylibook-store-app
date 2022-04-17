@@ -35,7 +35,7 @@ const WishlistProvider = ({children}) => {
         }
     }, [user])
 
-    const addtoWishlist = async (item) => {
+    const addToWishlist = async (item) => {
         
         try{
             let result = await axios.post('/api/user/wishlist', { product: { ...item } } , config)
@@ -45,7 +45,7 @@ const WishlistProvider = ({children}) => {
           }
     }
 
-    const checkproductinwishlist = (_id) => {
+    const checkProductInWishlist = (_id) => {
         let result = false
   
         wishlistitems.forEach((item) => {
@@ -58,7 +58,7 @@ const WishlistProvider = ({children}) => {
         return result
     }
 
-    const removefromwishlist = async (_id) => {
+    const removeFromWishlist = async (_id) => {
         try{
             let result = await axios.delete('/api/user/wishlist/'+_id, config)
             setwishlistitems(wishlistitems.filter((item)=> item._id != _id))
@@ -69,7 +69,7 @@ const WishlistProvider = ({children}) => {
     }
 
 
-    return <WishlistContext.Provider value={{ wishlistitems, addtoWishlist, removefromwishlist, checkproductinwishlist}}>
+    return <WishlistContext.Provider value={{ wishlistitems, addToWishlist, removeFromWishlist, checkProductInWishlist}}>
         {children}
     </WishlistContext.Provider>
 }

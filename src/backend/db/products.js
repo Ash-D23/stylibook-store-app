@@ -15,7 +15,7 @@ export const products = [
     category:'Non_Fiction', 
     bestseller: true, 
     price: '500',
-    originalprice: '700', 
+    originalPrice: '700', 
     ratings: 5
   },
   { 
@@ -27,7 +27,7 @@ export const products = [
     category:'Non_Fiction', 
     bestseller: true, 
     price: '600',
-    originalprice: '700', 
+    originalPrice: '700', 
     ratings: 5
   },
   { 
@@ -39,7 +39,7 @@ export const products = [
     category:'Fiction', 
     bestseller: true, 
     price: '800',
-    originalprice: '900', 
+    originalPrice: '900', 
     ratings: 5
   },
   { 
@@ -51,7 +51,7 @@ export const products = [
     category:'Fiction', 
     bestseller: false, 
     price: '100',
-    originalprice: '300', 
+    originalPrice: '300', 
     ratings: 3
   },
   { 
@@ -63,7 +63,7 @@ export const products = [
     category:'Academics', 
     bestseller: false, 
     price: '500',
-    originalprice: '700', 
+    originalPrice: '700', 
     ratings: 2
   },
   { 
@@ -75,7 +75,7 @@ export const products = [
     category:'Non_Fiction', 
     bestseller: false, 
     price: '300',
-    originalprice: '500', 
+    originalPrice: '500', 
     ratings: 4
   },
   { 
@@ -87,7 +87,7 @@ export const products = [
     category:'Fantasy', 
     bestseller: false, 
     price: '900',
-    originalprice: '1000', 
+    originalPrice: '1000', 
     ratings: 5
   },
 ];

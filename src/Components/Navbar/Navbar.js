@@ -6,9 +6,9 @@ import './Navbar.css';
 
 function Navbar({ onMenuClick }) {
 
-  const [search, setsearch] = useState('')
-  const [showSearchItems, setshowSearchItems] = useState(false)
-  const [products, setproducts] = useState([])
+  const [search, setSearch] = useState('')
+  const [showSearchItems, setShowSearchItems] = useState(false)
+  const [products, setProducts] = useState([])
 
   const { totalItemsInCart } = useCart()
 
@@ -18,7 +18,7 @@ function Navbar({ onMenuClick }) {
       (async function(){
         try{
             let result = await axios.get('/api/products')
-            setproducts(result.data.products)
+            setProducts(result.data.products)
           }catch(err){
             console.error(err)
           }
@@ -33,8 +33,8 @@ function Navbar({ onMenuClick }) {
 
   const searchSubmit = () => {
     let path = '/products?search='+search
-    setsearch('')
-    setshowSearchItems(false)
+    setSearch('')
+    setShowSearchItems(false)
     navigate(path)
   }
 
@@ -47,14 +47,14 @@ function Navbar({ onMenuClick }) {
     }
 
     const handleNavigate = (e, id) => {
-        setshowSearchItems(false)
-        setsearch('')
+        setShowSearchItems(false)
+        setSearch('')
         navigate('/product/'+id)
     }
 
     const handleClear = () => {
-        setsearch('')
-        setshowSearchItems(false)
+        setSearch('')
+        setShowSearchItems(false)
     }
 
     const SearchProducts = filterProductsBySearch(products, search)
@@ -118,8 +118,8 @@ function Navbar({ onMenuClick }) {
                     <div className="search__container">
                         <i onClick={searchSubmit} className="fas fa-search padding--small text--medium clr--secondary"></i>
                         <input 
-                        onChange={(e)=>setsearch(e.target.value)} 
-                        onFocus={() => setshowSearchItems(true)}
+                        onChange={(e)=>setSearch(e.target.value)} 
+                        onFocus={() => setShowSearchItems(true)}
                         value={search} 
                         className="search__input" 
                         placeholder="Search" 
@@ -169,9 +169,9 @@ function Navbar({ onMenuClick }) {
               <div className="mobile__search__container">
                   <i onClick={searchSubmit} className="fas fa-search padding--small text--medium clr--secondary"></i>
                   <input 
-                      onChange={(e)=>setsearch(e.target.value)} 
+                      onChange={(e)=>setSearch(e.target.value)} 
                       value={search} 
-                      onFocus={() => setshowSearchItems(true)}
+                      onFocus={() => setShowSearchItems(true)}
                       className="search__input" 
                       placeholder="Search" 
                       type="text" 
