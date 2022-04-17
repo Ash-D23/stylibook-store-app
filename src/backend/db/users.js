@@ -15,6 +15,6 @@ export const users = [
     password: "adarshbalika",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    address: [{ _id:1 , name: 'Home', address: 'M.A Chinaswamy Stadium, New Street 13', city: 'Bangalore' }],
+    address: [],
   },
 ];

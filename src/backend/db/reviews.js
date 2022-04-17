@@ -7,9 +7,15 @@ import { v4 as uuid } from "uuid";
 
 export const reviews = [
   {
-    _id: uuid(),
-    productId: 1,
+    _id: '1',
+    productId: '1',
     review: "good",
+    rating: "4"
+  },
+  {
+    _id: '2',
+    productId: '2',
+    review: "good work",
     rating: "4"
   },
 ];

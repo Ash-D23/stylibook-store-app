@@ -33,7 +33,10 @@ import {
 } from "./backend/controllers/ProductController";
 import {
   getReviews,
-  getReviewbyProduct
+  getReviewbyProduct,
+  handleEditReview,
+  handleDeleteReview,
+  addReviewHandler
 } from "./backend/controllers/ReviewController"
 import {
   addItemToWishlistHandler,
@@ -133,6 +136,9 @@ export function makeServer({ environment = "development" } = {}) {
       // reviews
       this.get("/reviews", getReviews.bind(this))
       this.get("/reviews/:productId", getReviewbyProduct.bind(this))
+      this.post("/reviews/edit", handleEditReview.bind(this))
+      this.delete("/reviews/:id", handleDeleteReview.bind(this))
+      this.post("/reviews/add", addReviewHandler.bind(this))
     },
   });
 }
