@@ -4,7 +4,7 @@ import './UserReview.css'
 
 function UserReview({ userReview, DeleteReview, EditReview }) {
 
-  const {_id, userID, userProfile, review, ratings} = userReview
+  const {_id, userId, userProfile, review, ratings} = userReview
 
   const { user } = useAuthContext()
 
@@ -39,7 +39,7 @@ function UserReview({ userReview, DeleteReview, EditReview }) {
         </div>
         <p className="margin-left--medium"> <span className="para-rating__container">{ratings} &#9733;</span> {review} </p>
         <div className='container--relative'>
-        { userID === user?._id ? <i onClick={()=>setshowOptions(prev => !prev)} className="fas fa-ellipsis-v pointer"></i> : null }
+        { userId === user?._id ? <i onClick={()=>setshowOptions(prev => !prev)} className="fas fa-ellipsis-v pointer"></i> : null }
         { showOptions ? <div className='review--actions'>
           <p onClick={handleEdit}>Edit</p>
           <p onClick={() => DeleteReview(_id)}>Delete</p>
