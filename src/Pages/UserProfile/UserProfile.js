@@ -9,7 +9,7 @@ function UserProfile() {
 
   const [editMode, seteditMode] = useState(false)
 
-  const { user, setuser } = useAuthContext()
+  const { user, setUser } = useAuthContext()
 
   const [userProfile, userProfileDispatch ] = useReducer( userProfileReducerFn , user )
 
@@ -24,7 +24,7 @@ function UserProfile() {
   const onUpdateSubmit = async ()=> {
       try{
           await axios.post('/api/user/profile', { updatedUser: userProfile} ,config)  
-          setuser(userProfile)
+          setUser(userProfile)
           toastsuccess("Updated User Succesfully")
       }catch(err){
           console.error(err)

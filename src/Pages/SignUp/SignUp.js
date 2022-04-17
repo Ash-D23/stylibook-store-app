@@ -5,9 +5,9 @@ import { useAuthContext } from '../../Context'
 function SignUp() {
 
   const { signUp } = useAuthContext()
-  const [email, setemail] = useState('');
-  const [password, setpassword] = useState('')
-  const [confirmPassword, setconfirmPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [ErrorValues, setErrorValues] = useState({})
 
   const validateSubmit = () => {
@@ -37,9 +37,9 @@ function SignUp() {
     const errors = validateSubmit()
     if(Object.keys(errors).length === 0){
       signUp({ email, password})
-      setemail('')
-      setpassword('')
-      setconfirmPassword('')
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
       setErrorValues('')
     }else{
       setErrorValues(errors)
@@ -53,17 +53,17 @@ function SignUp() {
           <h3 className="text--center margin-tb--medium">Sign Up</h3>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Email</label>
-              <input value={email} onChange={(e)=> setemail(e.target.value)} type="text" className="form-field margin-tb--small" placeholder="abc@example.com"/>
+              <input value={email} onChange={(e)=> setEmail(e.target.value)} type="text" className="form-field margin-tb--small" placeholder="abc@example.com"/>
               <span className="error--message">{ErrorValues.email}</span>
           </div>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Password</label>
-              <input value={password} onChange={(e)=> setpassword(e.target.value)} type="password" className="form-field margin-tb--small" placeholder="Password"/>
+              <input value={password} onChange={(e)=> setPassword(e.target.value)} type="password" className="form-field margin-tb--small" placeholder="Password"/>
               <span className="error--message">{ErrorValues.password}</span>
           </div>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Confirm Password</label>
-              <input value={confirmPassword} onChange={(e)=> setconfirmPassword(e.target.value)} type="password" className="form-field margin-tb--small" placeholder="Password"/>
+              <input value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)} type="password" className="form-field margin-tb--small" placeholder="Password"/>
               <span className="error--message">{ErrorValues.confirmPassword}</span>
           </div>
           <div className="auth__description">

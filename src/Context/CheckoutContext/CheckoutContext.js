@@ -6,15 +6,15 @@ const useCheckout = () => useContext(CheckoutContext)
 
 const CheckoutProvider = ({ children }) => {
 
-    const [selectedAddress, setselectedAddress] = useState(null);
+    const [selectedAddress, setSelectedAddress] = useState(null);
 
-    const updateSelectedAddress = (address) => setselectedAddress(address)
+    const updateSelectedAddress = (address) => setSelectedAddress(address)
 
     const onToggleAddressSelect = (address) => {
         if(address._id === selectedAddress?._id){
-            setselectedAddress(null)
+            setSelectedAddress(null)
         }else{
-            setselectedAddress(address)
+            setSelectedAddress(address)
         }
     }
 

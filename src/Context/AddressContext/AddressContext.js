@@ -16,7 +16,7 @@ const useAddress = () => {
 
 const AddressProvider = ({ children }) => {
 
-    const [addressList, setaddressList] = useState()
+    const [addressList, setAddressList] = useState()
     const [isLoading, setisLoading] = useState(false)  
     const { selectedAddress, updateSelectedAddress } = useCheckout()
 
@@ -32,7 +32,7 @@ const AddressProvider = ({ children }) => {
       setisLoading(true)
       try{
         const res = await axios.get('api/user/address', config);
-        setaddressList(res.data?.Address)
+        setAddressList(res.data?.Address)
       }catch(err){
         console.error(err)
       }finally{
@@ -48,7 +48,7 @@ const AddressProvider = ({ children }) => {
       try{
         setisLoading(true)
         const res = await axios.post('api/user/address', { address }, config);
-        setaddressList(res.data?.address)
+        setAddressList(res.data?.address)
         toastsuccess("Added Address Sucessfully")
       }catch(err){
         console.error(err)
@@ -62,7 +62,7 @@ const AddressProvider = ({ children }) => {
       setisLoading(true)
       try{
         await axios.delete('api/user/address/'+_id, config);
-        setaddressList(addressList.filter((item)=> item._id !== _id))
+        setAddressList(addressList.filter((item)=> item._id !== _id))
         toastsuccess("Deleted Address Sucessfully")
         if(_id === selectedAddress?._id){
           updateSelectedAddress(null)
@@ -79,7 +79,7 @@ const AddressProvider = ({ children }) => {
       setisLoading(true)
       try{
         const res = await axios.post('api/user/address/'+address._id, { updatedAddress: address }, config);
-        setaddressList(res.data?.address)
+        setAddressList(res.data?.address)
         toastsuccess("Edited Address Sucessfully")
         if(address?._id === selectedAddress?._id){
           updateSelectedAddress(address)

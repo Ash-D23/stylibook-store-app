@@ -5,8 +5,8 @@ import './CouponModal.css';
 
 function CouponModal({ showModal, closeModal }) {
 
-  const [coupons, setcoupons] = useState([])
-  const [couponSearch, setcouponSearch] = useState('')
+  const [coupons, setCoupons] = useState([])
+  const [couponSearch, setCouponsearch] = useState('')
   const [error, seterror] = useState(null)
 
   const { calculateTotal, applyCoupon } = useCart()
@@ -14,7 +14,7 @@ function CouponModal({ showModal, closeModal }) {
   const total = calculateTotal()
 
   const handleCloseModal = () => {
-    setcouponSearch('')
+    setCouponsearch('')
     seterror('')
     closeModal()
   }
@@ -25,7 +25,7 @@ function CouponModal({ showModal, closeModal }) {
         handleApplyCoupon(res)
         handleCloseModal()
     }else{
-        setcouponSearch('')
+        setCouponsearch('')
         seterror('Invalid Coupon')
     }
   }
@@ -33,7 +33,7 @@ function CouponModal({ showModal, closeModal }) {
   const getCoupons = async () => {
       try{
         let result = await axios.get('/api/coupons')
-        setcoupons(result.data?.coupons?.filter((item)=> item.price < total))
+        setCoupons(result.data?.coupons?.filter((item)=> item.price < total))
       }catch(err){
         console.error(err)
       }
@@ -59,7 +59,7 @@ function CouponModal({ showModal, closeModal }) {
             <div className="form-element--column">
                 <div className='coupon__input--container '>
                     <input type="text" className="form-field coupon__input" value={couponSearch}
-                     onChange={(e) => setcouponSearch(e.target.value)} placeholder="Enter Code"/>
+                     onChange={(e) => setCouponsearch(e.target.value)} placeholder="Enter Code"/>
                     <button onClick={handleSearchCoupon} className='btn btn--secondary'>Apply</button>
                 </div>
                 <span className="error--message margin--small">{error}</span>

@@ -6,7 +6,7 @@ import './DisplayAddress.css';
 
 function DisplayAddress({ userAddress, selected }) {
 
-  const [showModal, setshowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   const { onDeleteAddress, onEditAddress } = useAddress()
 
@@ -31,11 +31,11 @@ function DisplayAddress({ userAddress, selected }) {
           <p onClick={()=>onToggleAddressSelect(userAddress)}><span className="text--bold margin-right--small">{name}:</span>{`${address}, ${city}`}</p>
         </div>
         <div>
-          <button onClick={()=> setshowModal(true)} className="btn btn--primary border--grey margin-right--small">Edit</button>
+          <button onClick={()=> setShowModal(true)} className="btn btn--primary border--grey margin-right--small">Edit</button>
           <button onClick={()=> onDeleteAddress(_id)} className="btn btn--secondary">Delete</button>
         </div>
       </div>
-      <AddressModal editMode={true} onSubmit={onEditAddress} userAddress={userAddress} showModal={showModal} closeModal={()=>setshowModal(false)} />
+      <AddressModal editMode={true} onSubmit={onEditAddress} userAddress={userAddress} showModal={showModal} closeModal={()=>setShowModal(false)} />
     </div>
   )
 }

@@ -6,8 +6,8 @@ import './Auth.css';
 function Login() {
 
   const { signIn } = useAuthContext();
-  const [email, setemail] = useState('');
-  const [password, setpassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('')
   const [ ErrorValues, setErrorValues] = useState({})
 
   const validateSubmit = () => {
@@ -31,8 +31,8 @@ function Login() {
     const errors = validateSubmit()
     if(Object.keys(errors).length === 0){
       signIn({ email, password})
-      setemail('')
-      setpassword('')
+      setEmail('')
+      setPassword('')
       setErrorValues({})
     }else{
       setErrorValues(errors)
@@ -42,8 +42,8 @@ function Login() {
 
   const loginwithtesthandler = () => {
     signIn({ email: 'adarshbalika@gmail.com', password: 'adarshbalika'})
-    setemail('')
-    setpassword('')
+    setEmail('')
+    setPassword('')
   }
 
   return (
@@ -52,12 +52,12 @@ function Login() {
           <h3 className="text--center margin-tb--medium">Login</h3>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Email</label>
-              <input type="text" value={email} onChange={(e)=>setemail(e.target.value)} className="form-field margin-tb--small" placeholder="abc@example.com"/>
+              <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} className="form-field margin-tb--small" placeholder="abc@example.com"/>
               <span className="error--message">{ErrorValues.email}</span>
           </div>
           <div className="auth__section">
               <label className="auth-label form-label--required text--medium">Enter Password</label>
-              <input type="password" value={password} onChange={(e)=>setpassword(e.target.value)} className="form-field margin-tb--small" placeholder="Password"/>
+              <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} className="form-field margin-tb--small" placeholder="Password"/>
               <span className="error--message">{ErrorValues.password}</span>
           </div>
           <button onClick={loginhandler} className="btn btn-auth margin-bottom--medium">Login</button>

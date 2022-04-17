@@ -9,16 +9,16 @@ const useCart = () => useContext(CartContext)
 
 const CartProvider = ({children}) => {
 
-    const [cartItems, setcartItems] = useState([])
-    const [cartLoading, setcartLoading] = useState(false)
-    const [appliedCoupon, setappliedCoupon] = useState(null)
+    const [cartItems, setCartItems] = useState([])
+    const [cartLoading, setCartLoading] = useState(false)
+    const [appliedCoupon, setAppliedCoupon] = useState(null)
 
     const applyCoupon = (item) => {
         if(item.name === appliedCoupon?.name){
             toasterror("Coupon Already Applied")
             return
         }
-        setappliedCoupon(item)
+        setAppliedCoupon(item)
         toastsuccess("Coupon Applied")
     }
 
@@ -37,7 +37,7 @@ const CartProvider = ({children}) => {
     const getCartItems = async () => {
         try{
             let result = await axios.get('/api/user/cart', config)
-            setcartItems(result.data?.cart)
+            setCartItems(result.data?.cart)
           }catch(err){
             console.error(err)
           }
@@ -47,7 +47,7 @@ const CartProvider = ({children}) => {
         if(user){
             getCartItems()
         }else{
-            setcartItems([])
+            setCartItems([])
         }
     }, [user])
 
@@ -76,7 +76,7 @@ const CartProvider = ({children}) => {
         }else{
           try{
             let result = await axios.post('/api/user/cart', { product: { ...item } } , config)
-            setcartItems(result.data?.cart)
+            setCartItems(result.data?.cart)
             toastsuccess("Added Item to cart")
           }catch(err){
             console.error(err)
@@ -86,30 +86,30 @@ const CartProvider = ({children}) => {
     }
 
     const removeProductFromCart = async (_id) => {
-        setcartLoading(true)
+        setCartLoading(true)
         try{
             await axios.delete('/api/user/cart/'+_id, config)
-            setcartItems(cartItems.filter((item)=> item._id !== _id))
+            setCartItems(cartItems.filter((item)=> item._id !== _id))
             toastsuccess('Removed Item from Cart')
         }catch(err){
             console.error(err)
             toasterror('There was an error')
         }finally{
-            setcartLoading(false)
+            setCartLoading(false)
         }
     }
   
     const totalItemsInCart = () => cartItems.reduce((acc, curr)=> acc+curr.quantity, 0)
 
     const increaseQuantity = async ({ _id }) => {
-        setcartLoading(true)
+        setCartLoading(true)
         try{
             await axios.post('/api/user/cart/'+_id, { action: { type: 'increment'}}, config)
-            setcartItems(cartItems.map((item) => item._id === _id ? {...item, quantity: item.quantity + 1} : item))
+            setCartItems(cartItems.map((item) => item._id === _id ? {...item, quantity: item.quantity + 1} : item))
         }catch(err){
             console.error(err)
         }finally{
-            setcartLoading(false)
+            setCartLoading(false)
         }
         
     }
@@ -118,21 +118,21 @@ const CartProvider = ({children}) => {
         if(item.quantity <= 1 ){
             removeProductFromCart(item._id)
         }else{
-            setcartLoading(true)
+            setCartLoading(true)
             try{
                 await axios.post('/api/user/cart/'+item._id, { action: { type: 'decrement'}}, config)
-                setcartItems(cartItems.map((cartProduct) => cartProduct._id === item._id ? {...cartProduct, quantity: cartProduct.quantity - 1} : cartProduct))
+                setCartItems(cartItems.map((cartProduct) => cartProduct._id === item._id ? {...cartProduct, quantity: cartProduct.quantity - 1} : cartProduct))
             }catch(err){
                 console.error(err)
             }finally{
-                setcartLoading(false)
+                setCartLoading(false)
             }
         }
     }
 
     const emptyCart = () => {
-        setcartItems([])
-        setappliedCoupon(null)
+        setCartItems([])
+        setAppliedCoupon(null)
     }
 
     return <CartContext.Provider value={{ calculateTotal, discount, deliveryCharge, appliedCoupon, applyCoupon, cartLoading, cartItems, emptyCart, addToCart, totalItemsInCart, checkItemInCart, removeProductFromCart, increaseQuantity, decreaseQuantity}}>
