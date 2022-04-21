@@ -3,8 +3,9 @@ import './ProductReviews.css';
 import RatingsInput from '../RatingsInput/RatingsInput';
 import UserReview from '../UserReview/UserReview';
 import { toasterror } from '../../Utilities';
+import { Loader } from '../Loader/Loader';
 
-function ProductReviews({ productID, userReviews, addReview, DeleteReview, EditReview }) {
+function ProductReviews({ productID, userReviews, isLoading, addReview, DeleteReview, EditReview }) {
 
   const [review, setreview] = useState("")
   const [ratings, setratings] = useState(null)
@@ -32,7 +33,7 @@ function ProductReviews({ productID, userReviews, addReview, DeleteReview, EditR
             <input onChange={(e)=> setreview(e.target.value)} value={review} className="review__input margin-right--medium" placeholder="Review" />
             <button onClick={submitreview} className="btn btn--secondary">Submit</button>
         </div>       
-
+        { isLoading && <Loader />}
         <div className="review--users">
           {userReviews?.map((item)=>{
             return <UserReview key={item._id} productID={productID} userReview={item} DeleteReview={DeleteReview} EditReview={EditReview} />

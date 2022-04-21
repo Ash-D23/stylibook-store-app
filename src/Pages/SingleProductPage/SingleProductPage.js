@@ -3,12 +3,14 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ProductMain, Loader, ProductReviews }  from '../../Components';
 import { useAuthContext } from '../../Context';
+import { toasterror, toastsuccess } from '../../Utilities';
 
 function SingleProductPage() {
 
   const [singleproduct, setsingleproduct] = useState({})
   const [productReviews, setproductReviews] = useState([])
-  const [isLoading, setisLoading] = useState(true)
+  const [isLoading, setisLoading] = useState(false)
+  const [initialLoading, setinitialLoading] = useState(true)
 
   const { user } = useAuthContext()
 
@@ -29,7 +31,7 @@ function SingleProductPage() {
     }catch(err){
       console.error(err)
     }finally{
-      setisLoading(false)
+      setinitialLoading(false)
     }
   }
 
@@ -39,30 +41,45 @@ function SingleProductPage() {
       return
     }
     const newobj = { review, ratings, userId: user._id, productId: singleproduct._id, userProfile: '/Images/book.jpg'}
+    setisLoading(true)
     try{
       const result = await axios.post('/api/reviews/add', newobj, config)
       setproductReviews([...productReviews, result?.data.review])
+      toastsuccess('Review Added Succesfully')
     }catch(err){
       console.error(err)
+      toasterror('An error Occurred')
+    }finally{
+      setisLoading(false)
     }
   }
 
   const DeleteReview = async (_id) => {
+    setisLoading(true)
     try{
       await axios.delete('/api/reviews/'+_id, config)
       setproductReviews(productReviews.filter((item) => item._id !== _id))
+      toastsuccess('Review Deleted Succesfully')
     }catch(err){
       console.error(err)
+      toasterror('An error Occurred')
+    }finally{
+      setisLoading(false)
     }
   }
 
   const EditReview = async (review) => {
+    setisLoading(true)
     try{
       await axios.post('/api/reviews/edit', review, config)
       setproductReviews(productReviews.map((item) => item._id === review._id ? review : item))
+      toastsuccess('Review Edited Succesfully')
     }catch(err){
       console.error(err)
-    }    
+      toasterror('An error Occurred')
+    }finally{
+      setisLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -71,10 +88,10 @@ function SingleProductPage() {
 
   const params = useParams()
   
-  return isLoading ? <Loader /> : (
+  return initialLoading ? <Loader /> : (
       <>
         <ProductMain product={singleproduct} /> 
-        <ProductReviews userReviews={productReviews} productID={singleproduct.id} addReview={addReview} DeleteReview={DeleteReview} EditReview={EditReview} />
+        <ProductReviews userReviews={productReviews} isLoading={isLoading} productID={singleproduct.id} addReview={addReview} DeleteReview={DeleteReview} EditReview={EditReview} />
       </>
   )
 }
