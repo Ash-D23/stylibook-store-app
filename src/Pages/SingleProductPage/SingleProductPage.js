@@ -14,13 +14,15 @@ function SingleProductPage() {
 
   const { user } = useAuthContext()
 
+  const navigate = useNavigate()
+
+  const params = useParams()
+
   let config = {
     headers: {
       authorization: user?.token,
     }
   }
-
-  const navigate = useNavigate()
 
   const getSingleProductAndReviews = async () => {
     try{
@@ -40,10 +42,10 @@ function SingleProductPage() {
       navigate('/login')
       return
     }
-    const newobj = { review, ratings, userId: user._id, productId: singleproduct._id, userProfile: '/Images/book.jpg'}
+    const newReview = { review, ratings, userId: user._id, productId: singleproduct._id, userProfile: '/Images/book.jpg'}
     setisLoading(true)
     try{
-      const result = await axios.post('/api/reviews/add', newobj, config)
+      const result = await axios.post('/api/reviews/add', newReview, config)
       setproductReviews([...productReviews, result?.data.review])
       toastsuccess('Review Added Succesfully')
     }catch(err){
@@ -85,14 +87,12 @@ function SingleProductPage() {
   useEffect(() => {
     getSingleProductAndReviews()
   }, [])
-
-  const params = useParams()
   
   return initialLoading ? <Loader /> : (
-      <>
-        <ProductMain product={singleproduct} /> 
-        <ProductReviews userReviews={productReviews} isLoading={isLoading} productID={singleproduct.id} addReview={addReview} DeleteReview={DeleteReview} EditReview={EditReview} />
-      </>
+    <>
+      <ProductMain product={singleproduct} /> 
+      <ProductReviews userReviews={productReviews} isLoading={isLoading} productId={singleproduct._id} addReview={addReview} DeleteReview={DeleteReview} EditReview={EditReview} />
+    </>
   )
 }
 

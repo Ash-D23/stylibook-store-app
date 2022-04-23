@@ -5,7 +5,7 @@ import UserReview from '../UserReview/UserReview';
 import { toasterror } from '../../Utilities';
 import { Loader } from '../Loader/Loader';
 
-function ProductReviews({ productID, userReviews, isLoading, addReview, DeleteReview, EditReview }) {
+function ProductReviews({ productId, userReviews, isLoading, addReview, DeleteReview, EditReview }) {
 
   const [review, setreview] = useState("")
   const [ratings, setratings] = useState(null)
@@ -36,7 +36,7 @@ function ProductReviews({ productID, userReviews, isLoading, addReview, DeleteRe
         { isLoading && <Loader />}
         <div className="review--users">
           {userReviews?.map((item)=>{
-            return <UserReview key={item._id} productID={productID} userReview={item} DeleteReview={DeleteReview} EditReview={EditReview} />
+            return <UserReview key={item._id} productId={productId} userReview={item} DeleteReview={DeleteReview} EditReview={EditReview} />
           })}
         </div>
     </div>
