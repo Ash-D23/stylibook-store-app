@@ -1,10 +1,3 @@
-#shop{
-    background: #8e9eab;
-    background: -webkit-linear-gradient(to bottom, #eef2f3, #8e9eab);
-    background: linear-gradient(to bottom, #eef2f3, #8e9eab); 
-    height: 30vh;
-}
-
 .category--container{
     max-width: 80%;
     padding: var(--padding-large);
@@ -70,12 +63,26 @@
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+.home-slider__container{
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.home--heading{
+    font-family: var(--font-family-secondary);
+    font-weight: 100;
+    color: var(--clr-secondary)
+}
+
 @media only screen and (max-width: 900px){
     .category--container{
         max-width: 100%;
         padding: var(--padding-small);
         margin: 0;
     }
+
 }
 
 @media only screen and (max-width: 600px){
@@ -102,5 +109,9 @@
 
     .category--card:hover{
         transform: none
+    }
+
+    .home-slider__container{
+        height: 40vh;
     }
 }

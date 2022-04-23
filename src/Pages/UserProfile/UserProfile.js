@@ -7,9 +7,9 @@ import './UserProfile.css';
 
 function UserProfile() {
 
-  const [editmode, seteditmode] = useState(false)
+  const [editMode, seteditMode] = useState(false)
 
-  const { user, setuser } = useAuthContext()
+  const { user, setUser } = useAuthContext()
 
   const [userProfile, userProfileDispatch ] = useReducer( userProfileReducerFn , user )
 
@@ -23,15 +23,15 @@ function UserProfile() {
 
   const onUpdateSubmit = async ()=> {
       try{
-          let result = await axios.post('/api/user/profile', { updatedUser: userProfile} ,config)  
-          setuser(userProfile)
+          await axios.post('/api/user/profile', { updatedUser: userProfile} ,config)  
+          setUser(userProfile)
           toastsuccess("Updated User Succesfully")
       }catch(err){
           console.error(err)
           userProfileDispatch({ type: 'resetProfile', payload: user})
           toasterror("There was an Error")
       }
-      seteditmode(false)
+      seteditMode(false)
   }
 
   return (
@@ -48,7 +48,7 @@ function UserProfile() {
                 className="form-field"
                 value={userName}
                 placeholder="Username"
-                disabled={!editmode} />
+                disabled={!editMode} />
             </div>
             
             <div className="form-element">
@@ -59,7 +59,7 @@ function UserProfile() {
                 className="form-field"
                 value={firstName}
                 placeholder="Enter First Name"
-                disabled={!editmode} />
+                disabled={!editMode} />
             </div>
             
             <div className="form-element">
@@ -70,7 +70,7 @@ function UserProfile() {
                 className="form-field"
                 value={lastName}
                 placeholder="Enter Last Name"
-                disabled={!editmode} />
+                disabled={!editMode} />
             </div>
 
             <div className="form-element">
@@ -89,7 +89,7 @@ function UserProfile() {
                 onChange={(e) => userProfileDispatch({ type: USER_PROFILE_ACTIONS.UPDATE_PHONE, payload: e.target.value})} 
                 className="form-field" 
                 value={phone || ''} 
-                disabled={!editmode} />
+                disabled={!editMode} />
             </div>
 
             <div className="form-element">
@@ -102,7 +102,7 @@ function UserProfile() {
                 className="form-radio"
                 name="gender" 
                 value="Male" 
-                disabled={!editmode} />
+                disabled={!editMode} />
 
                 <span> Male </span>
 
@@ -113,12 +113,12 @@ function UserProfile() {
                 className="form-radio" 
                 name="gender" 
                 value="Female" 
-                disabled={!editmode} />
+                disabled={!editMode} />
 
                 <span> Female</span>
             </div>
-            {editmode ? <button onClick={onUpdateSubmit} className="btn btn--outline-secondary margin--small">Save</button> : 
-                        <button onClick={()=> seteditmode(true)}className="btn btn--outline-secondary margin--small">Edit</button> }
+            {editMode ? <button onClick={onUpdateSubmit} className="btn btn--outline-secondary margin--small">Save</button> : 
+                        <button onClick={()=> seteditMode(true)}className="btn btn--outline-secondary margin--small">Edit</button> }
             
         </div>
     </div>

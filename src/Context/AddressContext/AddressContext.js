@@ -2,10 +2,9 @@ import { createContext, useContext, useState, useEffect } from "react";
 import axios from 'axios';
 import { useAuthContext } from "../AuthContext/AuthContext";
 import { toasterror, toastsuccess } from "../../Utilities";
+import { useCheckout } from "../CheckoutContext/CheckoutContext";
 
 const AddressContext = createContext();
-
-
 
 const useAddress = () => {
     const context = useContext(AddressContext)
@@ -17,8 +16,9 @@ const useAddress = () => {
 
 const AddressProvider = ({ children }) => {
 
-    const [addressList, setaddressList] = useState()
-    const [isloading, setisloading] = useState(false)  
+    const [addressList, setAddressList] = useState()
+    const [isLoading, setisLoading] = useState(false)  
+    const { selectedAddress, updateSelectedAddress } = useCheckout()
 
     const {user} = useAuthContext()
 
@@ -28,66 +28,72 @@ const AddressProvider = ({ children }) => {
       }
     }
     
-    const getalladdress = async ()=>{
-      setisloading(true)
+    const getAllAddress = async ()=>{
+      setisLoading(true)
       try{
         const res = await axios.get('api/user/address', config);
-        setaddressList(res.data?.Address)
-        setisloading(false)
+        setAddressList(res.data?.Address)
       }catch(err){
         console.error(err)
-        setisloading(false)
+      }finally{
+        setisLoading(false)
       }
     }
     
     useEffect(() => {
-      getalladdress()
+      getAllAddress()
     }, [])
   
-    const onaddaddress = async (address) => {
+    const onAddAddress = async (address) => {
       try{
-        setisloading(true)
+        setisLoading(true)
         const res = await axios.post('api/user/address', { address }, config);
-        setaddressList(res.data?.address)
-        setisloading(false)
+        setAddressList(res.data?.address)
         toastsuccess("Added Address Sucessfully")
       }catch(err){
         console.error(err)
-        setisloading(false)
         toasterror()
+      }finally{
+        setisLoading(false)
       }
     }
   
-    const ondeleteaddress = async (_id) => {
-      setisloading(true)
+    const onDeleteAddress = async (_id) => {
+      setisLoading(true)
       try{
-        const res = await axios.delete('api/user/address/'+_id, config);
-        setaddressList(addressList.filter((item)=> item._id !== _id))
-        setisloading(false)
+        await axios.delete('api/user/address/'+_id, config);
+        setAddressList(addressList.filter((item)=> item._id !== _id))
         toastsuccess("Deleted Address Sucessfully")
+        if(_id === selectedAddress?._id){
+          updateSelectedAddress(null)
+        }
       }catch(err){
         console.error(err)
-        setisloading(false)
         toasterror()
+      }finally{
+        setisLoading(false)
       }
     }
   
-    const oneditaddress = async (address) => {
-      setisloading(true)
+    const onEditAddress = async (address) => {
+      setisLoading(true)
       try{
         const res = await axios.post('api/user/address/'+address._id, { updatedAddress: address }, config);
-        setaddressList(res.data?.address)
-        setisloading(false)
+        setAddressList(res.data?.address)
         toastsuccess("Edited Address Sucessfully")
+        if(address?._id === selectedAddress?._id){
+          updateSelectedAddress(address)
+        }
       }catch(err){
         console.error(err)
-        setisloading(false)
         toasterror()
+      }finally{
+        setisLoading(false)
       }
     }
 
   return (
-      <AddressContext.Provider value={{addressList, isloading, onaddaddress, oneditaddress, ondeleteaddress}}>
+      <AddressContext.Provider value={{addressList, isLoading, onAddAddress, onEditAddress, onDeleteAddress}}>
           {children}
       </AddressContext.Provider>
   )

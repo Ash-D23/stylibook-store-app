@@ -4,6 +4,6 @@ export const FILTER_ACTIONS = {
     RESET: 'reset',
     SET_RATINGS: 'setratings',
     SET_CATEGORY: 'setcategory',
-    SET_SEARCH: 'setsearch',
+    SET_SEARCH: 'setSearch',
     INITIALIZE_CATEGORY: 'initializecategory'
 }

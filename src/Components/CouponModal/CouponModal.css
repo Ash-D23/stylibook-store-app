@@ -6,6 +6,10 @@
     display: flex;
 }
 
+.coupon__modal{
+    z-index: 3;
+}
+
 .coupon__modal .coupon__input{
     border-radius: 0;
     border: none;

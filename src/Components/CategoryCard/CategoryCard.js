@@ -7,7 +7,7 @@ function CategoryCard({ category : {_id, img, categoryName}}) {
   return (
     <div onClick={()=> navigate('/products?category='+categoryName.replace(' ','_'))} className="category--card container--relative">
         <div className="category--image">
-          <img src={img} />
+          <img src={img} alt="category" />
         </div>
         <h3 className="category--title">{categoryName}</h3>
         <div className="category--overlay shadow--bottom">

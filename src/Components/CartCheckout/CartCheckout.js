@@ -5,7 +5,7 @@ import './CartCheckout.css';
 
 function CartCheckout({ label, nextpath, showApplyCoupon}) {
 
-  const [showModal, setshowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   const { calculateTotal, discount, deliveryCharge, appliedCoupon } = useCart()
 
@@ -50,11 +50,11 @@ function CartCheckout({ label, nextpath, showApplyCoupon}) {
                 </div>
                 <button onClick={nextpath} className="btn btn--secondary">{label}</button>
                 { showApplyCoupon ? <div className="checkout__price apply-coupon"> 
-                    <p onClick={()=>setshowModal(true)}>Apply Coupon</p>
+                    <p onClick={()=>setShowModal(true)}>Apply Coupon</p>
                 </div> : null }
             </div>
         </div>
-        { showApplyCoupon ? <CouponModal showModal={showModal} closeModal={()=>setshowModal(false)} /> : null }
+        { showApplyCoupon ? <CouponModal showModal={showModal} closeModal={()=>setShowModal(false)} /> : null }
     </div>
   )
 }
