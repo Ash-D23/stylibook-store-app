@@ -37,7 +37,7 @@ export const getProductHandler = function (schema, request) {
 
 export const getFeaturedProductshandler = function (schema, request) {
   try {
-    const Featuredproducts = this.db.products.filter((item) => item.bestseller === true)
+    const Featuredproducts = this.db.products.filter((item) => item.bestSeller === true)
     return new Response(200, {}, { Featuredproducts });
   } catch (error) {
     return new Response(
