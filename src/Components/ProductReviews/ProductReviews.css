@@ -20,8 +20,8 @@
 .para-rating__container{
     padding: 0.25rem 0.5rem;
     font-size: 1.5rem;
-    background-color: green;
-    color: white;
+    background-color: #008000	;
+    color: var(--text-clr-secondary);
     border-radius: 5px;
 }
 
