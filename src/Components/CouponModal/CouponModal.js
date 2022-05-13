@@ -44,12 +44,18 @@ function CouponModal({ showModal, closeModal }) {
       closeModal()
   }
 
+  const handleModalClickOutside = (e) => {
+    if(e.target.id === "modal--outside" ){
+      handleCloseModal()
+    }
+  }
+
   useEffect(() => {
     getCoupons()
   }, [total])
 
   return (
-    <div className={`modal__overlay coupon__modal ${showModal ? '' : 'hide'}`}>
+    <div id="modal--outside" onClick={handleModalClickOutside} className={`modal__overlay coupon__modal ${showModal ? '' : 'hide'}`}>
       <div className="modal__container">
           <div className="modal__header container__flex margin--medium">
             <h3 className="text--large">Coupons</h3>

@@ -37,7 +37,7 @@ function Slider() {
             <p onClick={()=>ChangeActiveImage(1)} className='slider__arrow arrow--next'>&#10095;</p>
                 
             <div className="dots">
-                {slider_data?.map((item, index) => <span key={index} className={`dot ${index===imageActive ? 'dot--active' : ''}`}></span>)}
+                {slider_data?.map((item, index) => <span key={index} onClick={()=>setimageActive(index)} className={`dot ${index===imageActive ? 'dot--active' : ''}`}></span>)}
             </div>
         </div>
         <div className="container--50 slider--description">

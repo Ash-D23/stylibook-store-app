@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import { Link, NavLink, useNavigate} from 'react-router-dom';
 import { useAuthContext, useCart } from '../../Context';
 import './Navbar.css';
@@ -14,6 +14,11 @@ function Navbar({ onMenuClick }) {
 
   const navigate = useNavigate()
 
+  const { user } = useAuthContext()
+
+  const searchInput = useRef(null)
+  const searchInputMobile = useRef(null)
+
   useEffect(()=>{
       (async function(){
         try{
@@ -23,7 +28,28 @@ function Navbar({ onMenuClick }) {
             console.error(err)
           }
       })()
-  })
+  }, [])
+
+  useEffect(() => {
+    const closeSearchMenu = () => {
+      setSearch('')
+      setShowSearchItems(false)
+    }
+
+    const handleClickOutside = (e)=>{
+      const isClickedOutsideInput = (searchInput.current && searchInput.current.contains(e.target)) || 
+      (searchInputMobile.current && searchInputMobile.current.contains(e.target))
+      if(!isClickedOutsideInput){
+          closeSearchMenu()
+      }
+   }
+
+    document.body.addEventListener('click', handleClickOutside)
+
+    return () => {
+        document.body.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
 
   const searchHandler = (e) => {
       if(e.keyCode === 13){
@@ -59,13 +85,11 @@ function Navbar({ onMenuClick }) {
 
     const SearchProducts = filterProductsBySearch(products, search)
 
-  const navActive = ({ isActive }) => {
+    const navActive = ({ isActive }) => {
         return {
             color: isActive ? "#dc2626" : "",
         };
     }
-
-  const { user } = useAuthContext()
 
   return (
     <header>
@@ -120,6 +144,7 @@ function Navbar({ onMenuClick }) {
                         <input 
                         onChange={(e)=>setSearch(e.target.value)} 
                         onFocus={() => setShowSearchItems(true)}
+                        ref={searchInput}
                         value={search} 
                         className="search__input" 
                         placeholder="Search" 
@@ -131,14 +156,13 @@ function Navbar({ onMenuClick }) {
                     { SearchProducts.length === 0 ? 
                     <div style={{ height: `2rem`}}
                     className={`search__items ${ showSearchItems ? `search__items--display` : ''}`}>
-                       <p className='search__items--list text--center'>No videos Found</p>
+                       <p className='search__items--list text--center'>No Items Found</p>
                    </div>
                     : <div style={{ height: `${2 + SearchProducts.length*2}rem`}}
                      className={`search__items ${ showSearchItems ? `search__items--display` : ''}`}>
                         {SearchProducts?.map((item) => <p key={item?._id} onClick={(e) => handleNavigate(e, item?._id)} className='search__items--list'>{item.productName}</p>)}
                     </div>}
                 </div>
-
                 </li>
                 { user ? <li className="navbar__item">
                     <Link to="/profile"><i className="fas fa-user"></i></Link>
@@ -172,6 +196,7 @@ function Navbar({ onMenuClick }) {
                       onChange={(e)=>setSearch(e.target.value)} 
                       value={search} 
                       onFocus={() => setShowSearchItems(true)}
+                      ref={searchInputMobile}
                       className="search__input" 
                       placeholder="Search" 
                       type="text" 
