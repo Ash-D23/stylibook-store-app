@@ -55,13 +55,19 @@ function AddressModal({ editMode, showModal, closeModal, onSubmit, userAddress})
     }
   }
 
+  const handleModalClickOutside = (e) => {
+    if(e.target.id === "modal--outside" ){
+      handlecloseModal()
+    }
+  }
+
   const handlecloseModal = () => {
     resetAddress()
     closeModal()
   }
 
   return (
-    <div className={`modal__overlay address__modal ${showModal ? '' : 'hide'}`}>
+    <div id="modal--outside" onClick={handleModalClickOutside} className={`modal__overlay address__modal ${showModal ? '' : 'hide'}`}>
       <div className="modal__container">
           <div className="modal__header container__flex margin--medium">
               <h3 className="text--large">{editMode ? 'Edit' : 'Add'} Address</h3>

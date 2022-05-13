@@ -14,9 +14,9 @@ function SingleProductPage() {
       if(result.data?.product){
         setsingleproduct(result.data?.product)
       }
-      setisLoading(false)
     }catch(err){
       console.error(err)
+    }finally{  
       setisLoading(false)
     }
   }
