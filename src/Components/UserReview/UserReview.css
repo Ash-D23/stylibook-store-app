@@ -1,0 +1,30 @@
+.review--actions{
+    width: 10rem;
+    border: 1px solid var(--clr-grey);
+    position: absolute;
+    right: 0;
+    bottom: -70px;
+    z-index: 2;
+    background-color: var(--clr-primary);
+    border-radius: 5px;
+}
+
+.review--actions p{
+    padding: 2.5px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.review--actions p:hover{
+    background-color: var(--clr-grey);
+}
+
+.save--icon{
+    font-size: var(--text-large);
+    color: #1d4ed8;
+}
+
+.cancel--icon{
+    font-size: var(--text-large);
+    color: var(--clr-secondary)
+}

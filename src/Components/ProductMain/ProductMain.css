@@ -3,7 +3,6 @@
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    min-height: 67vh;
 }
 
 .product__btn--container{
@@ -50,7 +49,7 @@
 
 @media only screen and (max-width: 1000px){
     .single-product--container{
-        max-width: 90%;
+        max-width: 100%;
     }
 
     .product__image--container{
@@ -60,13 +59,6 @@
     .product__description{
         width: 50%;
     }
-}
-
-@media only screen and (max-width: 800px){
-    .single-product--container{
-        max-width: 100%;
-    }
-
 }
 
 @media only screen and (max-width: 600px){

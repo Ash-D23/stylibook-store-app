@@ -4,7 +4,7 @@ import { useAuthContext, useCart, useWishlist } from '../../Context'
 
 function SingleProduct({ product, wishlistproduct }){
 
-  const {_id, img, productName, bestseller, price, originalPrice} = product
+  const {_id, img, productName, bestSeller, price, originalPrice, ratings} = product
 
   const { user } = useAuthContext()
 
@@ -43,8 +43,9 @@ function SingleProduct({ product, wishlistproduct }){
     <div className="card">
         <div className="card__image--container badge-content">
             <img onClick={()=> navigate('/product/'+ _id)} className="card__image" src={img} alt="product" />
-            {bestseller && !wishlistproduct ? <p className="badge badge--large badge-card-tr">Best Seller</p> : null}
+            {bestSeller && !wishlistproduct ? <p className="badge badge--large badge-card-tr">Best Seller</p> : null}
             { wishlistproduct ?  <i onClick={()=> removeFromWishlist(_id)} className="fas fa-times clr--primary card--dismiss card-position--tr"></i> : null}
+            <span className="para-rating__container card--ratings">{ratings} &#9733;</span>
         </div>
         <div className="card__body padding--medium">
             <div className="card__heading">

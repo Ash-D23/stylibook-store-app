@@ -13,7 +13,7 @@ export const products = [
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Non_Fiction', 
-    bestseller: true, 
+    bestSeller: true, 
     price: '500',
     originalPrice: '700', 
     ratings: 5
@@ -25,7 +25,7 @@ export const products = [
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Non_Fiction', 
-    bestseller: true, 
+    bestSeller: true, 
     price: '600',
     originalPrice: '700', 
     ratings: 5
@@ -37,7 +37,7 @@ export const products = [
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
-    bestseller: true, 
+    bestSeller: true, 
     price: '800',
     originalPrice: '900', 
     ratings: 5
@@ -49,7 +49,7 @@ export const products = [
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
-    bestseller: false, 
+    bestSeller: false, 
     price: '100',
     originalPrice: '300', 
     ratings: 3
@@ -61,7 +61,7 @@ export const products = [
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Academics', 
-    bestseller: false, 
+    bestSeller: false, 
     price: '500',
     originalPrice: '700', 
     ratings: 2
@@ -73,7 +73,7 @@ export const products = [
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!', 
     seller: 'Genuine Books',
     category:'Non_Fiction', 
-    bestseller: false, 
+    bestSeller: false, 
     price: '300',
     originalPrice: '500', 
     ratings: 4
@@ -85,7 +85,7 @@ export const products = [
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fantasy', 
-    bestseller: false, 
+    bestSeller: false, 
     price: '900',
     originalPrice: '1000', 
     ratings: 5

@@ -18,3 +18,4 @@ export { Ratings } from './Ratings/Ratings';
 export { Slider } from './Slider/Slider';
 export { SingleCartProduct } from './SingleCartProduct/SingleCartProduct';
 export { SingleProduct } from './SingleProduct/SingleProduct';
+export { ProductReviews } from './ProductReviews/ProductReviews';

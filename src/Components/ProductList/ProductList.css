@@ -20,6 +20,12 @@
     margin-right: 0;
 }
 
+.card--ratings{
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+}
+
 @media only screen and (max-width: 800px){
     .product--cards .card{
         width: 20rem;
