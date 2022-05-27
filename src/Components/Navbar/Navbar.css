@@ -70,7 +70,7 @@
 .search__items{
     width: 100%;
     min-height: 4rem;
-    max-height: 40rem;
+    max-height: 20rem;
     background-color: #f4f4f5;
     position: absolute;
     display: none;
