@@ -44,7 +44,6 @@ function SignUp() {
     }else{
       setErrorValues(errors)
     }
-    
   }
 
   return (
