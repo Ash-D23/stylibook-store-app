@@ -7,7 +7,7 @@ import { toasterror, toastsuccess } from '../../Utilities';
 
 function SingleProductPage() {
 
-  const [singleproduct, setsingleproduct] = useState({})
+  const [singleproduct, setsingleproduct] = useState(null)
   const [productReviews, setproductReviews] = useState([])
   const [isLoading, setisLoading] = useState(false)
   const [initialLoading, setinitialLoading] = useState(true)
@@ -86,12 +86,12 @@ function SingleProductPage() {
 
   useEffect(() => {
     getSingleProductAndReviews()
-  }, [])
+  }, [params.id])
   
   return initialLoading ? <Loader /> : (
     <>
       <ProductMain product={singleproduct} /> 
-      <ProductReviews userReviews={productReviews} isLoading={isLoading} productId={singleproduct._id} addReview={addReview} DeleteReview={DeleteReview} EditReview={EditReview} />
+      { singleproduct ? <ProductReviews userReviews={productReviews} isLoading={isLoading} productId={singleproduct?._id} addReview={addReview} DeleteReview={DeleteReview} EditReview={EditReview} /> : null }
     </>
   )
 }
