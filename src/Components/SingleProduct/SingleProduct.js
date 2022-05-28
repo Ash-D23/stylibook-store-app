@@ -42,7 +42,7 @@ function SingleProduct({ product, wishlistproduct }){
   return (
     <div className="card">
         <div className="card__image--container badge-content">
-            <img onClick={()=> navigate('/product/'+ _id)} className="card__image" src={img} alt="product" />
+            <img style={{width: '300px', height: '200px'}} onClick={()=> navigate('/product/'+ _id)} className="card__image" src={img} alt="product" />
             {bestSeller && !wishlistproduct ? <p className="badge badge--large badge-card-tr">Best Seller</p> : null}
             { wishlistproduct ?  <i onClick={()=> removeFromWishlist(_id)} className="fas fa-times clr--primary card--dismiss card-position--tr"></i> : null}
             <span className="para-rating__container card--ratings">{ratings} &#9733;</span>

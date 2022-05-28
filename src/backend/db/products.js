@@ -9,7 +9,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Do Epic SHit', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product1.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Non_Fiction', 
@@ -21,7 +21,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Think Like a Monk', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product2.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Non_Fiction', 
@@ -33,7 +33,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Alchemist', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product3.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
@@ -45,7 +45,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Rich Dad', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product4.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
@@ -57,7 +57,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Mathematics', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product5.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Academics', 
@@ -69,7 +69,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Sherlock Holmes', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product6.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!', 
     seller: 'Genuine Books',
     category:'Non_Fiction', 
@@ -81,7 +81,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Narnia', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product7.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fantasy', 
@@ -93,7 +93,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'HyperFocus', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product8.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
@@ -105,7 +105,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'HyperFocus', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product9.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
@@ -117,7 +117,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Democracy', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product10.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Non_Fiction', 
@@ -129,7 +129,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'James Bond', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product1.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fantasy', 
@@ -141,7 +141,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Chacha Chowdry', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product2.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
@@ -153,7 +153,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Twinkle', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product3.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fantasy', 
@@ -165,7 +165,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Half Girlfriend', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product4.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
@@ -177,7 +177,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: '2 States', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product5.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
@@ -189,7 +189,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Revolution 2020', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product6.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
@@ -201,7 +201,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: '5 Point Someone', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product7.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fiction', 
@@ -213,7 +213,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Stock Market', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product9.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Non_Fiction', 
@@ -225,7 +225,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'The man Who Sold His Ferari', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product8.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Fantasy', 
@@ -237,7 +237,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Intellectual Property', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product10.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Academy', 
@@ -249,7 +249,7 @@ export const products = [
   { 
     _id: uuid(), 
     productName: 'Data Analysis', 
-    img:"/Images/book1.jpg", 
+    img:"/Images/product1.jpg", 
     description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem quos natus, recusandae, consequatur amet accusantium, suscipit aut nam harum reprehenderit nesciunt voluptates id? Veniam amet aperiam totam corrupti at unde!',
     seller: 'Genuine Books',
     category:'Academics', 
