@@ -24,7 +24,6 @@ export const filterproductsbycategory = (products, category) => {
         return products
     }
 
-    // filter the category which are true
     let categoryfiltersarray = Object.entries(category).filter((item) => item[1]).map((item)=> item[0])
 
     return [...products].filter((item) => categoryfiltersarray.some((val)=> val===item.category))

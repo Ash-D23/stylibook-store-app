@@ -11,7 +11,7 @@ export const filterreducerfn = (state, action) => {
       case FILTER_ACTIONS.SET_RATINGS:
         return { ...state, ratings: action.payload }
       case FILTER_ACTIONS.SET_CATEGORY:
-        return { ...state, category: {...state.category, [action.payload]: !state.category[action.payload]}}
+        return { ...state, category: {...state.category, [action.payload]: !state.category[action.payload], 'all': false}}
       case FILTER_ACTIONS.SET_SEARCH:
         return { ...state, search: action.payload }
       case FILTER_ACTIONS.INITIALIZE_CATEGORY:

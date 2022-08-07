@@ -90,10 +90,7 @@ function Filters() {
                     <input id="Fantasy" type="checkbox" onChange={changeCategory} className="form-checkbox" value="Fantasy" checked={filterstate.category.Fantasy} /> 
                     <label htmlFor="Fantasy">Fantasy </label>
                 </div>
-                <div className="form-element">
-                    <input id="all"type="checkbox" onChange={changeCategory} className="form-checkbox" value="all" checked={filterstate.category.all} /> 
-                    <label htmlFor="all">All </label>
-                </div>
+                
             </div>
             <div className="filter__section">
                 <h3 className="text--medium">Ratings</h3>
